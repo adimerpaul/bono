@@ -22,7 +22,18 @@ class MadreFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'paterno'=> strtoupper($this->faker->lastName),
+            'materno'=> strtoupper( $this->faker->lastName),
+            'nombres'=> strtoupper( $this->faker->firstNameFemale ),
+            'ci'=> $this->faker->unique()->numberBetween(10000,12000),
+            'fechanac'=>$this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'sexo'=>'F',
+            'salario'=>'NO',
+            'afp'=>'NO',
+            'rentista'=>'NO',
+            'juana'=>'NO',
+            'discapacidad'=>'NO',
+            'created_at'=>now()
         ];
     }
 }

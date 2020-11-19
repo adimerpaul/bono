@@ -18,13 +18,16 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />--}}
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="img/logo.png" alt="" width="70">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -33,7 +36,53 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+{{--                        @if( Auth::user()->tipo=='ADMIN')--}}
+                        @auth
+                        @if(Auth::user()->tipo=='ADMIN')
+                        <router-link
+                            to="/usuarios"
+                            v-slot="{ href, route, navigate, isActive, isExactActive }"
+                        >
+                            <li class="nav-item">
+                                <a class="nav-link" :href="href" @click="navigate" :class="[isActive && 'active', isExactActive && '']">
+                                    <i class="fa fa-user"></i> Usuarios
 
+                                </a>
+                            </li>
+                        </router-link>
+                        @endif
+{{--                        @endif--}}
+                        <router-link
+                            to="/registrados"
+                            v-slot="{ href, route, navigate, isActive, isExactActive }"
+                        >
+                            <li class="nav-item">
+                                <a class="nav-link" :href="href" @click="navigate" :class="[isActive && 'active', isExactActive && '']">
+                                    <i class="fa fa-file"></i> Registrados
+                                </a>
+                            </li>
+                        </router-link>
+                        <router-link
+                            to="/revisar"
+                            v-slot="{ href, route, navigate, isActive, isExactActive }"
+                        >
+                            <li class="nav-item">
+                                <a class="nav-link" :href="href" @click="navigate" :class="[isActive && 'active', isExactActive && '']">
+                                    <i class="fa fa-eye"></i> Revisar
+                                </a>
+                            </li>
+                        </router-link>
+                        <router-link
+                            to="/actualizar"
+                            v-slot="{ href, route, navigate, isActive, isExactActive }"
+                        >
+                            <li class="nav-item">
+                                <a class="nav-link" :href="href" @click="navigate" :class="[isActive && 'active', isExactActive && '']">
+                                    <i class="fa fa-address-book"></i> Actualizar
+                                </a>
+                            </li>
+                        </router-link>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -45,7 +94,6 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>

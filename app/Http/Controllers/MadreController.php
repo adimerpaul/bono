@@ -15,7 +15,7 @@ class MadreController extends Controller
      */
     public function index()
     {
-        //
+//        return Madre::all();
     }
 
     /**
@@ -27,6 +27,14 @@ class MadreController extends Controller
     {
         //
     }
+    public function madreregister($d1,$d2)
+    {
+            return Madre::with('hijo')
+                ->whereDate('created_at','>=',$d1)
+                ->whereDate('created_at','<=',$d2)
+                ->get();
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -50,6 +58,10 @@ class MadreController extends Controller
         $m->rentista=$request->rentista;
         $m->juana=$request->juana;
         $m->discapacidad=$request->discapacidad;
+        $m->municipio=$request->municipio;
+        $m->sexo=$request->sexo;
+        $m->direccion=$request->direccion;
+        $m->recinto=$request->recinto;
         $m->save();
         foreach ($request->hijos as $hijo){
             $h=new Hijo();
@@ -81,6 +93,10 @@ class MadreController extends Controller
     public function edit(Madre $madre)
     {
         //
+    }
+    public function verificacion()
+    {
+
     }
 
     /**

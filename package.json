@@ -24,7 +24,15 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.1",
+        "html2canvas": "^1.0.0-rc.7",
+        "html2pdf": "0.0.11",
+        "jspdf": "^2.1.1",
+        "vue-html2pdf": "^1.8.0",
+        "vue-moment": "^4.1.0",
+        "vue-router": "^3.4.9",
         "vue-simple-alert": "^1.1.1",
+        "vue-toast-notification": "^0.6.0",
         "vue-toastr": "^2.1.2"
     }
 }

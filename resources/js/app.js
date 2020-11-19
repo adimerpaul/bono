@@ -2,33 +2,51 @@
 require('./bootstrap');
 
 import Vue from "vue";
-import VueToastr from "vue-toastr";
-Vue.use(VueToastr, {
-    /* OverWrite Plugin Options if you need */
-});
-
-Vue.config.productionTip = false;
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
 
 import VueSimpleAlert from "vue-simple-alert";
+import 'sweetalert2/src/sweetalert2.scss'
 Vue.use(VueSimpleAlert);
+
+Vue.use(require('vue-moment'));
+
+import VueToast from 'vue-toast-notification';
+// Import one of available themes
+import 'vue-toast-notification/dist/theme-default.css';
+import 'vue-toast-notification/dist/theme-sugar.css';
+
+
+Vue.use(VueToast);
+
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('welcome-component', require('./components/welcome.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
+import usuarios from './components/usuarios';
+import registrados from './components/registrados';
+import revisar from './components/revisar';
+import actualizar from './components/actualizar';
+const routes = [
+    { path: '/usuarios', component: usuarios },
+    { path: '/registrados', component: registrados },
+    { path: '/actualizar', component: actualizar },
+    { path: '/revisar', component: revisar },
+]
+const router = new VueRouter({
+    mode: 'history',
+    routes // short for `routes: routes`
+});
 const app = new Vue({
     el: '#app',
+    router,
     mounted() {
         // You are able to access plugin from everywhere via this.$toastr
-        this.$toastr.defaultPosition = "toast-top-left";
+        // this.$toastr.defaultPosition = "toast-top-left";
         // Send message to browser screen
         // this.$toastr.s(
         //     "This Message From Toastr Plugin\n You can access this plugin : <font color='yellow'>this.$toastr</font>"
         // );
     }
 });
+
+

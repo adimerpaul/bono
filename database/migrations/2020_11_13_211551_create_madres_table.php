@@ -20,7 +20,7 @@ class CreateMadresTable extends Migration
             $table->string('conyugue')->nullable();
             $table->string('nombres');
             $table->date('fechanac');
-            $table->string('ci');
+            $table->string('ci')->unique();
             $table->string('fijo')->nullable();
             $table->string('celular')->nullable();
             $table->string('salario');
@@ -28,7 +28,13 @@ class CreateMadresTable extends Migration
             $table->string('rentista');
             $table->string('juana');
             $table->string('discapacidad');
-            $table->string('estado')->default('SIN VERIFICAR');
+            $table->string('sexo');
+            $table->string('direccion')->nullable();
+            $table->string('recinto')->nullable();
+            $table->string('municipio')->nullable();
+            $table->string('user_id')->nullable();
+            $table->string('detalle')->nullable();
+            $table->string('estado')->default('NO');
             $table->timestamps();
         });
     }
