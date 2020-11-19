@@ -79,9 +79,13 @@ class MadreController extends Controller
      * @param  \App\Models\Madre  $madre
      * @return \Illuminate\Http\Response
      */
-    public function show(Madre $madre)
+    public function show($ci)
     {
-        //
+
+        return Madre::with('hijos')
+        ->where('ci',$ci)
+        ->get();
+        
     }
 
     /**
@@ -106,9 +110,36 @@ class MadreController extends Controller
      * @param  \App\Models\Madre  $madre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Madre $madre)
+    public function update(Request $request, $id)
     {
-        //
+        
+        $m=Madre::find($id);
+        $m->paterno=$request->paterno;
+        $m->materno=$request->materno;
+        $m->conyugue=$request->conyugue;
+        $m->nombres=$request->nombres;
+        $m->fechanac=$request->fechanac;
+        $m->ci=$request->ci;
+        $m->fijo=$request->fijo;
+        $m->celular=$request->celular;
+        $m->salario=$request->salario;
+        $m->afp=$request->afp;
+        $m->rentista=$request->rentista;
+        $m->juana=$request->juana;
+        $m->discapacidad=$request->discapacidad;
+        $m->municipio=$request->municipio;
+        $m->sexo=$request->sexo;
+        $m->direccion=$request->direccion;
+        $m->recinto=$request->recinto;
+        $m->save();
+        $delhijo=Hijo::where('madre_id',$id)->delete();
+        foreach ($request->hijos as $hijo){
+            $h=new Hijo();
+            $h->nombres=$hijo['nombres'];
+            $h->apellidos=$hijo['apellidos'];
+            $h->madre_id=$m->id;
+            $h->save();
+        }
     }
 
     /**
@@ -119,6 +150,8 @@ class MadreController extends Controller
      */
     public function destroy(Madre $madre)
     {
-        //
+        //$delhijo=Hijo::where('madre_id',$id)->delete();
+        //$m=Madre::find($id);
+        //$m->delete();
     }
 }
