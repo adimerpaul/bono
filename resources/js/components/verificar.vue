@@ -50,7 +50,9 @@
                                 <div class="form-group row">
                                     <label for="detalle" class="col-sm-2 col-form-label">Detalle</label>
                                     <div class="col-sm-10">
-                                    <input type="text" readonly class="form-control-plaintext" id="detalle" v-model="dato.detalle">
+                                        <div class="alert alert-primary" role="alert">
+                                            <input type="text" readonly class="form-control-plaintext" id="detalle" v-model="dato.detalle">
+                                        </div>
                                     </div>
                                 </div>
                             </form> 

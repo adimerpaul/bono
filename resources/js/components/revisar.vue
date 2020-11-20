@@ -31,7 +31,7 @@
  
                     </div>
                     <div class="col-md-3 mb-3">
-                        <label for="Apellido Conyugue">Apellido Conyugue</label>
+                        <label for="Apellido Conyugue">Apellido de Casada</label>
                         <br><label><b>{{dato.conyugue}}</b></label>
               
                     </div>

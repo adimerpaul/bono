@@ -29,7 +29,7 @@ class MadreController extends Controller
     }
     public function madreregister($d1,$d2)
     {
-        return Madre::with('hijo')
+        return Madre::with('hijos')
             ->whereDate('created_at','>=',$d1)
             ->whereDate('created_at','<=',$d2)
 //                ->whereDate('created_at','=','updated_at')
