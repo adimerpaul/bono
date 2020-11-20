@@ -12,6 +12,10 @@ class HijoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function verificar($id){
+
+    }
+
     public function index()
     {
         //

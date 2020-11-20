@@ -41,5 +41,9 @@ Route::get('/madreregister/{f1}/{f2}', [App\Http\Controllers\MadreController::cl
 Route::get('/verificacion', [App\Http\Controllers\MadreController::class, 'verificacion'])->name('home');
 //Route::get('/madre', [App\Http\Controllers\MadreController::class, 'index'])->name('home');
 //echo (Illuminate\Auth::user()->id);
-Route::apiResource('/user',App\Http\Controllers\UserController::class);
-Route::post('/pass/{id}',[App\Http\Controllers\UserController::class,'pass']);
+Route::apiResource('/user',App\Http\Controllers\UserController::class)->middleware('auth');
+Route::post('/pass/{id}',[App\Http\Controllers\UserController::class,'pass'])->middleware('auth');
+Route::put('/confirmar/{id}',[App\Http\Controllers\MadreController::class,'confirmar'])->middleware('auth');
+Route::get('/recintos',[App\Http\Controllers\MadreController::class,'recintos']);
+Route::get('/verificar/{id}',[App\Http\Controllers\HijoController::class,'verificar']);
+

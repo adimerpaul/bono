@@ -29,12 +29,25 @@ class MadreController extends Controller
     }
     public function madreregister($d1,$d2)
     {
-            return Madre::with('hijo')
-                ->whereDate('created_at','>=',$d1)
-                ->whereDate('created_at','<=',$d2)
-                ->get();
+        return Madre::with('hijo')
+            ->whereDate('created_at','>=',$d1)
+            ->whereDate('created_at','<=',$d2)
+//                ->whereDate('created_at','=','updated_at')
+            ->where('detalle','RECIEN REGISTRADA PENDIENTE DE VERIFICACION')
+            ->orWhere('detalle','PERSONA VERIFICADA FALTA VERIFICACION SEXO, EDAD Y BONOS AGREGADOS')
+            ->limit(100)
+            ->get();
     }
-
+    public function recintos(){
+        return Madre::select('recinto')->where('recinto','!=','')->groupBy('recinto')->get();
+    }
+    public function confirmar(Request $request,$id){
+        $m=Madre::find($id);
+        $m->estado=$request->estado;
+        $m->detalle=$request->detalle;
+        $m->user_id=Auth::user()->id;
+        $m->save();
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -44,32 +57,40 @@ class MadreController extends Controller
      */
     public function store(Request $request)
     {
-        $m=new Madre();
-        $m->paterno=$request->paterno;
-        $m->materno=$request->materno;
-        $m->conyugue=$request->conyugue;
-        $m->nombres=$request->nombres;
-        $m->fechanac=$request->fechanac;
-        $m->ci=$request->ci;
-        $m->fijo=$request->fijo;
-        $m->celular=$request->celular;
-        $m->salario=$request->salario;
-        $m->afp=$request->afp;
-        $m->rentista=$request->rentista;
-        $m->juana=$request->juana;
-        $m->discapacidad=$request->discapacidad;
-        $m->municipio=$request->municipio;
-        $m->sexo=$request->sexo;
-        $m->direccion=$request->direccion;
-        $m->recinto=$request->recinto;
-        $m->save();
-        foreach ($request->hijos as $hijo){
-            $h=new Hijo();
-            $h->nombres=$hijo['nombres'];
-            $h->apellidos=$hijo['apellidos'];
-            $h->madre_id=$m->id;
-            $h->save();
+        $madre=Madre::where('ci',$request->ci);
+        if ($madre->count()>=1){
+            return "YAREGISTRADO";
+        }else{
+            $m=new Madre();
+            $m->paterno=$request->paterno;
+            $m->materno=$request->materno;
+            $m->conyugue=$request->conyugue;
+            $m->nombres=$request->nombres;
+            $m->fechanac=$request->fechanac;
+            $m->ci=$request->ci;
+            $m->fijo=$request->fijo;
+            $m->celular=$request->celular;
+            $m->salario=$request->salario;
+            $m->afp=$request->afp;
+            $m->rentista=$request->rentista;
+            $m->juana=$request->juana;
+            $m->discapacidad=$request->discapacidad;
+            $m->municipio=$request->municipio;
+            $m->sexo=$request->sexo;
+            $m->direccion=$request->direccion;
+            $m->recinto=$request->recinto;
+            $m->save();
+            foreach ($request->hijos as $hijo){
+                $h=new Hijo();
+                $h->nombres=$hijo['nombres'];
+                $h->apellidos=$hijo['apellidos'];
+                $h->madre_id=$m->id;
+                $h->save();
+            }
+            return "CORRECTO";
         }
+
+
 
     }
 
@@ -85,7 +106,7 @@ class MadreController extends Controller
         return Madre::with('hijos')
         ->where('ci',$ci)
         ->get();
-        
+
     }
 
     /**
@@ -112,7 +133,7 @@ class MadreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $m=Madre::find($id);
         $m->paterno=$request->paterno;
         $m->materno=$request->materno;
