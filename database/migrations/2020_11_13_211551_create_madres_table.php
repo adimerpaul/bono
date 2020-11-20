@@ -32,6 +32,8 @@ class CreateMadresTable extends Migration
             $table->string('direccion')->nullable();
             $table->string('recinto')->nullable();
             $table->string('municipio')->nullable();
+            $table->string('banco')->nullable();
+            $table->string('numerobanco')->nullable();
             $table->string('user_id')->nullable();
             $table->string('detalle')->nullable()->default('RECIEN REGISTRADA PENDIENTE DE VERIFICACION');
             $table->string('estado')->default('NO');

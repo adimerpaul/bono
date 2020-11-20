@@ -79,6 +79,8 @@ class MadreController extends Controller
             $m->sexo=$request->sexo;
             $m->direccion=$request->direccion;
             $m->recinto=$request->recinto;
+            $m->banco=$request->banco;
+            $m->numerobanco=$request->numerobanco;
             $m->save();
             foreach ($request->hijos as $hijo){
                 $h=new Hijo();
