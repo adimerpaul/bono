@@ -2253,6 +2253,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2261,13 +2263,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      param: [],
       dato: {
         hijos: [{
           nombres: '',
           apellidos: ''
         }]
-      }
+      },
+      param: null
     };
   },
   mounted: function mounted() {
@@ -2290,14 +2292,21 @@ __webpack_require__.r(__webpack_exports__);
     actualizar: function actualizar() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/madre/' + $('#buscar').prop('value')).then(function (res) {
-        console.log(res.data[0]);
-        _this.dato = res.data[0]; //this.dato.hijos=data[0].hijo;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/madre/' + this.param).then(function (res) {
+        if (res.data == '') _this.dato = {
+          hijos: [{
+            nombres: '',
+            apellidos: ''
+          }]
+        };else {
+          console.log(res.data[0]);
+          _this.dato = res.data[0]; //this.dato.hijos=data[0].hijo;
 
-        console.log(_this.dato);
+          console.log(_this.dato);
+        }
       });
     },
-    modifcar: function modifcar() {
+    modificar: function modificar() {
       var _this2 = this;
 
       this.$fire({
@@ -73938,24 +73947,51 @@ var render = function() {
         _vm._m(0),
         _vm._v(" "),
         _c("div", [
-          _c("label", { attrs: { for: "" } }, [_vm._v("CI")]),
-          _vm._v(" "),
-          _c("input", {
-            attrs: { type: "text", id: "buscar", name: "buscar", required: "" }
-          }),
-          _vm._v(" "),
           _c(
-            "button",
+            "form",
             {
-              staticClass: "btn btn-info",
-              attrs: { type: "submit" },
               on: {
-                click: function($event) {
-                  return _vm.actualizar()
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.actualizar($event)
                 }
               }
             },
-            [_vm._v("Buscar")]
+            [
+              _c("label", { attrs: { for: "" } }, [_vm._v("CI")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.param,
+                    expression: "param"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  id: "buscar",
+                  name: "buscar",
+                  required: ""
+                },
+                domProps: { value: _vm.param },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.param = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "btn btn-info", attrs: { type: "submit" } },
+                [_vm._v("Buscar")]
+              )
+            ]
           )
         ])
       ]),
@@ -73966,7 +74002,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
-              return _vm.modifcar($event)
+              return _vm.modificar($event)
             }
           }
         },
@@ -74715,20 +74751,18 @@ var render = function() {
                           [_c("i", { staticClass: "fa fa-plus" })]
                         ),
                         _vm._v(" "),
-                        index != 0
-                          ? _c(
-                              "div",
-                              {
-                                staticClass: "btn btn-danger btn-sm",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.menos(index)
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "fa fa-minus" })]
-                            )
-                          : _vm._e()
+                        _c(
+                          "div",
+                          {
+                            staticClass: "btn btn-danger btn-sm",
+                            on: {
+                              click: function($event) {
+                                return _vm.menos(index)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fa fa-minus" })]
+                        )
                       ])
                     ])
                   }),

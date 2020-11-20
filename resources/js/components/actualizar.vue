@@ -11,12 +11,14 @@
 
 <!--                </footer>-->
                 <div>
-                    <label for="">CI</label>
-                    <input type="text" id="buscar" name="buscar" required>
-                    <button type="submit" class="btn btn-info" @click="actualizar()">Buscar</button>
+                    <form @submit.prevent="actualizar">
+                        <label for="">CI</label>
+                        <input type="text" id="buscar" name="buscar" required v-model="param">
+                        <button type="submit" class="btn btn-info">Buscar</button>
+                    </form>
                 </div>
             </blockquote>
-            <form @submit.prevent="modifcar">
+            <form @submit.prevent="modificar">
                 <p class="blockquote">DATOS BENEFICIARIA</p>
                 <div class="form-row">
                     <div class="col-md-3 mb-3">
@@ -204,7 +206,7 @@
                                 <td><input type="text" class="form-control" v-model="i.apellidos"></td>
                                 <td>
                                     <div @click="mas"  class="btn btn-success btn-sm"><i class="fa fa-plus"></i></div>
-                                    <div @click="menos(index)" v-if="index!=0" class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></div>
+                                    <div @click="menos(index)"  class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></div>
                                 </td>
                             </tr>
                             </tbody>
@@ -318,8 +320,9 @@
         data:function(){
             
           return {
-              param:[],
               dato:{hijos:[{nombres:'',apellidos:''}]},
+              param:null,
+
           }
         },
         mounted() {
@@ -338,14 +341,18 @@
             },
             actualizar(){
                 
-              axios.get('/madre/'+$('#buscar').prop('value')).then(res=>{
-                  console.log(res.data[0]);
-                this.dato=res.data[0];
-                //this.dato.hijos=data[0].hijo;
-                  console.log(this.dato);
+              axios.get('/madre/'+this.param).then(res=>{
+                  if(res.data=='')
+                        this.dato={hijos:[{nombres:'',apellidos:''}]};
+                  else{
+                   console.log(res.data[0]);
+                   this.dato=res.data[0];
+                   //this.dato.hijos=data[0].hijo;
+                   console.log(this.dato);
+                  }
               });  
             },
-            modifcar(){
+            modificar(){
                 this.$fire({
                     title: 'Seguro?',
                     text: "De modificar informacion",
