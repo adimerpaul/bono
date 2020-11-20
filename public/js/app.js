@@ -2551,6 +2551,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_html2pdf__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-html2pdf */ "./node_modules/vue-html2pdf/dist/vue-html2pdf.esm.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -2567,10 +2570,157 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    VueHtml2pdf: vue_html2pdf__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      dato: {
+        hijos: [{
+          nombres: '',
+          apellidos: ''
+        }]
+      },
+      param: null
+    };
+  },
   mounted: function mounted() {
     console.log('Component mounted.');
-  }
+    this.dato;
+  },
+  methods: {
+    actualizar: function actualizar() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/madre/' + this.param).then(function (res) {
+        if (res.data == '') _this.dato = {
+          hijos: [{
+            nombres: '',
+            apellidos: ''
+          }]
+        };else {
+          _this.dato = res.data[0]; //this.dato.hijos=data[0].hijo;
+        }
+      });
+    }
+  },
+  computed: {}
 });
 
 /***/ }),
@@ -75519,29 +75669,270 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "row " }, [
+    _c("div", { staticClass: "col-12" }, [
+      _c("blockquote", { staticClass: "blockquote text-center" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", [
+          _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.actualizar($event)
+                }
+              }
+            },
+            [
+              _c("label", { attrs: { for: "" } }, [_vm._v("CI")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.param,
+                    expression: "param"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  id: "buscar",
+                  name: "buscar",
+                  required: ""
+                },
+                domProps: { value: _vm.param },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.param = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "btn btn-info", attrs: { type: "submit" } },
+                [_vm._v("Buscar")]
+              )
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "blockquote" }, [_vm._v("DATOS BENEFICIARIA")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-row" }, [
+        _c("div", { staticClass: "col-md-3 mb-3" }, [
+          _c("label", { attrs: { for: "Apellido Paterno" } }, [
+            _vm._v("Apellido Paterno")
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _c("label", [_c("b", [_vm._v(_vm._s(_vm.dato.paterno))])])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 mb-3" }, [
+          _c("label", { attrs: { for: "Apellido Materno" } }, [
+            _vm._v("Apellido Materno")
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _c("label", [_c("b", [_vm._v(_vm._s(_vm.dato.materno))])])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 mb-3" }, [
+          _c("label", { attrs: { for: "Apellido Conyugue" } }, [
+            _vm._v("Apellido Conyugue")
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _c("label", [_c("b", [_vm._v(_vm._s(_vm.dato.conyugue))])])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 mb-3" }, [
+          _c("label", { attrs: { for: "Nombres" } }, [_vm._v("Nombres")]),
+          _vm._v(" "),
+          _c("br"),
+          _c("label", [_c("b", [_vm._v(_vm._s(_vm.dato.nombres))])])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 mb-3" }, [
+          _c("label", { attrs: { for: "Fecha Nacimiento" } }, [
+            _vm._v("Fecha Nacimiento")
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _c("label", [_c("b", [_vm._v(_vm._s(_vm.dato.fechanac))])])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 mb-3" }, [
+          _c("label", [_vm._v("Sexo")]),
+          _vm._v(" "),
+          _c("br"),
+          _c("label", [_c("b", [_vm._v(_vm._s(_vm.dato.sexo))])])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 mb-6" }, [
+          _c("label", { attrs: { for: "Municipio" } }, [
+            _vm._v("Municipio donde esta registrada para votar")
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _c("label", [_c("b", [_vm._v(_vm._s(_vm.dato.municipio))])])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 mb-3" }, [
+          _c("label", { attrs: { for: "Carnet Identidad" } }, [
+            _vm._v("CI o Pasaporte")
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _c("label", [_c("b", [_vm._v(_vm._s(_vm.dato.ci))])])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 mb-3" }, [
+          _c("label", { attrs: { for: "Telefono fijo" } }, [
+            _vm._v("Telefono fijo")
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _c("label", [_c("b", [_vm._v(_vm._s(_vm.dato.fijo))])])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 mb-3" }, [
+          _c("label", { attrs: { for: "Celular" } }, [_vm._v("Celular")]),
+          _vm._v(" "),
+          _c("br"),
+          _c("label", [_c("b", [_vm._v(_vm._s(_vm.dato.celular))])])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 mb-3" }, [
+          _c("label", { attrs: { for: "Dirección" } }, [
+            _vm._v("Dirección Actual")
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _c("label", [_c("b", [_vm._v(_vm._s(_vm.dato.direccion))])])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 mb-6" }, [
+          _c(
+            "label",
+            { attrs: { for: "Recinto donde esta registrada para votar" } },
+            [_vm._v("Recinto donde realizo su voto")]
+          ),
+          _vm._v(" "),
+          _c("br"),
+          _c("label", [_c("b", [_vm._v(_vm._s(_vm.dato.recinto))])])
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c("p", { staticClass: "blockquote" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12 mb-12" }, [
+          _c("table", { staticClass: "table" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.dato.hijos, function(i, index) {
+                return _c("tr", { key: index }, [
+                  _c("th", { attrs: { scope: "row" } }, [
+                    _vm._v(_vm._s(index + 1))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("label", [_c("b", [_vm._v(_vm._s(i.nombres))])])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("label", [_c("b", [_vm._v(_vm._s(i.apellidos))])])
+                  ])
+                ])
+              }),
+              0
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(3)
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 mb-6" }, [
+          _c("label", { attrs: { for: "estado" } }, [_vm._v("HABILITADO")]),
+          _vm._v(" "),
+          _c("br"),
+          _c("label", [_c("b", [_vm._v(_vm._s(_vm.dato.estado))])])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 mb-6" }, [
+          _c("label", { attrs: { for: "estado" } }, [_vm._v("DETALLE")]),
+          _vm._v(" "),
+          _c("br"),
+          _c("label", [_c("b", [_vm._v(_vm._s(_vm.dato.detalle))])])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
-          ])
+    return _c("p", { staticClass: "mb-0" }, [
+      _vm._v("\n                    REGISTRO UNICO "),
+      _c("br"),
+      _vm._v("\n                    LEY MUNICIPAL N° 089/2020 "),
+      _c("br"),
+      _vm._v(
+        "\n                    APOYO SOLIDARIO EXCEPCIONAL  A MADRES DE FAMILIA POR LA EMERGENCIA SANITARIA COVID-19\n                "
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12 mb-12" }, [
+      _c("blockquote", { staticClass: "blockquote" }, [
+        _c("p", { staticClass: "mb-0" }, [_vm._v("INFORMACION FAMILIAR")]),
+        _vm._v(" "),
+        _c("footer", { staticClass: "blockquote-footer" }, [
+          _vm._v(
+            "\n                                Información de los hijos\n                            "
+          )
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-dark" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombres")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Apellidos")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("blockquote", { staticClass: "blockquote" }, [
+      _c("p", { staticClass: "mb-0" }, [_vm._v("ESTADO PARA COBRO")])
     ])
   }
 ]
