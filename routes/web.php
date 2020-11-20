@@ -29,6 +29,9 @@ Route::get('/actualizar', function () {
     return view('home');
 })->middleware('auth');
 
+Route::get('/verificar', function () {
+    return view('verificar');
+});
 
 
 Auth::routes();
@@ -45,5 +48,5 @@ Route::apiResource('/user',App\Http\Controllers\UserController::class)->middlewa
 Route::post('/pass/{id}',[App\Http\Controllers\UserController::class,'pass'])->middleware('auth');
 Route::put('/confirmar/{id}',[App\Http\Controllers\MadreController::class,'confirmar'])->middleware('auth');
 Route::get('/recintos',[App\Http\Controllers\MadreController::class,'recintos']);
-Route::get('/verificar/{id}',[App\Http\Controllers\HijoController::class,'verificar']);
+Route::get('/verificar/{id}/{fecha}',[App\Http\Controllers\HijoController::class,'verificar']);
 

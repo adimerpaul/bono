@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hijo;
+use App\Models\Madre;
 use Illuminate\Http\Request;
 
 class HijoController extends Controller
@@ -12,8 +13,10 @@ class HijoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function verificar($id){
-
+    public function verificar($id,$fecha){
+        return Madre::where('ci',$id)
+        //->whereDate('fechanac',$fecha)
+        ->get();
     }
 
     public function index()
@@ -53,6 +56,7 @@ class HijoController extends Controller
         //
     }
 
+    
     /**
      * Show the form for editing the specified resource.
      *
