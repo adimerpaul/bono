@@ -39,8 +39,8 @@
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
-                        <label for="Apellido Conyugue">Apellido Conyugue</label>
-                        <input type="text" class="form-control" v-bind:class="dato.conyugue==null?'':dato.conyugue==''?'':'is-valid'" v-model="dato.conyugue" id="Apellido Conyugue" placeholder="Apellido Conyugue" >
+                        <label for="Apellido Conyugue">Apellido de Casada</label>
+                        <input type="text" class="form-control" v-bind:class="dato.conyugue==null?'':dato.conyugue==''?'':'is-valid'" v-model="dato.conyugue" id="Apellido Conyugue" placeholder="Apellido de Casada" >
                         <div class="valid-feedback">
                             Bien!
                         </div>
