@@ -152,7 +152,7 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="Celular">Celular</label>
-                        <input type="text" class="form-control" v-bind:class="dato.celular==null?'':dato.celular==''?'is-invalid':'is-valid'" v-model="dato.celular" id="Celular" placeholder="Celular" required>
+                        <input type="text" class="form-control" v-bind:class="dato.celular==null?'':dato.celular==''?'is-invalid':'is-valid'" v-model="dato.celular" id="Celular" placeholder="Celular" >
                         <div class="valid-feedback">
                             Bien!
                         </div>
@@ -190,7 +190,7 @@
                     <div class="col-md-3 mb-3">
                         <label for="Celular">Tiene cuenta de banco?</label>
                         <div class="form-check">
-                            x<input required class="form-check-input" type="radio" name="tienebanco" id="tienebanco1" value="SI" v-bind:class="dato.tienebanco==null?'':dato.tienebanco==''?'is-invalid':'is-valid'" v-model="dato.tienebanco" checked>
+                            <input required class="form-check-input" type="radio" name="tienebanco" id="tienebanco1" value="SI" v-bind:class="dato.tienebanco==null?'':dato.tienebanco==''?'is-invalid':'is-valid'" v-model="dato.tienebanco" checked>
                             <label class="form-check-label" for="tienebanco1">
                                 SI
                             </label>
@@ -418,6 +418,10 @@
                   else{
                    console.log(res.data[0]);
                    this.dato=res.data[0];
+                   if(this.dato.banco!='')
+                    this.dato.tienebanco='SI';
+                   else
+                    this.dato.tienebanco='NO';
                    //this.dato.hijos=data[0].hijo;
                    console.log(this.dato);
                   }
