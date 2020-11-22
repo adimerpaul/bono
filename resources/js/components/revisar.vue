@@ -130,7 +130,7 @@
         :pdf-quality="2"
         :manual-pagination="true"
         pdf-format="letter"
-        pdf-orientation="landscape"
+        pdf-orientation="portrait"
         pdf-content-width="100%"
  
         
@@ -147,7 +147,6 @@
             <h6 align="center">PARA LA PERCEPCION DE RECURSOS DEL APOYO SOLIDARIO EXCEPCIONAL</h6>
             <h6 align="center">A MADRES DE FAMILIA POR LA EMERGENCIA SANITARIA COVID-19</h6>
             <h5 align="center">Ley No 089/2020</h5>
-            <br>
             <span>DATOS DE LA BENEFICIARIA</span>
             <table style="border: 1px solid black; width:100%;" >
                 <tr>
