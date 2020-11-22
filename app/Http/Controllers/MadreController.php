@@ -155,6 +155,8 @@ class MadreController extends Controller
         $m->sexo=$request->sexo;
         $m->direccion=$request->direccion;
         $m->recinto=$request->recinto;
+        $m->banco=$request->banco;
+        $m->numerobanco=$request->numerobanco;
         $m->save();
         $delhijo=Hijo::where('madre_id',$id)->delete();
         foreach ($request->hijos as $hijo){

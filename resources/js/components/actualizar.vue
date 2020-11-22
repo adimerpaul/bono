@@ -170,9 +170,16 @@
                             Dato necesario!
                         </div>
                     </div>
-                    <div class="col-md-6 mb-6">
+                    <div class="col-md-3 mb-3">
                         <label for="Recinto donde esta registrada para votar">Recinto donde realizo su voto</label>
-                        <input type="text" class="form-control" v-bind:class="dato.recinto==null?'':dato.recinto==''?'is-invalid':'is-valid'" v-model="dato.recinto" id="Recinto donde esta registrada para votar" placeholder="Ej. Colegio, Escuelas o Institucion" required>
+
+                        <select  v-if="dato.recinto!='Otros'" class="form-control" v-bind:class="dato.recinto==null?'':dato.recinto==''?'is-invalid':'is-valid'" v-model="dato.recinto"  name="Recinto donde esta registrada para votar" id="Recinto donde esta registrada para votar">
+                            <option v-for="i in recintos" v-bind:value="i.recinto">
+                                {{i.recinto}}
+                            </option>
+                            <option value="Otros">Otros</option>
+                        </select>
+                        <input v-if="dato.recinto=='Otros'" type="text" class="form-control" v-bind:class="dato.recinto2==null?'':dato.recinto2==''?'is-invalid':'is-valid'" v-model="dato.recinto2" id="" placeholder="Ej. Colegio, Escuelas o Institucion" required>
                         <div class="valid-feedback">
                             Bien!
                         </div>
@@ -180,6 +187,53 @@
                             Dato necesario!
                         </div>
                     </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="Celular">Tiene cuenta de banco?</label>
+                        <div class="form-check">
+                            x<input required class="form-check-input" type="radio" name="tienebanco" id="tienebanco1" value="SI" v-bind:class="dato.tienebanco==null?'':dato.tienebanco==''?'is-invalid':'is-valid'" v-model="dato.tienebanco" checked>
+                            <label class="form-check-label" for="tienebanco1">
+                                SI
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input required class="form-check-input" type="radio" name="tienebanco" id="tienebanco2" value="NO" v-bind:class="dato.tienebanco==null?'':dato.tienebanco==''?'is-invalid':'is-valid'" v-model="dato.tienebanco">
+                            <label class="form-check-label" for="tienebanco2">
+                                NO
+                            </label>
+                            <div class="valid-feedback">
+                                Bien!
+                            </div>
+                            <div class="invalid-feedback">
+                                Dato necesario!
+                            </div>
+                        </div>
+                    </div>
+                    <template v-if="dato.tienebanco=='SI' || dato.banco!=''">
+                        <div class="col-md-3 mb-3">
+                            <label for="Recinto donde esta registrada para votar">Banco</label>
+                            <select  v-if="dato.banco!='Otros'" class="form-control" v-bind:class="dato.banco==null?'':dato.banco==''?'is-invalid':'is-valid'" v-model="dato.banco"  name="Recinto donde esta registrada para votar" id="Recinto donde esta registrada para votar">
+                                <option v-for="i in bancos" :value="i">
+                                    {{i}}
+                                </option>
+                            </select>
+                            <div class="valid-feedback">
+                                Bien!
+                            </div>
+                            <div class="invalid-feedback">
+                                Dato necesario!
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="numerobanco">Numero de cuenta Banco</label>
+                            <input type="text" class="form-control" v-bind:class="dato.numerobanco==null?'':dato.numerobanco==''?'is-invalid':'is-valid'" v-model="dato.numerobanco" id="numerobanco" placeholder="Numero de cuenta de banco" required>
+                            <div class="valid-feedback">
+                                Bien!
+                            </div>
+                            <div class="invalid-feedback">
+                                Dato necesario!
+                            </div>
+                        </div>
+                    </template>
                     <div class="col-md-12 mb-12">
                         <blockquote class="blockquote">
                             <p class="mb-0">INFORMACION FAMILIAR</p>
@@ -322,11 +376,28 @@
           return {
               dato:{hijos:[{nombres:'',apellidos:''}]},
               param:null,
+              recintos:[],
+                bancos:[
+                    'BANCO DE CREDITO DE BOLIVIA',
+                    'BANCO GANADERO',
+                    'BANCO MERCANTIL SANTA CRUZ',
+                    'BANCO NACIONAL DE BOLIVIA',
+                    'BANCO SOL',
+                    'BANCO UNION',
+                    'BANCO BISA',
+                    'CIDRE IFD',
+                    'ECOFUTURO',
+                    'LOS ANDES BANCA PYMES',
+                    'BANCO FIE',
+                ]
 
           }
         },
         mounted() {
             console.log('Component mounted.');
+                axios.get('/recintos').then(res=>{
+                this.recintos=res.data;
+            }),
             this.dato;
         },
         methods:{
