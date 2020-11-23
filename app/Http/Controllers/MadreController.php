@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hijo;
 use App\Models\Madre;
+use App\Models\Jurado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,7 +41,7 @@ class MadreController extends Controller
             ->get();
     }
     public function recintos(){
-        return Madre::select('recinto')->where('recinto','!=','')->groupBy('recinto')->get();
+        return Jurado::select('recinto')->where('recinto','!=','')->groupBy('recinto')->get();
     }
     public function confirmar(Request $request,$id){
         $m=Madre::find($id);
@@ -64,10 +65,10 @@ class MadreController extends Controller
             return "YAREGISTRADO";
         }else{
             $m=new Madre();
-            $m->paterno=$request->paterno;
-            $m->materno=$request->materno;
-            $m->conyugue=$request->conyugue;
-            $m->nombres=$request->nombres;
+            $m->paterno= strtoupper( $request->paterno);
+            $m->materno= strtoupper($request->materno);
+            $m->conyugue= strtoupper($request->conyugue);
+            $m->nombres= strtoupper($request->nombres);
             $m->fechanac=$request->fechanac;
             $m->ci=$request->ci;
             $m->fijo=$request->fijo;

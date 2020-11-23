@@ -16,8 +16,8 @@
                 <p class="blockquote">DATOS BENEFICIARIA</p>
                 <div class="form-row">
                     <div class="col-md-3 mb-3">
-                        <label for="Apellido Paterno">Apellido Paterno</label>
-                        <input type="text" class="form-control" v-bind:class="dato.paterno==null?'':dato.paterno==''?'is-invalid':'is-valid'" v-model="dato.paterno" id="Apellido Paterno" placeholder="Apellido Paterno" required>
+                        <label for="Apellido Paterno" >Apellido Paterno</label>
+                        <input type="text" class="form-control mayuscula" v-bind:class="dato.paterno==null?'':dato.paterno==''?'is-invalid':'is-valid'" v-model="dato.paterno" id="Apellido Paterno" placeholder="Apellido Paterno" required>
                         <div class="valid-feedback">
                             Bien!
                         </div>
@@ -27,21 +27,21 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="Apellido Materno">Apellido Materno</label>
-                        <input type="text" class="form-control" v-bind:class="dato.materno==null?'':dato.materno==''?'':'is-valid'" v-model="dato.materno" id="Apellido Materno" placeholder="Apellido Materno" >
+                        <input type="text" class="form-control mayuscula" v-bind:class="dato.materno==null?'':dato.materno==''?'':'is-valid'" v-model="dato.materno" id="Apellido Materno" placeholder="Apellido Materno" >
                         <div class="valid-feedback">
                             Bien!
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="Apellido Conyugue">Apellido de Casada</label>
-                        <input type="text" class="form-control" v-bind:class="dato.conyugue==null?'':dato.conyugue==''?'':'is-valid'" v-model="dato.conyugue" id="Apellido Conyugue" placeholder="Apellido de Casada" >
+                        <input type="text" class="form-control mayuscula" v-bind:class="dato.conyugue==null?'':dato.conyugue==''?'':'is-valid'" v-model="dato.conyugue" id="Apellido Conyugue" placeholder="Apellido de Casada" >
                         <div class="valid-feedback">
                             Bien!
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="Nombres">Nombres</label>
-                        <input type="text" class="form-control" v-bind:class="dato.nombres==null?'':dato.nombres==''?'is-invalid':'is-valid'" v-model="dato.nombres" id="Nombres" placeholder="Nombres" required>
+                        <input type="text" class="form-control mayuscula" v-bind:class="dato.nombres==null?'':dato.nombres==''?'is-invalid':'is-valid'" v-model="dato.nombres" id="Nombres" placeholder="Nombres" required>
                         <div class="valid-feedback">
                             Bien!
                         </div>
@@ -155,8 +155,8 @@
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
-                        <label for="Dirección">Dirección Actual</label>
-                        <input type="text" class="form-control" v-bind:class="dato.direccion==null?'':dato.direccion==''?'is-invalid':'is-valid'" v-model="dato.direccion" id="Dirección" placeholder="Dirección" required>
+                        <label for="Dirección" >Dirección Actual</label>
+                        <input type="text" class="form-control mayuscula" v-bind:class="dato.direccion==null?'':dato.direccion==''?'is-invalid':'is-valid'" v-model="dato.direccion" id="Dirección" placeholder="Dirección" required>
                         <div class="valid-feedback">
                             Bien!
                         </div>
@@ -386,6 +386,7 @@
                     'ECOFUTURO',
                     'LOS ANDES BANCA PYMES',
                     'BANCO FIE',
+                    'BANCO PRODEM',
                 ]
             }
         },
@@ -462,3 +463,9 @@
         }
     }
 </script>
+
+<style>
+.mayuscula{
+    text-transform: uppercase;
+}
+</style>

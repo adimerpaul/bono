@@ -174,19 +174,12 @@
                     <div class="col-md-3 mb-3">
                         <label for="Recinto donde esta registrada para votar">Recinto donde realizo su voto</label>
 
-                        <select  v-if="dato.recinto!='Otros'" class="form-control" v-bind:class="dato.recinto==null?'':dato.recinto==''?'is-invalid':'is-valid'" v-model="dato.recinto"  name="Recinto donde esta registrada para votar" id="Recinto donde esta registrada para votar">
+                        <select  class="form-control" v-bind:class="dato.recinto==null?'':dato.recinto==''?'is-invalid':'is-valid'" v-model="dato.recinto"  name="Recinto donde esta registrada para votar" id="Recinto donde esta registrada para votar">
                             <option v-for="i in recintos" v-bind:value="i.recinto">
                                 {{i.recinto}}
                             </option>
-                            <option value="Otros">Otros</option>
                         </select>
-                        <input v-if="dato.recinto=='Otros'" type="text" class="form-control" v-bind:class="dato.recinto2==null?'':dato.recinto2==''?'is-invalid':'is-valid'" v-model="dato.recinto2" id="" placeholder="Ej. Colegio, Escuelas o Institucion" required>
-                        <div class="valid-feedback">
-                            Bien!
-                        </div>
-                        <div class="invalid-feedback">
-                            Dato necesario!
-                        </div>
+    
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="Celular">Tiene cuenta de banco?</label>
@@ -346,21 +339,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="col-md-6 mb-6">
-                        <label for="Celular">Habilitado para cobro</label>
-                        <div class="form-check">
-                            <input required class="form-check-input" type="radio" name="discapacidad" id="estado" value="SI" v-model="dato.estado" checked>
-                            <label class="form-check-label" for="discapacidad1">
-                                SI
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input required class="form-check-input" type="radio" name="discapacidad" id="estado2" value="NO" v-model="dato.estado">
-                            <label class="form-check-label" for="discapacidad2">
-                                NO
-                            </label>
-                        </div>
-                    </div>
+
                     <div class="col-md-6 mb-6">
                         <label for="Celular">Habilitado para cobro</label>
                         <div class="form-check">
