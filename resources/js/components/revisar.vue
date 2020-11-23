@@ -1,5 +1,6 @@
 <template>
-    <div class="row ">
+<div class="container">
+        <div class="row justify-content-center">
         <div class="col-12">
             <blockquote class="blockquote text-center">
                 <p class="mb-0">
@@ -115,7 +116,8 @@
                         <br><label><b>{{dato.detalle}}</b></label>
                         </div>
                 </div>
-                    </div>
+        </div>
+
    
 
  <template>
@@ -185,9 +187,8 @@
                     </tr>
             </table>
             </section>
-            <br>
             <section class = "pdf-item" > 
-            <h5>INFORMACION FAMILIAR</h5>
+            <h5><b> INFORMACION FAMILIAR</b></h5>
             <table style="width:100%; ">
                 <tr>
                     <td style="border: 1px solid black; width:25%;">NUMERO DE HIJOS</td>
@@ -198,7 +199,6 @@
                 </tr>
                 <tr v-for="(i,index) in dato.hijos" :key="index" >
                     <td style="border: 1px solid black;" >{{i.nombres}}&nbsp; {{i.apellidos}}</td>
-
                 </tr>
 
             </table>
@@ -287,6 +287,7 @@
    </div>
 </template>
                 </div>
+</div>
 
 </template>
 

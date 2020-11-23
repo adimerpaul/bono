@@ -46,6 +46,7 @@ class MadreController extends Controller
         $m=Madre::find($id);
         $m->estado=$request->estado;
         $m->detalle=$request->detalle;
+        $m->verificar='SI';
         $m->user_id=Auth::user()->id;
         $m->save();
     }
@@ -157,6 +158,10 @@ class MadreController extends Controller
         $m->recinto=$request->recinto;
         $m->banco=$request->banco;
         $m->numerobanco=$request->numerobanco;
+        $m->estado=$request->estado;
+        $m->detalle=$request->detalle;
+        $m->verificar='SI';
+        $m->user_id=Auth::user()->id;
         $m->save();
         $delhijo=Hijo::where('madre_id',$id)->delete();
         foreach ($request->hijos as $hijo){

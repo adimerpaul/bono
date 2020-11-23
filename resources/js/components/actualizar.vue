@@ -1,5 +1,6 @@
 <template>
-    <div class="row ">
+<div class="container">
+    <div class="row">
         <div class="col-12">
             <blockquote class="blockquote text-center">
                 <p class="mb-0">
@@ -344,6 +345,42 @@
                             </label>
                         </div>
                     </div>
+                    <br>
+                    <div class="col-md-6 mb-6">
+                        <label for="Celular">Habilitado para cobro</label>
+                        <div class="form-check">
+                            <input required class="form-check-input" type="radio" name="discapacidad" id="estado" value="SI" v-model="dato.estado" checked>
+                            <label class="form-check-label" for="discapacidad1">
+                                SI
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input required class="form-check-input" type="radio" name="discapacidad" id="estado2" value="NO" v-model="dato.estado">
+                            <label class="form-check-label" for="discapacidad2">
+                                NO
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-6">
+                        <label for="Celular">Habilitado para cobro</label>
+                        <div class="form-check">
+                            <input required class="form-check-input" type="radio" name="estado" id="estado" value="SI" v-model="dato.estado" checked>
+                            <label class="form-check-label" for="estado1">
+                                SI
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input required class="form-check-input" type="radio" name="estado" id="estado2" value="NO" v-model="dato.estado">
+                            <label class="form-check-label" for="estado2">
+                                NO
+                            </label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-md-6 mb-6">
+                        <label class="" for="detalle">Detalle</label>
+                        <textarea class="form-control" name="detalle" id="detalle" cols="30" rows="10" v-model="dato.detalle"></textarea>
+                    </div>
                 </div>
                 <blockquote class="blockquote">
                     <p class="mb-0">DECLARACION JURADA</p>
@@ -361,6 +398,8 @@
 
 
     </div>
+</div>
+    
 </template>
 
 <script>

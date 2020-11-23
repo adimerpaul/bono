@@ -51,7 +51,7 @@
                                     <label for="detalle" class="col-sm-2 col-form-label">Detalle</label>
                                     <div class="col-sm-10">
                                         <div class="alert alert-primary" role="alert">
-                                            <input type="text" readonly class="form-control-plaintext" id="detalle" v-model="dato.detalle">
+                                            <textarea type="text" readonly class="form-control-plaintext" id="detalle" v-model="dato.detalle"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -83,10 +83,30 @@ export default {
         methods:{
             verificar(){
               axios.get('/verificar/'+this.param+"/"+this.fecha).then(res=>{
-                  if(res.data=='')
+                  if(res.data==''){
                         this.dato={};
-                  else{
+                        if (this.dato.paterno==undefined||this.dato.paterno==null){
+                            this.dato.paterno='';
+                        } 
+                        if (this.dato.materno==undefined||this.dato.materno==null){
+                            this.dato.materno='';
+                        } 
+                        if (this.dato.nombres==undefined||this.dato.nombres==null){
+                            this.dato.nombres='';
+                        } 
+
+                        this.dato.detalle='NO SE ENCUENTRA REGITRADO POR FAVOR, REGISTRESE PARA PODER VERFICAR SUS DATOS';
+                  }else{
                    this.dato=res.data[0];
+                        if (this.dato.paterno==undefined||this.dato.paterno==null){
+                            this.dato.paterno='';
+                        } 
+                        if (this.dato.materno==undefined||this.dato.materno==null){
+                            this.dato.materno='';
+                        } 
+                        if (this.dato.nombres==undefined||this.dato.nombres==null){
+                            this.dato.nombres='';
+                        } 
                    //this.dato.hijos=data[0].hijo;
                   }
               });  
