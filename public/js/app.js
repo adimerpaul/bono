@@ -3939,8 +3939,10 @@ __webpack_require__.r(__webpack_exports__);
           //     'success'
           // );
           _this2.dato.recinto = _this2.dato.recintos2;
-          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/madre', _this2.dato).then(function (res) {
-            // console.log(res.data);
+          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('registrar.php', JSON.stringify(_this2.dato)).then(function (res) {
+            console.log(res.data);
+            return false;
+
             if (res.data == 'CORRECTO') {
               _this2.$toast.open({
                 message: "Guardado Correctamente",
@@ -3957,7 +3959,7 @@ __webpack_require__.r(__webpack_exports__);
               };
             } else {
               _this2.$fire({
-                title: 'Ya tenemos sus datos!',
+                title: res.data,
                 text: res.data,
                 type: 'info'
               });

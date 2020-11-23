@@ -425,8 +425,11 @@
                         //     'success'
                         // );
                         this.dato.recinto=this.dato.recintos2;
-                        axios.post('/madre',this.dato).then(res=>{
-                            // console.log(res.data);
+                        axios.post('registrar.php',JSON.stringify(
+                            this.dato
+                        )).then(res=>{
+                            console.log(res.data);
+                            return false;
                             if (res.data=='CORRECTO'){
                                 this.$toast.open({
                                     message: "Guardado Correctamente",
@@ -437,7 +440,7 @@
                                 this.dato={hijos:[{nombres:'',apellidos:''}]};
                             }else{
                                 this.$fire({
-                                    title: 'Ya tenemos sus datos!',
+                                    title: res.data,
                                     text: res.data,
                                     type: 'info'
                                 });

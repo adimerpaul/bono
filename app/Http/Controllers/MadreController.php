@@ -84,6 +84,8 @@ class MadreController extends Controller
                 return "INHABILITADO USTED TIENE TRABAJO ESTABLE";
                 exit;
             }
+            return "SUS DATOS ESTAN SIENDO VERIFICADOS";
+            exit;
         }else{
             $m=new Madre();
             $m->paterno= strtoupper( $request->paterno);
