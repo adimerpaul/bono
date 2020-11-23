@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Discapacitado;
 use App\Models\Hijo;
+use App\Models\Inhabilitado;
 use App\Models\Madre;
+use App\Models\Job;
 use App\Models\Jurado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,8 +38,9 @@ class MadreController extends Controller
             ->whereDate('created_at','>=',$d1)
             ->whereDate('created_at','<=',$d2)
 //                ->whereDate('created_at','=','updated_at')
-            ->where('detalle','RECIEN REGISTRADA PENDIENTE DE VERIFICACION')
-            ->orWhere('detalle','PERSONA VERIFICADA FALTA VERIFICACION SEXO, EDAD Y BONOS AGREGADOS')
+//            ->where('detalle','RECIEN REGISTRADA PENDIENTE DE VERIFICACION')
+//            ->orWhere('detalle','PERSONA VERIFICADA FALTA VERIFICACION SEXO, EDAD Y BONOS AGREGADOS')
+            ->where('verificar','NO')
             ->limit(100)
             ->get();
     }
@@ -60,9 +64,26 @@ class MadreController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $madre=Madre::where('ci',$request->ci);
         if ($madre->count()>=1){
-            return "YAREGISTRADO";
+            $d=Discapacitado::where('ci',$request->ci);
+            if ($d->count()>=1){
+                return "INHABILITADO USTED YA COBRA EL BONO DISCAPACIDAD";
+                exit;
+            }
+
+            $d=Inhabilitado::where('ci',$request->ci);
+            if ($d->count()>=1){
+                return "INHABILITADO POR LA CORTE";
+                exit;
+            }
+            $d=Job::where('ci',$request->ci);
+            if ($d->count()>=1){
+                return "INHABILITADO USTED TIENE TRABAJO ESTABLE";
+                exit;
+            }
         }else{
             $m=new Madre();
             $m->paterno= strtoupper( $request->paterno);
@@ -91,6 +112,29 @@ class MadreController extends Controller
                 $h->apellidos=$hijo['apellidos'];
                 $h->madre_id=$m->id;
                 $h->save();
+            }
+
+            $d=Discapacitado::where('ci',$request->ci);
+            if ($d->count()>=1){
+                return "INHABILITADO USTED YA COBRA EL BONO DISCAPACIDAD";
+                $madre=Madre::find($m->id);
+                $madre->estado="INHABILITADO USTED YA COBRA EL BONO DISCAPACIDAD";
+                exit;
+            }
+
+            $d=Inhabilitado::where('ci',$request->ci);
+            if ($d->count()>=1){
+                return "INHABILITADO POR LA CORTE";
+                $madre=Madre::find($m->id);
+                $madre->estado="INHABILITADO POR LA CORTE";
+                exit;
+            }
+            $d=Job::where('ci',$request->ci);
+            if ($d->count()>=1){
+                return "INHABILITADO USTED TIENE TRABAJO ESTABLE";
+                $madre=Madre::find($m->id);
+                $madre->estado="INHABILITADO USTED TIENE TRABAJO ESTABLE";
+                exit;
             }
             return "CORRECTO";
         }

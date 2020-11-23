@@ -438,7 +438,7 @@
                             }else{
                                 this.$fire({
                                     title: 'Ya tenemos sus datos!',
-                                    text: "Porfavor podria ingresar al link de veriricar",
+                                    text: res.data,
                                     type: 'info'
                                 });
                             }
