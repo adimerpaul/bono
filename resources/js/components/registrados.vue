@@ -15,7 +15,74 @@
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <pre>{{dato}}</pre>
+                                        
+                                        <form>
+                                            <div class=" row">
+                                                    <label for="nombre" class=" col-sm-6 col-form-label-sm"><b>NOMBRE COMPLETO</b> </label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="nombre" v-bind:value="dato.paterno +' '+dato.materno+' '+dato.nombres">
+                                                </div>
+                                            </div>
+                                            <div class=" row">
+                                                    <label for="fechanac" class="col-sm-6 col-form-label-sm"><b>FECHA NAC:</b> </label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="fechanac" v-bind:value="dato.fechanac">
+                                                </div>
+                                            </div>
+                                            <div class=" row">
+                                                    <label for="ci" class="col-sm-6 col-form-label-sm"><b>CI :</b></label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="ci" v-bind:value="dato.ci">
+                                                </div>
+                                            </div>
+                                            <div class=" row">
+                                                    <label for="celular" class="col-sm-6 col-form-label-sm"><b>celular :</b></label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="celular" v-bind:value="dato.celular">
+                                                </div>
+                                            </div>
+                                            <div class=" row">
+                                                    <label for="salario" class="col-sm-6 col-form-label-sm"><b>salario :</b></label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="salario" v-bind:value="dato.salario">
+                                                </div>
+                                            </div>
+                                            <div class=" row">
+                                                    <label for="afp" class="col-sm-6 col-form-label-sm"><b>AFP :</b></label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="afp" v-bind:value="dato.afp">
+                                                </div>
+                                            </div>
+                                            <div class=" row">
+                                                    <label for="rentista" class="col-sm-6 col-form-label-sm"><b>Rentista :</b></label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="rentista" v-bind:value="dato.rentista">
+                                                </div>
+                                            </div>
+                                            <div class=" row">
+                                                    <label for="discapacidad" class="col-sm-6 col-form-label-sm"><b>Discapacidad :</b></label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="discapacidad" v-bind:value="dato.discapacidad">
+                                                </div>
+                                            </div>
+                                            <small>HIJOS</small>
+                                            <small>
+                                                <table class="table">
+                                                    <thead class="thead-dark">
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Nombres</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr v-for="(i,index) in dato.hijos" :key="index">
+                                                        <th scope="row">{{index+1}}</th>
+                                                        <td>{{i.nombres}} {{i.apellidos}}</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </small>
+                                        </form>
                                     </div>
                                     <div class="col-md-6">
                                         <form @submit.prevent="daralta">

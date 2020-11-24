@@ -51,12 +51,13 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="Fecha Nacimiento">Fecha Nacimiento</label>
-                        <input type="date" class="form-control" v-bind:class="dato.fechanac==null?'':dato.fechanac==''?'is-invalid':'is-valid'" v-model="dato.fechanac" id="Fecha Nacimiento" placeholder="Fecha Nacimiento" required>
+                        <input type="date" class="form-control" v-bind:class="dato.fechanac==null?'':dato.fechanac==''?'is-invalid':calcularedad(dato.fechanac)?'is-valid':'is-invalid'" v-model="dato.fechanac" id="Fecha Nacimiento" placeholder="Fecha Nacimiento" required>
+
                         <div class="valid-feedback">
                             Bien!
                         </div>
                         <div class="invalid-feedback">
-                            Dato necesario!
+                            La edad no corresponde para el bono
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
@@ -368,7 +369,7 @@
 <script>
     // import VueHtml2pdf from 'vue-html2pdf'
     import axios from 'axios';
-
+    import moment from 'moment';
     export default {
         // components: {
         //     VueHtml2pdf
@@ -467,13 +468,25 @@
                 })
 
 
+            },
+            calcularedad(variable){
+                	var a = moment();
+	                var b = moment(variable);
+
+	                var years = a.diff(b, 'year');
+                                b.add(years, 'years');
+                                console.log(years);
+                    if(years>=17 && years<60)
+                        return true;
+                    else
+                        return false;
             }
 
         },
         computed:{
             activar(){
                 // console.log(this.dato.sexo=='Femenino' &&   this.dato.municipo=='Oruro');
-                if (this.dato.sexo=='Femenino' &&  this.dato.municipio=='Oruro' ){
+                if (this.dato.sexo=='Femenino' &&  this.dato.municipio=='Oruro' && this.calcularedad(this.dato.fechanac)){
                     return false;
                 }else{
                     return true;

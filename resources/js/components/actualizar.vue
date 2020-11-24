@@ -58,12 +58,13 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="Fecha Nacimiento">Fecha Nacimiento</label>
-                        <input type="date" class="form-control" v-bind:class="dato.fechanac==null?'':dato.fechanac==''?'is-invalid':'is-valid'" v-model="dato.fechanac" id="Fecha Nacimiento" placeholder="Fecha Nacimiento" required>
+                        <input type="date" class="form-control" v-bind:class="dato.fechanac==null?'':dato.fechanac==''?'is-invalid':calcularedad(dato.fechanac)?'is-valid':'is-invalid'" v-model="dato.fechanac" id="Fecha Nacimiento" placeholder="Fecha Nacimiento"  required>
+
                         <div class="valid-feedback">
                             Bien!
                         </div>
                         <div class="invalid-feedback">
-                            Dato necesario!
+                            La edad no corresponde para el bono
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
@@ -184,15 +185,15 @@
                     <div class="col-md-3 mb-3">
                         <label for="Celular">Tiene cuenta de banco?</label>
                         <div class="form-check">
-                            <input required class="form-check-input" type="radio" name="tienebanco" id="tienebanco1" value="SI" v-bind:class="dato.tienebanco==null?'':dato.tienebanco==''?'is-invalid':'is-valid'" v-model="dato.tienebanco" checked>
+                            <input required class="form-check-input" type="radio" name="tienebanco" id="tienebanco1" value="SI" v-bind:class="dato.tienebanco==null?'':dato.tienebanco==''?'is-invalid':'is-valid'" v-model="tienebanco" checked>
                             <label class="form-check-label" for="tienebanco1">
                                 SI
                             </label>
                         </div>
                         <div class="form-check">
-                            <input required class="form-check-input" type="radio" name="tienebanco" id="tienebanco2" value="NO" v-bind:class="dato.tienebanco==null?'':dato.tienebanco==''?'is-invalid':'is-valid'" v-model="dato.tienebanco">
+                            <input required class="form-check-input" type="radio" name="tienebanco" id="tienebanco2" value="NO" v-bind:class="dato.tienebanco==null?'':dato.tienebanco==''?'is-invalid':'is-valid'" v-model="tienebanco">
                             <label class="form-check-label" for="tienebanco2">
-                                NO
+                                NO 
                             </label>
                             <div class="valid-feedback">
                                 Bien!
@@ -202,7 +203,7 @@
                             </div>
                         </div>
                     </div>
-                    <template v-if="dato.tienebanco=='SI' || dato.banco!=''">
+                    <template v-if="tienebanco=='SI'">
                         <div class="col-md-3 mb-3">
                             <label for="Recinto donde esta registrada para votar">Banco</label>
                             <select  v-if="dato.banco!='Otros'" class="form-control" v-bind:class="dato.banco==null?'':dato.banco==''?'is-invalid':'is-valid'" v-model="dato.banco"  name="Recinto donde esta registrada para votar" id="Recinto donde esta registrada para votar">
@@ -384,6 +385,7 @@
 <script>
     import VueHtml2pdf from 'vue-html2pdf'
     import axios from 'axios';
+    import moment from 'moment';
 
     export default {
         components: {
@@ -395,6 +397,7 @@
               dato:{hijos:[{nombres:'',apellidos:''}]},
               param:null,
               recintos:[],
+              tienebanco:'SI',
                 bancos:[
                     'BANCO DE CREDITO DE BOLIVIA',
                     'BANCO GANADERO',
@@ -437,10 +440,10 @@
                   else{
                    console.log(res.data[0]);
                    this.dato=res.data[0];
-                   if(this.dato.banco!='')
-                    this.dato.tienebanco='SI';
+                   if(this.dato.banco!='' || this.dato.banco!=null)
+                    this.tienebanco='SI';
                    else
-                    this.dato.tienebanco='NO';
+                    this.tienebanco='NO';
                    //this.dato.hijos=data[0].hijo;
                    console.log(this.dato);
                   }
@@ -480,13 +483,25 @@
                 })
 
 
+            },
+            calcularedad(variable){
+                	var a = moment();
+	                var b = moment(variable);
+
+	                var years = a.diff(b, 'year');
+                                b.add(years, 'years');
+                                console.log(years);
+                    if(years>=17 && years<60)
+                        return true;
+                    else
+                        return false;
             }
 
         },
         computed:{
             activar(){
                 // console.log(this.dato.sexo=='Femenino' &&   this.dato.municipo=='Oruro');
-                if (this.dato.sexo=='Femenino' &&  this.dato.municipio=='Oruro' ){
+                if (this.dato.sexo=='Femenino' &&  this.dato.municipio=='Oruro' && this.calcularedad(this.dato.fechanac)){
                     return false;
                 }else{
                     return true;
