@@ -425,9 +425,7 @@
                         //     'success'
                         // );
                         this.dato.recinto=this.dato.recintos2;
-                        axios.post('registrar.php',JSON.stringify(
-                            this.dato
-                        )).then(res=>{
+                        axios.post('/madre',this.dato).then(res=>{
                             console.log(res.data);
                             return false;
                             if (res.data=='CORRECTO'){

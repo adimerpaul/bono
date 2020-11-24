@@ -407,6 +407,7 @@
                     'ECOFUTURO',
                     'LOS ANDES BANCA PYMES',
                     'BANCO FIE',
+                    'BANCO PRODEM',
                 ]
 
           }
