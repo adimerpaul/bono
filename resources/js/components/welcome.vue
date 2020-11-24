@@ -351,14 +351,12 @@
                         En caso de advertirse falsedad de la informacion, me hago pasible a las sanciones establecidas en el Art. 198 (Falsedad Material ) y Art. 199 (Falsesas Ideologica) del Código Penal Boliviano.
                     </footer>
                 </blockquote>
-                <button :disabled="d" class="btn btn-success btn-block p-2 my-2" type="submit" :disabled="activar">
-                    <template v-if="!d">
-                        <i class="fa fa-save "></i> Enviar informacion
-                    </template>
-                    <template v-else>
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <button :hidden="d" class="btn btn-success btn-block p-2 my-2" type="submit" :disabled="activar">
+                    <i class="fa fa-save "></i> Enviar informacion
+                </button>
+                <button :hidden="!d" class="btn btn-success btn-block p-2 my-2" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                     Loading...
-                    </template>
                 </button>
             </form>
         </div>
@@ -368,13 +366,13 @@
 </template>
 
 <script>
-    import VueHtml2pdf from 'vue-html2pdf'
+    // import VueHtml2pdf from 'vue-html2pdf'
     import axios from 'axios';
 
     export default {
-        components: {
-            VueHtml2pdf
-        },
+        // components: {
+        //     VueHtml2pdf
+        // },
         data:function(){
             return {
                 selec:true,
@@ -414,7 +412,6 @@
                 this.dato.hijos.splice(index, 1);
             },
             guardar(){
-
                 this.$fire({
                     title: 'Seguro?',
                     text: "De mandar informacion",
@@ -437,7 +434,7 @@
                         axios.post('/madre',this.dato).then(res=>{
                             // console.log(res.data);
                             // return false;
-                            this.d=false;
+                            this.d=true;
                             if (res.data=='CORRECTO'){
                                 // this.$toast.open({
                                 //     message: "Guardado Correctamente",
