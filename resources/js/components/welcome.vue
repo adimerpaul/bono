@@ -439,6 +439,9 @@
                                     title: "Registrado correctamente!",
                                     text: res.data,
                                     type: 'info'
+                                }).then(r => {
+                                    // console.log(r.value);
+                                    location.href="https://www.google.com.bo";
                                 });
                                 this.dato={hijos:[{nombres:'',apellidos:''}]};
                             }else{
@@ -446,6 +449,9 @@
                                     title: res.data,
                                     text: res.data,
                                     type: 'info'
+                                }).then(r => {
+                                    // console.log(r.value);
+                                    // location.href="https://www.google.com.bo";
                                 });
                             }
                         });
