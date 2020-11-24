@@ -419,15 +419,15 @@
                     if (result.value) {
                         // console.log('si');
                         // return false;
-                        // Swal.fire(
-                        //     'Enviado!',
-                        //     'Correctamente',
-                        //     'success'
-                        // );
+                        Swal.fire(
+                            'Enviado!',
+                            'Correctamente',
+                            'success'
+                        );
                         this.dato.recinto=this.dato.recintos2;
                         axios.post('/madre',this.dato).then(res=>{
-                            console.log(res.data);
-                            return false;
+                            // console.log(res.data);
+                            // return false;
                             if (res.data=='CORRECTO'){
                                 this.$toast.open({
                                     message: "Guardado Correctamente",
