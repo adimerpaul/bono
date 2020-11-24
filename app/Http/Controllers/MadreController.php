@@ -35,8 +35,8 @@ class MadreController extends Controller
     public function madreregister($d1,$d2)
     {
         return Madre::with('hijos')
-            ->whereDate('created_at','>=',$d1)
-            ->whereDate('created_at','<=',$d2)
+            ->where('id','>=',$d1)
+            ->where('id','<=',$d2)
 //                ->whereDate('created_at','=','updated_at')
 //            ->where('detalle','RECIEN REGISTRADA PENDIENTE DE VERIFICACION')
 //            ->orWhere('detalle','PERSONA VERIFICADA FALTA VERIFICACION SEXO, EDAD Y BONOS AGREGADOS')

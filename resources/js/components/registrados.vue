@@ -15,7 +15,7 @@
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        
+
                                         <form>
                                             <div class=" row">
                                                     <label for="nombre" class=" col-sm-6 col-form-label-sm"><b>NOMBRE COMPLETO</b> </label>
@@ -87,7 +87,7 @@
                                     <div class="col-md-6">
                                         <form @submit.prevent="daralta">
                                             <div class="form-row">
-                                                <div class="form-group col-md-6">
+                                                <div class="form-group col-md-6 text-left">
                                                     <label >Permir bono?</label>
 <!--                                                    <input type="text" class="form-control" id="estado" placeholder="estado">-->
                                                     <div class="custom-control custom-radio">
@@ -124,12 +124,12 @@
                         <form>
                             <div class="form-row">
                                 <div class="form-group col-md-5">
-                                    <label for="f1">Fecha inicio</label>
-                                    <input type="date" class="form-control" id="f1" v-model="f1">
+                                    <label for="f1">Id Inicio</label>
+                                    <input type="text" class="form-control" id="f1" v-model="f1">
                                 </div>
                                 <div class="form-group col-md-5">
-                                    <label for="f1">Fecha final</label>
-                                    <input type="date" class="form-control" id="f2" v-model="f2">
+                                    <label for="f2">Id Final</label>
+                                    <input type="text" class="form-control" id="f2" v-model="f2">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="f1">Actualizar</label>
@@ -188,8 +188,8 @@
             return {
                 datos:[],
                 dato:{},
-                f1:moment().format('YYYY-MM-DD'),
-                f2:moment().format('YYYY-MM-DD'),
+                f1:0,
+                f2:0,
                 d:false,
             }
         },
@@ -214,6 +214,7 @@
                 }).then((result) => {
                     if (result.value) {
                         axios.put('/confirmar/'+this.dato.id,this.dato).then(res=>{
+                            $('#exampleModal').modal('hide');
                             this.$fire({
                                 title: "Actualizado",
                                 text: "Correctamente",
@@ -248,7 +249,7 @@
             misdatos(){
                 this.d=true;
                 axios.get('/madreregister/'+this.f1+'/'+this.f2).then(res=>{
-                    // console.log(res);
+                    console.log(res);
                     this.datos=res.data;
                     this.d=false;
                     this.$toast.open({
@@ -259,47 +260,7 @@
                     })
                 })
             },
-            guardar(){
-                axios.post('/user',this.dato).then(res=>{
-                    this.misdatos();
-                    $('#exampleModal').modal('hide');
-                })
-            },update(){
-                axios.put('/user/'+this.dato.id,this.dato).then(res=>{
-                    this.misdatos();
-                    $('#update').modal('hide');
-                })
-            },
-            passact(){
-                axios.post('/pass/'+this.dato.id,this.dato).then(res=>{
-                    // this.misdatos();
-                    $('#pass').modal('hide');
-                })
-            },
-            eliminar(i){
-                this.$fire({
-                    // title: 'Seguro ?',
-                    text: "Seguro de eliminar?",
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'SI'
-                }).then((result) => {
-                    if (result.value) {
-                        axios.delete('/user/'+i.id).then(res=>{
-                            this.$fire({
-                                title: "Eliminado",
-                                text: "Correcto",
-                                type: "success",
-                                timer: 3000
-                            })
-                            this.misdatos();
-                            this.dato={};
-                        })
-                    }
-                })
-            }
+
         },
         computed:{
             activado:function(){
