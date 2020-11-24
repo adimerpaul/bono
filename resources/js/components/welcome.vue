@@ -419,22 +419,27 @@
                     if (result.value) {
                         // console.log('si');
                         // return false;
-                        Swal.fire(
-                            'Enviado!',
-                            'Correctamente',
-                            'success'
-                        );
+                        // Swal.fire(
+                        //     'Enviado!',
+                        //     'Correctamente',
+                        //     'success'
+                        // );
                         this.dato.recinto=this.dato.recintos2;
                         axios.post('/madre',this.dato).then(res=>{
                             // console.log(res.data);
                             // return false;
                             if (res.data=='CORRECTO'){
-                                this.$toast.open({
-                                    message: "Guardado Correctamente",
-                                    type: "success",
-                                    duration: 2000,
-                                    dismissible: true
-                                })
+                                // this.$toast.open({
+                                //     message: "Guardado Correctamente",
+                                //     type: "success",
+                                //     duration: 2000,
+                                //     dismissible: true
+                                // });
+                                this.$fire({
+                                    title: "Registrado correctamente!",
+                                    text: res.data,
+                                    type: 'info'
+                                });
                                 this.dato={hijos:[{nombres:'',apellidos:''}]};
                             }else{
                                 this.$fire({
