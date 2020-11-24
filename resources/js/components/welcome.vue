@@ -424,7 +424,7 @@
                         //     'Correctamente',
                         //     'success'
                         // );
-                        this.dato.recinto=this.dato.recintos2;
+                        // this.dato.recinto=this.dato.recintos2;
                         axios.post('/madre',this.dato).then(res=>{
                             // console.log(res.data);
                             // return false;
@@ -451,7 +451,7 @@
                                     type: 'info'
                                 }).then(r => {
                                     // console.log(r.value);
-                                    // location.href="https://www.google.com.bo";
+                                    location.href="https://www.google.com.bo";
                                 });
                             }
                         });
