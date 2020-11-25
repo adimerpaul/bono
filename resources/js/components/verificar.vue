@@ -44,9 +44,9 @@
                                 <div class="form-group row">
                                     <label for="estado" class="col-sm-3 col-form-label">HABILITADO</label>
                                     <div class="col-sm-9">
-                                        <h1><div class="badge " :class="dato.estado=='SI'?'badge-success':'badge-danger'">
+                                        <h2><div class="badge " :class="dato.estado=='SI'?'badge-success':'badge-warning'">
                                             {{dato.estado}}
-                                        </div></h1>
+                                        </div></h2>
                                     </div>
                                 </div>
   
@@ -121,7 +121,7 @@ export default {
                             this.dato.nombres='';
                         }
 
-                        this.dato.detalle='NO SE ENCUENTRA REGITRADO POR FAVOR, REGISTRESE PARA PODER VERFICAR SUS DATOS';
+                        this.dato.detalle='NO SE ENCUENTRA REGISTRADO POR FAVOR, REGISTRESE PARA PODER VERFICAR SUS DATOS';
                   }else{
                    this.dato=res.data[0];
                         if (this.dato.paterno==undefined||this.dato.paterno==null){
@@ -133,6 +133,8 @@ export default {
                         if (this.dato.nombres==undefined||this.dato.nombres==null){
                             this.dato.nombres='';
                         }
+                        if(this.dato.estado='NO')
+                            this.dato.estado='En Proceso ';
                    //this.dato.hijos=data[0].hijo;
                   }
               });
