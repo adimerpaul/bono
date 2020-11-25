@@ -355,6 +355,12 @@
                             </label>
                         </div>
                     </div>
+                    <div class="col-md-6 mb-6">
+                        <label for="ci1" class="col-sm-9 col-form-label">Datos Verificados</label>
+                        <div class="col-sm-3">
+                        <input type="text" readonly class="form-control-plaintext" id="ci1" v-model="dato.verificar">
+                        </div>
+                    </div>
                     <br>
                     <div class="col-md-6 mb-6">
                         <label class="" for="detalle">Detalle</label>

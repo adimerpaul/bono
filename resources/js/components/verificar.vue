@@ -30,28 +30,29 @@
                         <p class="card-text">
                            <form>
                                  <div class="form-group row">
-                                    <label for="nombre" class="col-sm-2 col-form-label">Nombre Completo</label>
-                                    <div class="col-sm-10">
+                                    <label for="nombre" class="col-sm-3 col-form-label">NOMBRE COMPLETO</label>
+                                    <div class="col-sm-9">
                                     <input type="text" readonly class="form-control-plaintext" id="nombre" v-bind:value="dato.paterno +' '+dato.materno+' '+dato.nombres">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="ci1" class="col-sm-2 col-form-label">Carnet de Identidad</label>
-                                    <div class="col-sm-10">
+                                    <label for="ci1" class="col-sm-3 col-form-label">CARNET DE IDENTIDAD</label>
+                                    <div class="col-sm-9">
                                     <input type="text" readonly class="form-control-plaintext" id="ci1" v-model="dato.ci">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="estado" class="col-sm-2 col-form-label">Habilitado</label>
-                                    <div class="col-sm-10">
-                                        <div class="badge " :class="dato.estado=='SI'?'badge-success':'badge-danger'">
+                                    <label for="estado" class="col-sm-3 col-form-label">HABILITADO</label>
+                                    <div class="col-sm-9">
+                                        <h1><div class="badge " :class="dato.estado=='SI'?'badge-success':'badge-danger'">
                                             {{dato.estado}}
-                                        </div>
+                                        </div></h1>
                                     </div>
                                 </div>
+  
                                 <div class="form-group row">
-                                    <label for="detalle" class="col-sm-2 col-form-label">Detalle</label>
-                                    <div class="col-sm-10">
+                                    <label for="detalle" class="col-sm-3 col-form-label">OBSERVACION</label>
+                                    <div class="col-sm-9">
                                         <div class="alert alert-primary" role="alert">
                                             <textarea type="text" readonly class="form-control-plaintext" id="detalle" v-model="dato.detalle"></textarea>
                                         </div>

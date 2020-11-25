@@ -84,7 +84,7 @@ class MadreController extends Controller
                 return "INHABILITADO USTED TIENE TRABAJO ESTABLE";
                 exit;
             }
-            return "SUS DATOS ESTAN SIENDO VERIFICADOS";
+            return "EL CARNET ESTA REGISTRADO";
             exit;
         }else{
             $m=new Madre();
