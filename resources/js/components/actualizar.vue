@@ -59,7 +59,6 @@
                     <div class="col-md-3 mb-3">
                         <label for="Fecha Nacimiento">Fecha Nacimiento</label>
                         <input type="date" class="form-control" v-bind:class="dato.fechanac==null?'':dato.fechanac==''?'is-invalid':calcularedad(dato.fechanac)?'is-valid':'is-invalid'" v-model="dato.fechanac" id="Fecha Nacimiento" placeholder="Fecha Nacimiento"  required>
-
                         <div class="valid-feedback">
                             Bien!
                         </div>
@@ -386,10 +385,17 @@
     import VueHtml2pdf from 'vue-html2pdf'
     import axios from 'axios';
     import moment from 'moment';
+    import Vue from 'vue';
+    import { Datetime } from 'vue-datetime';
+// You need a specific loader for CSS files
+    import 'vue-datetime/dist/vue-datetime.css';
+
+Vue.use(Datetime)
 
     export default {
         components: {
-            VueHtml2pdf
+            VueHtml2pdf,
+            datetime: Datetime
         },
         data:function(){
             
@@ -485,12 +491,13 @@
 
             },
             calcularedad(variable){
+                    this.dato.fechanac=moment(variable).format('YYYY-MM-DD');
                 	var a = moment();
 	                var b = moment(variable);
 
 	                var years = a.diff(b, 'year');
                                 b.add(years, 'years');
-                                console.log(years);
+                                console.log(moment(variable).format('YYYY-MM-DD'));
                     if(years>=17 && years<60)
                         return true;
                     else
