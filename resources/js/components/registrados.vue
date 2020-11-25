@@ -18,6 +18,12 @@
 
                                         <form>
                                             <div class=" row">
+                                                    <label for="nombre" class=" col-sm-6 col-form-label-sm"><b>IDENTIFICADOR</b> </label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="nombre" v-bind:value="dato.id">
+                                                </div>
+                                            </div>
+                                            <div class=" row">
                                                     <label for="nombre" class=" col-sm-6 col-form-label-sm"><b>NOMBRE COMPLETO</b> </label>
                                                 <div class="col-sm-6">
                                                     <input type="text" readonly class="form-control-plaintext form-control-sm" id="nombre" v-bind:value="dato.paterno +' '+dato.materno+' '+dato.nombres">
@@ -141,7 +147,7 @@
                             <table class="table">
                                 <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">ID</th>
                                     <th scope="col">Nombre Completo</th>
                                     <th scope="col">CI</th>
 <!--                                    <th scope="col">Concepto de sueldos y/o salarios?</th>-->
@@ -155,7 +161,7 @@
                                 </thead>
                                 <tbody>
                                 <tr v-for="(i,index) in datos " :key="index">
-                                    <th scope="row">{{index+1}}</th>
+                                    <th scope="row">{{i.id}}</th>
                                     <td>{{i.paterno}} {{i.materno}} {{i.nombres}}</td>
                                     <td>{{i.ci}}</td>
 <!--                                    <td>{{i.salario}}</td>-->
