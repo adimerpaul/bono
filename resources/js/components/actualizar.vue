@@ -121,9 +121,6 @@
                         <label for="Municipio">Municipio donde esta registrada para votar</label>
                         <select id="Municipio" class="form-control" v-bind:class="dato.municipio==null?'':dato.municipio!='Oruro'?'is-invalid':'is-valid'" v-model="dato.municipio" required>
                             <option value="Oruro">Oruro</option>
-                            <option value="Caracollo">Caracollo</option>
-                            <option value="El Choco">EL Choro</option>
-                            <option value="Soracachi">Soracachi</option>
                         </select>
 <!--                        <input type="text" class="form-control" v-bind:class="dato.recinto==null?'':dato.recinto==''?'is-invalid':'is-valid'" v-model="dato.recinto" id="Recinto de votacion" placeholder="Recinto de votacion" required>-->
                         <div class="valid-feedback">
@@ -174,7 +171,7 @@
                     <div class="col-md-3 mb-3">
                         <label for="Recinto donde esta registrada para votar">Recinto donde realizo su voto</label>
 
-                        <select  class="form-control" v-bind:class="dato.recinto==null?'':dato.recinto==''?'is-invalid':'is-valid'" v-model="dato.recinto"  name="Recinto donde esta registrada para votar" id="Recinto donde esta registrada para votar">
+                        <select  class="form-control" v-bind:class="dato.recinto==null?'':dato.recinto==''?'is-invalid':'is-valid'" v-model="dato.recinto"  name="Recinto donde esta registrada para votar" id="Recinto donde esta registrada para votar" required>
                             <option v-for="i in recintos" v-bind:value="i.recinto">
                                 {{i.recinto}}
                             </option>

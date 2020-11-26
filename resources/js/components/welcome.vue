@@ -114,10 +114,7 @@
                     <div class="col-md-6 mb-6">
                         <label for="Municipio">Municipio donde esta registrada para votar</label>
                         <select id="Municipio" class="form-control" v-bind:class="dato.municipio==null?'':dato.municipio!='Oruro'?'is-invalid':'is-valid'" v-model="dato.municipio" required>
-                            <option value="Oruro">Oruro</option>
-                            <option value="Caracollo">Caracollo</option>
-                            <option value="El Choco">EL Choro</option>
-                            <option value="Soracachi">Soracachi</option>
+                            <option value="Oruro" selected>Oruro</option>
                         </select>
                         <!--                        <input type="text" class="form-control" v-bind:class="dato.recinto==null?'':dato.recinto==''?'is-invalid':'is-valid'" v-model="dato.recinto" id="Recinto de votacion" placeholder="Recinto de votacion" required>-->
                         <div class="valid-feedback">
@@ -172,12 +169,11 @@
                             <div v-else @click="selec=true"><u>Selecionar</u></div>
                         </label>
 
-                        <select  v-if="selec" class="form-control" v-bind:class="dato.recinto==null?'':dato.recinto==''?'is-invalid':'is-valid'" v-model="dato.recinto"  name="Recinto donde esta registrada para votar" id="Recinto donde esta registrada para votar">
+                        <select  v-if="selec" class="form-control" v-bind:class="dato.recinto==null?'':dato.recinto==''?'is-invalid':'is-valid'" v-model="dato.recinto"  name="Recinto donde esta registrada para votar" id="Recinto donde esta registrada para votar" required>
                             <option v-for="i in recintos" v-bind:value="i.recinto">
                                 {{i.recinto}}
                             </option>
                         </select>
-                        <input v-else type="text" class="form-control" v-bind:class="dato.recinto2==null?'':dato.recinto2==''?'is-invalid':'is-valid'" v-model="dato.recinto2" id="" placeholder="Ej. Colegio, Escuelas o Institucion" required>
                         <div class="valid-feedback">
                             Bien!
                         </div>
