@@ -87,7 +87,10 @@ class MadreController extends Controller
             return "EL CARNET ESTA REGISTRADO";
             exit;
         }else{
-            $m=new Madre();
+            $d1=Discapacitado::where('ci',$request->ci);
+            $d2=Job::where('ci',$request->ci);
+            if($d1->count()==0 && $d2->count()==0)
+            {$m=new Madre();
             $m->paterno= strtoupper( $request->paterno);
             $m->materno= strtoupper($request->materno);
             $m->conyugue= strtoupper($request->conyugue);
@@ -139,6 +142,16 @@ class MadreController extends Controller
                 exit;
             }
             return "CORRECTO";
+            }
+            if ($d1->count()>=1){
+                return "INHABILITADO USTED YA COBRA EL BONO DISCAPACIDAD";
+                exit;
+            }
+
+            if ($d2->count()>=1){
+                return "INHABILITADO USTED TIENE TRABAJO ESTABLE";
+                exit;
+            }
         }
 
 
