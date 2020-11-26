@@ -89,8 +89,12 @@ class MadreController extends Controller
         }else{
             $d1=Discapacitado::where('ci',$request->ci);
             $d2=Job::where('ci',$request->ci);
+
             if($d1->count()==0 && $d2->count()==0)
             {$m=new Madre();
+                $d3=Inhabilitado::where('ci',$request->ci);
+                if($d3->count()>=1)
+                    $m->detalle='INHABILITADO POR LA CORTE';
             $m->paterno= strtoupper( $request->paterno);
             $m->materno= strtoupper($request->materno);
             $m->conyugue= strtoupper($request->conyugue);
