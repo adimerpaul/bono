@@ -409,6 +409,18 @@
                 this.dato.hijos.splice(index, 1);
             },
             guardar(){
+                if(this.dato.hijos[0].nombres=='' && this.dato.hijos[0].apellidos==''){
+                    this.$fire({
+                    title: 'NO!!!',
+                    text: "Debe agregar al menos 1 hijo ",
+                    type: 'error',
+                    showCancelButton: false,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'OK'
+                })
+                return false;
+                }
                 this.$fire({
                     title: 'Seguro?',
                     text: "De mandar informacion",

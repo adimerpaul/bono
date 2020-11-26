@@ -454,7 +454,7 @@ Vue.use(Datetime)
                    else
                     this.tienebanco='NO';
                     if(this.dato.hijos.length==0)
-                        this.dato.hijos={nombres:'',apellidos:''}
+                        this.dato.hijos=[{nombres:'',apellidos:''}];
                    //this.dato.hijos=data[0].hijo;
                    console.log(this.dato);
                   }
