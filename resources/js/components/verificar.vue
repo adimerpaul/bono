@@ -73,9 +73,9 @@
                                 <label for="num1">Celular</label>
 <!--                                <input type="text" class="form-control" id="num1" placeholder="Carnet de Identidad" required v-model="param">-->
                                 <div>
-                                    <a target="_black" href="https://wa.me/+59172493688?text=Tuvieras dudas sobre el bono madres" >
+                                    <a target="_black" href="https://wa.me/+59175717388?text=Tuvieras dudas sobre el bono madres" >
                                     <i class="fa fa-phone-alt" aria-hidden="true"></i>
-                                        72493688
+                                        75717388
                                     </a>
                                 </div>
                             </div>
