@@ -44,7 +44,7 @@
                                 <div class="form-group row">
                                     <label for="estado" class="col-sm-3 col-form-label">ESTADO</label>
                                     <div class="col-sm-9">
-                                        <h2><div class="badge " :class="dato.estado=='SI'||dato.estado=='HABILITADO'?'badge-success':dato.estado=='INHABILITADO'?'badge-danger':''">
+                                        <h2><div class="badge " :class="dato.estado=='SI'||dato.estado=='HABILITADO'?'badge-success':dato.estado=='INHABILITADO'?'badge-danger':dato.estado=='En Proceso'?'badge-warning':''">
                                             {{dato.estado}}
                                         </div></h2>
                                     </div>
@@ -134,7 +134,7 @@ export default {
                             this.dato.nombres='';
                         }
                         if(this.dato.estado=='NO')
-                            this.dato.estado='En Proceso ';
+                            this.dato.estado='En Proceso';
                    //this.dato.hijos=data[0].hijo;
                   }
               });
