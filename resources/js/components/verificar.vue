@@ -42,14 +42,14 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="estado" class="col-sm-3 col-form-label">HABILITADO</label>
+                                    <label for="estado" class="col-sm-3 col-form-label">ESTADO</label>
                                     <div class="col-sm-9">
-                                        <h2><div class="badge " :class="dato.estado=='SI'?'badge-success':'badge-warning'">
+                                        <h2><div class="badge " :class="dato.estado=='SI'||dato.estado=='HABILITADO'?'badge-success':dato.estado=='INHABILITADO'?'badge-danger':''">
                                             {{dato.estado}}
                                         </div></h2>
                                     </div>
                                 </div>
-  
+
                                 <div class="form-group row">
                                     <label for="detalle" class="col-sm-3 col-form-label">OBSERVACION</label>
                                     <div class="col-sm-9">
@@ -109,6 +109,7 @@ export default {
         methods:{
             verificar(){
               axios.get('/verificar/'+this.param+"/"+this.fecha).then(res=>{
+                  console.log(res.data);
                   if(res.data==''){
                         this.dato={};
                         if (this.dato.paterno==undefined||this.dato.paterno==null){
@@ -120,7 +121,6 @@ export default {
                         if (this.dato.nombres==undefined||this.dato.nombres==null){
                             this.dato.nombres='';
                         }
-
                         this.dato.detalle='NO SE ENCUENTRA REGISTRADO POR FAVOR, REGISTRESE PARA PODER VERFICAR SUS DATOS';
                   }else{
                    this.dato=res.data[0];
@@ -133,7 +133,7 @@ export default {
                         if (this.dato.nombres==undefined||this.dato.nombres==null){
                             this.dato.nombres='';
                         }
-                        if(this.dato.estado='NO')
+                        if(this.dato.estado=='NO')
                             this.dato.estado='En Proceso ';
                    //this.dato.hijos=data[0].hijo;
                   }

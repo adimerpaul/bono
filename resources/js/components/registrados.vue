@@ -104,6 +104,18 @@
                                                         <input type="radio" id="estado2" name="estado" value="NO" class="custom-control-input" v-model="dato.estado" required>
                                                         <label class="custom-control-label" for="estado2">NO</label>
                                                     </div>
+                                                    <div class="form-check">
+                                                        <input required class="form-check-input" type="radio" name="estado" id="estado3" value="HABILITADO" v-model="dato.estado">
+                                                        <label class="form-check-label" for="estado2">
+                                                            HABILITADO
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input required class="form-check-input" type="radio" name="estado" id="estado4" value="INHABILITADO" v-model="dato.estado">
+                                                        <label class="form-check-label" for="estado2">
+                                                            INHABILITADO
+                                                        </label>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="detalle">Detalle</label>
@@ -169,7 +181,7 @@
 <!--                                    <td>{{i.rentista}}</td>-->
 <!--                                    <td>{{i.juana}}</td>-->
 <!--                                    <td>{{i.discapacidad}}</td>-->
-                                    <td><div class="badge badge-danger">{{i.estado}}</div></td>
+                                    <td><div class="badge " :class="i.estado=='SI'||i.estado=='HABILITADO'?'badge-success':i.estado=='NO'||i.estado=='INHABILITADO'?'badge-danger':''">{{i.estado}}</div></td>
                                     <td>
                                         <button @click="ver(i)" class="btn btn-warning btn-sm p-1">
                                             <i class="fa fa-eye" aria-hidden="true"></i>

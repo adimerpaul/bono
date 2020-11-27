@@ -20,7 +20,7 @@
                 </div>
             </blockquote>
             <form @submit.prevent="modificar">
-                <p class="blockquote">DATOS BENEFICIARIA</p>
+                <p class="blockquote">DATOS BENEFICIARIA <b>ID: {{dato.id}}</b></p>
                 <div class="form-row">
                     <div class="col-md-3 mb-3">
                         <label for="Apellido Paterno">Apellido Paterno</label>
@@ -175,8 +175,9 @@
                             <option v-for="i in recintos" v-bind:value="i.recinto">
                                 {{i.recinto}}
                             </option>
+                            <option value="No Correponde">No Correponde</option>
                         </select>
-    
+
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="Celular">Tiene cuenta de banco?</label>
@@ -189,7 +190,7 @@
                         <div class="form-check">
                             <input required class="form-check-input" type="radio" name="tienebanco" id="tienebanco2" value="NO" v-bind:class="dato.tienebanco==null?'':dato.tienebanco==''?'is-invalid':'is-valid'" v-model="tienebanco" @click="limpiabanco">
                             <label class="form-check-label" for="tienebanco2">
-                                NO 
+                                NO
                             </label>
                             <div class="valid-feedback">
                                 Bien!
@@ -351,6 +352,18 @@
                                 NO
                             </label>
                         </div>
+                        <div class="form-check">
+                            <input required class="form-check-input" type="radio" name="estado" id="estado3" value="HABILITADO" v-model="dato.estado">
+                            <label class="form-check-label" for="estado2">
+                                HABILITADO
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input required class="form-check-input" type="radio" name="estado" id="estado4" value="INHABILITADO" v-model="dato.estado">
+                            <label class="form-check-label" for="estado2">
+                                INHABILITADO
+                            </label>
+                        </div>
                     </div>
                     <div class="col-md-6 mb-6">
                         <label for="ci1" class="col-sm-9 col-form-label">Datos Verificados</label>
@@ -381,7 +394,7 @@
 
     </div>
 </div>
-    
+
 </template>
 
 <script>
@@ -401,7 +414,7 @@ Vue.use(Datetime)
             datetime: Datetime
         },
         data:function(){
-            
+
           return {
               dato:{hijos:[{nombres:'',apellidos:''}]},
               param:null,
@@ -442,7 +455,7 @@ Vue.use(Datetime)
                 this.dato.hijos.splice(index, 1);
             },
             actualizar(){
-                
+
               axios.get('/madre/'+this.param).then(res=>{
                   if(res.data=='')
                         this.dato={hijos:[{nombres:'',apellidos:''}]};
@@ -458,7 +471,7 @@ Vue.use(Datetime)
                    //this.dato.hijos=data[0].hijo;
                    console.log(this.dato);
                   }
-              });  
+              });
             },
             modificar(){
                 this.$fire({
@@ -478,11 +491,11 @@ Vue.use(Datetime)
                         //     'Correctamente',
                         //     'success'
                         // );
-                        
+
 
                         axios.put('/madre/'+this.dato.id,this.dato).then(res=>{
                             console.log(res.data);
-                            
+
                         });
                         // this.$toastr.s("Enviado correctamente");
                         this.$toast.open({

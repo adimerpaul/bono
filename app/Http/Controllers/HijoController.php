@@ -15,7 +15,7 @@ class HijoController extends Controller
      */
     public function verificar($id,$fecha){
         return Madre::where('ci',$id)
-        ->whereDate('fechanac',$fecha)
+//        ->whereDate('fechanac',$fecha)
         ->get();
     }
 
@@ -56,7 +56,7 @@ class HijoController extends Controller
         //
     }
 
-    
+
     /**
      * Show the form for editing the specified resource.
      *
