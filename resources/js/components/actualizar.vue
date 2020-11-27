@@ -187,7 +187,7 @@
                             </label>
                         </div>
                         <div class="form-check">
-                            <input required class="form-check-input" type="radio" name="tienebanco" id="tienebanco2" value="NO" v-bind:class="dato.tienebanco==null?'':dato.tienebanco==''?'is-invalid':'is-valid'" v-model="tienebanco">
+                            <input required class="form-check-input" type="radio" name="tienebanco" id="tienebanco2" value="NO" v-bind:class="dato.tienebanco==null?'':dato.tienebanco==''?'is-invalid':'is-valid'" v-model="tienebanco" @click="limpiabanco">
                             <label class="form-check-label" for="tienebanco2">
                                 NO 
                             </label>
@@ -449,7 +449,7 @@ Vue.use(Datetime)
                   else{
                    console.log(res.data[0]);
                    this.dato=res.data[0];
-                   if( this.dato.banco!=null)
+                   if(this.dato.banco!=null)
                         this.tienebanco='SI';
                    else
                         this.tienebanco='NO';
@@ -509,8 +509,11 @@ Vue.use(Datetime)
                         return true;
                     else
                         return false;
-            }
-
+            },
+        limpiabanco(){
+            this.dato.banco=null;
+            this.dato.numerobanco='';
+        }
         },
         computed:{
             activar(){
