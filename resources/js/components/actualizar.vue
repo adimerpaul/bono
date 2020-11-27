@@ -449,10 +449,10 @@ Vue.use(Datetime)
                   else{
                    console.log(res.data[0]);
                    this.dato=res.data[0];
-                   if(this.dato.banco!='' || this.dato.banco!=null)
-                    this.tienebanco='SI';
+                   if( this.dato.banco!=null)
+                        this.tienebanco='SI';
                    else
-                    this.tienebanco='NO';
+                        this.tienebanco='NO';
                     if(this.dato.hijos.length==0)
                         this.dato.hijos=[{nombres:'',apellidos:''}];
                    //this.dato.hijos=data[0].hijo;
@@ -478,6 +478,8 @@ Vue.use(Datetime)
                         //     'Correctamente',
                         //     'success'
                         // );
+                        
+
                         axios.put('/madre/'+this.dato.id,this.dato).then(res=>{
                             console.log(res.data);
                             
