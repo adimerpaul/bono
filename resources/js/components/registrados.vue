@@ -94,12 +94,9 @@
                                         <form @submit.prevent="daralta">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6 text-left">
-                                                    <label >Permir bono?</label>
+                                                    <label >Permitir bono?</label>
 <!--                                                    <input type="text" class="form-control" id="estado" placeholder="estado">-->
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="estado1" name="estado" value="SI" class="custom-control-input" v-model="dato.estado" required>
-                                                        <label class="custom-control-label" for="estado1">SI</label>
-                                                    </div>
+
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="estado2" name="estado" value="NO" class="custom-control-input" v-model="dato.estado" required>
                                                         <label class="custom-control-label" for="estado2">NO</label>

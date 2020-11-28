@@ -101,6 +101,7 @@ class MadreController extends Controller
             $m->nombres= strtoupper($request->nombres);
             $m->fechanac=$request->fechanac;
             $m->ci=$request->ci;
+            $m->civalido=$request->ci;
             $m->fijo=$request->fijo;
             $m->celular=$request->celular;
             $m->salario=$request->salario;
