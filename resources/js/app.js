@@ -27,11 +27,15 @@ import usuarios from './components/usuarios';
 import registrados from './components/registrados';
 import revisar from './components/revisar';
 import actualizar from './components/actualizar';
+import registrar from './components/registrar';
+import reportes from './components/reportes';
 const routes = [
     { path: '/usuarios', component: usuarios },
     { path: '/registrados', component: registrados },
     { path: '/actualizar', component: actualizar },
     { path: '/revisar', component: revisar },
+    { path: '/registrar', component: registrar },
+    { path: '/reportes', component: reportes },
 ]
 const router = new VueRouter({
     mode: 'history',

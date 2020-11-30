@@ -250,4 +250,13 @@ class MadreController extends Controller
         //$m=Madre::find($id);
         //$m->delete();
     }
+
+    public function datosinfo(){
+        $results = DB::select('
+        SELECT (SELECT COUNT(*) from madres where ci!='') AS TOTAL,
+        (SELECT COUNT(*) from madres where estado="HABILITADO") AS TOTALH,
+        (SELECT COUNT(*) from madres where estado="INHABILITADO") AS TOTALI
+        ');
+
+    }
 }

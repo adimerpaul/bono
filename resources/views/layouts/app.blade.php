@@ -82,6 +82,26 @@
                                 </a>
                             </li>
                         </router-link>
+                        <router-link
+                            to="/registrar"
+                            v-slot="{ href, route, navigate, isActive, isExactActive }"
+                        >
+                            <li class="nav-item">
+                                <a class="nav-link" :href="href" @click="navigate" :class="[isActive && 'active', isExactActive && '']">
+                                    <i class="fa fa-add"></i> Registrar
+                                </a>
+                            </li>
+                        </router-link>
+                        <router-link
+                            to="/reportes"
+                            v-slot="{ href, route, navigate, isActive, isExactActive }"
+                        >
+                            <li class="nav-item">
+                                <a class="nav-link" :href="href" @click="navigate" :class="[isActive && 'active', isExactActive && '']">
+                                    <i class="fa fa-chart"></i> Reportes
+                                </a>
+                            </li>
+                        </router-link>
                         @endauth
                     </ul>
 

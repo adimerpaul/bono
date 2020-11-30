@@ -28,6 +28,12 @@ Route::get('/revisar', function () {
 Route::get('/actualizar', function () {
     return view('home');
 })->middleware('auth');
+Route::get('/registrar', function () {
+    return view('home');
+})->middleware('auth');
+Route::get('/reportes', function () {
+    return view('home');
+})->middleware('auth');
 
 Route::get('/verificar', function () {
     return view('verificar');
