@@ -125,6 +125,10 @@ class MadreController extends Controller
             $m->recinto=$request->recinto;
             $m->banco=$request->banco;
             $m->numerobanco=$request->numerobanco;
+            $m->voto=$request->voto;
+            $m->apfuturo=$request->apfuturo;
+            $m->aprevision=$request->aprevision;
+            
             $m->save();
             foreach ($request->hijos as $hijo){
                 $h=new Hijo();
