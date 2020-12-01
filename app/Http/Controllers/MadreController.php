@@ -110,7 +110,7 @@ class MadreController extends Controller
             if($request->ext=='')
             $m->ci=$request->ci;
             else
-            $m->ci=$request->ci.'-'.$request->ext;
+            $m->ci=strtoupper($request->ci.'-'.$request->ext);
             $m->fijo=$request->fijo;
             $m->celular=$request->celular;
             $m->salario=$request->salario;
@@ -267,5 +267,9 @@ class MadreController extends Controller
         (SELECT COUNT(*) from madres where estado="INHABILITADO") AS INHAB
         ');*/
 
+    }
+
+    public function info(){
+        return Auth::user()->name;
     }
 }

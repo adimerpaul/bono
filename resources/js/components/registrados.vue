@@ -7,15 +7,15 @@
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Actualizar datos</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Actualizar datos</h5><br>
+                                <h6 class="text-right" style="align:right;"><b>USUARIO : <span>{{user}}</span></b></h6>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-md-6">
-
+                                    <div class="col-md-12">
                                         <form>
                                             <div class=" row">
                                                     <label for="nombre" class=" col-sm-6 col-form-label-sm"><b>IDENTIFICADOR</b> </label>
@@ -41,88 +41,73 @@
                                                     <input type="text" readonly class="form-control-plaintext form-control-sm" id="ci" v-bind:value="dato.ci">
                                                 </div>
                                             </div>
-                                            <div class=" row">
-                                                    <label for="celular" class="col-sm-6 col-form-label-sm"><b>celular :</b></label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="celular" v-bind:value="dato.celular">
-                                                </div>
-                                            </div>
-                                            <div class=" row">
-                                                    <label for="salario" class="col-sm-6 col-form-label-sm"><b>salario :</b></label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="salario" v-bind:value="dato.salario">
-                                                </div>
-                                            </div>
-                                            <div class=" row">
-                                                    <label for="afp" class="col-sm-6 col-form-label-sm"><b>AFP :</b></label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="afp" v-bind:value="dato.afp">
-                                                </div>
-                                            </div>
-                                            <div class=" row">
-                                                    <label for="rentista" class="col-sm-6 col-form-label-sm"><b>Rentista :</b></label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="rentista" v-bind:value="dato.rentista">
-                                                </div>
-                                            </div>
-                                            <div class=" row">
-                                                    <label for="discapacidad" class="col-sm-6 col-form-label-sm"><b>Discapacidad :</b></label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="discapacidad" v-bind:value="dato.discapacidad">
-                                                </div>
-                                            </div>
-                                            <small>HIJOS</small>
-                                            <small>
-                                                <table class="table">
-                                                    <thead class="thead-dark">
-                                                    <tr>
-                                                        <th scope="col">#</th>
-                                                        <th scope="col">Nombres</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr v-for="(i,index) in dato.hijos" :key="index">
-                                                        <th scope="row">{{index+1}}</th>
-                                                        <td>{{i.nombres}} {{i.apellidos}}</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </small>
+                                            
                                         </form>
                                     </div>
-                                    <div class="col-md-6">
+                                    <hr />
+                                    <br>
+                                    <div class=" col-md-12 ">
                                         <form @submit.prevent="daralta">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6 text-left">
-                                                    <label >Permitir bono?</label>
+                                            <div class="row col-md-12">
+                                                <div class="row col-12">
+                                                    <label class="col-md-6">Voto municipio Oruro?</label>
 <!--                                                    <input type="text" class="form-control" id="estado" placeholder="estado">-->
 
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="estado2" name="estado" value="NO" class="custom-control-input" v-model="dato.estado" required>
-                                                        <label class="custom-control-label" for="estado2">NO</label>
+                                                    <div class="form-check col-md-3">
+                                                        <input type="radio" id="voto2" name="voto" value="NO" class="form-check-input" v-model="dato.voto" required @change="detallecontrol">
+                                                        <label class="form-control-label" for="voto2">NO</label>
                                                     </div>
-                                                    <div class="form-check">
-                                                        <input required class="form-check-input" type="radio" name="estado" id="estado3" value="HABILITADO" v-model="dato.estado">
-                                                        <label class="form-check-label" for="estado2">
-                                                            HABILITADO
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input required class="form-check-input" type="radio" name="estado" id="estado4" value="INHABILITADO" v-model="dato.estado">
-                                                        <label class="form-check-label" for="estado2">
-                                                            INHABILITADO
+                                                    <div class="form-check col-md-3">
+                                                        <input required class="form-check-input" type="radio" name="voto" id="voto3" value="SI" v-model="dato.voto" @change="detallecontrol">
+                                                        <label class="form-check-label" for="voto3">
+                                                            SI
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="detalle">Detalle</label>
+                                            </div>
+                                            <div class="row  col-md-12">
+                                                <div class="row col-12 ">
+                                                    <label class="col-md-6">Aportes AFP Prevision?</label>
+<!--                                                    <input type="text" class="form-control" id="estado" placeholder="estado">-->
+                                                    <div class="form-check col-md-3">
+                                                        <input type="radio" id="afprevision2" name="afprevision" value="NO" class="form-check-input" v-model="dato.aprevision" required @change="detallecontrol">
+                                                        <label class="form-control-label" for="afprevision2">NO</label>
+                                                    </div>
+                                                    <div class="form-check col-md-3">
+                                                        <input required class="form-check-input" type="radio" name="afprevision" id="afprevision3" value="SI" v-model="dato.aprevision" @change="detallecontrol">
+                                                        <label class="form-check-label" for="afprevision3">
+                                                            SI
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>  
+                                            <div class="row col-md-12">
+                                                <div class="row col-12">
+                                                    <label class="col-md-6" >Aportes AFP Futuro?</label>
+<!--                                                    <input type="text" class="form-control" id="estado" placeholder="estado">-->
+
+                                                    <div class="form-check col-md-3">
+                                                        <input type="radio" id="afpfuturo2" name="afpfuturo" value="NO" class="form-check-input" v-model="dato.apfuturo" required @change="detallecontrol">
+                                                        <label class="form-control-label" for="afpfuturo2">NO</label>
+                                                    </div>
+                                                    <div class="form-check col-md-3">
+                                                        <input required class="form-check-input" type="radio" name="afpfuturo" id="afpfuturo3" value="SI" v-model="dato.apfuturo" @change="detallecontrol">
+                                                        <label class="form-check-label" for="afpfuturo3">
+                                                            SI
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                            <div class="row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="detalle"><b>DETALLE</b></label>
 <!--                                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password">-->
                                                     <textarea name="" class="form-control" id="detalle" cols="15" rows="10" v-model="dato.detalle"></textarea>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-trash"></i> Cerrar</button>
-                                                <button type="submit"  class="btn btn-success"><i class="fa fa-save"></i> Actualizar</button>
+                                                <button type="submit"  class="btn btn-success"><i class="fa fa-save" :disabled="activar"></i> Actualizar</button>
                                             </div>
                                         </form>
                                     </div>
@@ -206,16 +191,39 @@
                 f1:0,
                 f2:0,
                 d:false,
+                user:'',
+                cadena:'',
             }
         },
         mounted() {
             // console.log('Component mounted.')
             this.misdatos();
+            axios.get('/madre/info').then(res=>{
+                console.log(res.data);
+                this.user=res.data;
+            });
+
         },
         methods:{
             hola(){
               console.log('a');
             },
+            detallecontrol(){
+                this.cadena='';
+                if(this.dato.voto=='NO')
+                    this.cadena+='NO ESTA REGISTRADA EN EL MUNICIPIO DE ORURO; ';
+                if(this.dato.apfuturo=='SI')
+                    this.cadena+='REALIZA APORTES A LA AFP FUTURO ; ';
+                if(this.dato.aprevision=='SI')
+                    this.cadena+='REALIZA APORTES A LA AFP PREVISION; ';
+                this.dato.detalle=this.cadena; 
+                if(this.dato.voto=='SI' && this.dato.apfuturo=='NO' && this.dato.aprevision=='NO')
+                    {this.dato.estado='HABILITADO';
+                    this.dato.detalle='HABILITADO PARA REALIZAR EL COBRO DEL BONO MUJER';}
+                else               
+                    this.dato.estado='INHABILITADO';
+            },
+
             daralta(){
                 // console.log('aaa');
                 this.$fire({
@@ -278,9 +286,9 @@
 
         },
         computed:{
-            activado:function(){
-                if(this.dato.password==this.dato.password2){
-                    return false;
+            activar:function(){
+                if(this.dato.voto!='' && this.dato.apfuturo!='' && this.dato.aprevision!='')
+                { return false;
                 }else{
                     return true;
                 }
