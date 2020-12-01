@@ -65,21 +65,24 @@ class MadreController extends Controller
     public function store(Request $request)
     {
 
-
-        $madre=Madre::where('ci',$request->ci);
+        if($request->ext=='')
+        $cedula=$request->ci;
+        else
+        $cedula=$request->ci.'-'.$request->ext;
+        $madre=Madre::where('ci',$cedula);
         if ($madre->count()>=1){
-            $d=Discapacitado::where('ci',$request->ci);
+            $d=Discapacitado::where('ci',$cedula);
             if ($d->count()>=1){
                 return "INHABILITADO USTED YA COBRA EL BONO DISCAPACIDAD";
                 exit;
             }
 
-            $d=Inhabilitado::where('ci',$request->ci);
+            $d=Inhabilitado::where('ci',$cedula);
             if ($d->count()>=1){
                 return "INHABILITADO POR LA CORTE";
                 exit;
             }
-            $d=Job::where('ci',$request->ci);
+            $d=Job::where('ci',$cedula);
             if ($d->count()>=1){
                 return "INHABILITADO USTED TIENE TRABAJO ESTABLE";
                 exit;
@@ -87,12 +90,16 @@ class MadreController extends Controller
             return "EL CARNET ESTA REGISTRADO";
             exit;
         }else{
-            $d1=Discapacitado::where('ci',$request->ci);
-            $d2=Job::where('ci',$request->ci);
+            if($request->ext=='')
+            $cedula=$request->ci;
+            else
+            $cedula=$request->ci.'-'.$request->ext;
+            $d1=Discapacitado::where('ci',$cedula);
+            $d2=Job::where('ci',$cedula);
 
             if($d1->count()==0 && $d2->count()==0)
             {$m=new Madre();
-                $d3=Inhabilitado::where('ci',$request->ci);
+                $d3=Inhabilitado::where('ci',$cedula);
                 if($d3->count()>=1)
                     $m->detalle='INHABILITADO POR LA CORTE';
             $m->paterno= strtoupper( $request->paterno);
@@ -100,8 +107,10 @@ class MadreController extends Controller
             $m->conyugue= strtoupper($request->conyugue);
             $m->nombres= strtoupper($request->nombres);
             $m->fechanac=$request->fechanac;
+            if($request->ext=='')
             $m->ci=$request->ci;
-            $m->civalido=$request->ci;
+            else
+            $m->ci=$request->ci.'-'.$request->ext;
             $m->fijo=$request->fijo;
             $m->celular=$request->celular;
             $m->salario=$request->salario;
@@ -252,11 +261,11 @@ class MadreController extends Controller
     }
 
     public function datosinfo(){
-        $results = DB::select('
-        SELECT (SELECT COUNT(*) from madres where ci!='') AS TOTAL,
-        (SELECT COUNT(*) from madres where estado="HABILITADO") AS TOTALH,
-        (SELECT COUNT(*) from madres where estado="INHABILITADO") AS TOTALI
-        ');
+        /*$results = DB::select('
+        SELECT (SELECT COUNT(*) from madres where estado="NO" and civalido!='') AS VERIF,
+        (SELECT COUNT(*) from madres where estado="HABILITADO") AS HAB,
+        (SELECT COUNT(*) from madres where estado="INHABILITADO") AS INHAB
+        ');*/
 
     }
 }

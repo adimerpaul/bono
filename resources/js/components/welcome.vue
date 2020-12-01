@@ -125,9 +125,16 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3 mb-3">
-                        <label for="Carnet Identidad">CI o Pasaporte</label>
-                        <input type="text" class="form-control" v-bind:class="dato.ci==null?'':dato.ci==''?'is-invalid':'is-valid'" v-model="dato.ci" id="Carnet Identidad" placeholder="Carnet Identidad" required>
+                    <div class="col-md-3 mb-3 form-row" >
+                        <label for="Carnet Identidad">CI o Pasaporte (- Ext)</label>
+                        <div class="col-8">
+                            <input type="number" class="form-control" v-bind:class="dato.ci==null?'':dato.ci==''?'is-invalid':'is-valid'" v-model="dato.ci" id="Carnet Identidad" placeholder="Carnet Identidad" required>
+                        </div>
+                        <div class="col"><b>-</b>
+                        </div>
+                        <div class="col-3">
+                            <input type="text" class="form-control mayuscula" v-model="dato.ext" id="ciext" placeholder="" value='' maxlength="2">
+                        </div>
                         <div class="valid-feedback">
                             Bien!
                         </div>
