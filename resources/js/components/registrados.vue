@@ -218,8 +218,8 @@
                     this.cadena+='REALIZA APORTES A LA AFP PREVISION; ';
                 this.dato.detalle=this.cadena; 
                 if(this.dato.voto=='SI' && this.dato.apfuturo=='NO' && this.dato.aprevision=='NO')
-                    {this.dato.estado='HABILITADO';
-                    this.dato.detalle='HABILITADO PARA REALIZAR EL COBRO DEL BONO MUJER';}
+                    {this.dato.estado='NO';
+                    this.dato.detalle='PENDIENTE DE VERIFICACION';}
                 else               
                     this.dato.estado='INHABILITADO';
             },
