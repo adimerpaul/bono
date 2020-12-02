@@ -6,6 +6,8 @@ use App\Models\Discapacitado;
 use App\Models\Hijo;
 use App\Models\Inhabilitado;
 use App\Models\Madre;
+use App\Models\Mama;
+use App\Models\Rent;
 use App\Models\Job;
 use App\Models\Jurado;
 use Illuminate\Http\Request;
@@ -45,7 +47,7 @@ class MadreController extends Controller
             ->get();
     }
     public function recintos(){
-        return Jurado::select('recinto')->where('recinto','!=','')->groupBy('recinto')->get();
+        return Jurado::select('recinto')->where('recinto','!=','')->groupBy('recinto')->orderBy('recinto')->get();
     }
     public function confirmar(Request $request,$id){
         if(Auth::user()->id=='10' || Auth::user()->id=='9' || Auth::user()->id=='6' ){
@@ -92,6 +94,16 @@ class MadreController extends Controller
                 return "INHABILITADO USTED TIENE TRABAJO ESTABLE";
                 exit;
             }
+            $d=Mama::where('ci',$cedula);
+            if ($d->count()==0){
+                return "NO LA TENEMOS REGISTRADA EN NUESTROS DATOS COMO MADRE DE FAMILIA O MADRE MENOR A 60 AÑOS";
+                exit;
+            }
+            $d=Rent::where('ci',$cedula);
+            if ($d->count()>=1){
+                return "USTED ES RENTISTA";
+                exit;
+            }
             return "EL CARNET ESTA REGISTRADO";
             exit;
         }else{
@@ -131,7 +143,7 @@ class MadreController extends Controller
             $m->banco=$request->banco;
             $m->numerobanco=$request->numerobanco;
 
-            
+
             $m->save();
             foreach ($request->hijos as $hijo){
                 $h=new Hijo();
