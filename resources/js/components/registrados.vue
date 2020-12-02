@@ -41,6 +41,12 @@
                                                     <input type="text" readonly class="form-control-plaintext form-control-sm" id="ci" v-bind:value="dato.ci">
                                                 </div>
                                             </div>
+                                            <div class=" row">
+                                                    <label for="civ" class="col-sm-6 col-form-label-sm"><b>CI (en correccion duplicados):</b></label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="civ" v-bind:value="dato.civalido">
+                                                </div>
+                                            </div>
                                             
                                         </form>
                                     </div>
