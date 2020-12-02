@@ -51,6 +51,9 @@ class MadreController extends Controller
         $m=Madre::find($id);
         $m->estado=$request->estado;
         $m->detalle=$request->detalle;
+        $m->voto=$request->voto;
+        $m->apfuturo=$request->apfuturo;
+        $m->aprevision=$request->aprevision;
         $m->verificar='SI';
         $m->user_id=Auth::user()->id;
         $m->save();
@@ -125,9 +128,7 @@ class MadreController extends Controller
             $m->recinto=$request->recinto;
             $m->banco=$request->banco;
             $m->numerobanco=$request->numerobanco;
-            $m->voto=$request->voto;
-            $m->apfuturo=$request->apfuturo;
-            $m->aprevision=$request->aprevision;
+
             
             $m->save();
             foreach ($request->hijos as $hijo){
