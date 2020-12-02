@@ -53,6 +53,7 @@
                         </router-link>
                         @endif
 {{--                        @endif--}}
+                        @if(Auth::user()->id=='10' || Auth::user()->id=='9' || Auth::user()->id=='6')
                         <router-link
                             to="/registrados"
                             v-slot="{ href, route, navigate, isActive, isExactActive }"
@@ -63,6 +64,7 @@
                                 </a>
                             </li>
                         </router-link>
+                        @endif
                         <router-link
                             to="/revisar"
                             v-slot="{ href, route, navigate, isActive, isExactActive }"
