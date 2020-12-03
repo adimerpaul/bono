@@ -125,10 +125,24 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3 mb-3 form-row" >
-                        <label for="Carnet Identidad">CI o Pasaporte (- Complemento)</label>
-                        <div class="col-8">
+                    <div class="col-md-6 mb-6 form-row" >
+                        <label for="Carnet Identidad">CI o Pasaporte Expedido (- Complemento)</label>
+                        <div class="col-5">
                             <input type="number" class="form-control" v-bind:class="dato.ci==null?'':dato.ci==''?'is-invalid':'is-valid'" v-model="dato.ci" id="Carnet Identidad" placeholder="Carnet Identidad" required>
+                        </div>
+
+                        <div class="col-3">
+                            <select name="exp" id="exp" class="form-control">
+                                <option value="OR" selected>OR</option>
+                                <option value="LP"> LP</option>
+                                <option value="PT" >PT</option>
+                                <option value="PD" >PD</option>
+                                <option value="BN" >BN</option>
+                                <option value="CB" >CB</option>
+                                <option value="CH" >CH</option>
+                                <option value="SC" >SC</option>
+                                <option value="TJ" >TJ</option>
+                            </select>
                         </div>
                         <div class="col"><b>-</b>
                         </div>
@@ -159,7 +173,7 @@
                             Dato necesario!
                         </div>
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-12 mb-12">
                         <label for="Dirección" >Dirección Actual</label>
                         <input type="text" class="form-control mayuscula" v-bind:class="dato.direccion==null?'':dato.direccion==''?'is-invalid':'is-valid'" v-model="dato.direccion" id="Dirección" placeholder="Dirección" required>
                         <div class="valid-feedback">
