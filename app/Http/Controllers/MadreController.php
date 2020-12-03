@@ -203,7 +203,7 @@ class MadreController extends Controller
     {
 
         return Madre::with('hijos')
-        ->where('civalido','like','%'.$ci.'%')
+        ->where('ci',$ci)
         //->where('ci',$ci)
         ->get();
 

@@ -14,7 +14,7 @@ class HijoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function verificar($id,$fecha){
-        return Madre::where('civalido',$id)
+        return Madre::where('ci',$id)
         ->whereDate('fechanac',$fecha)
         ->get();
     }
