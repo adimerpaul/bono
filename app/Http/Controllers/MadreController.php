@@ -141,6 +141,7 @@ class MadreController extends Controller
             $m->direccion=$request->direccion;
             $m->recinto=$request->recinto;
             $m->banco=$request->banco;
+            $m->mama='SI';
             $m->numerobanco=$request->numerobanco;
 
 
