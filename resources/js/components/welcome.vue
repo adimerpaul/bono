@@ -144,8 +144,8 @@
                                 <option value="TJ" >TJ</option>
                             </select>
                         </div>
-                        <div class="col"><b>-</b>
-                        </div>
+                        <b>-</b>
+                        
                         <div class="col-3">
                             <input type="text" class="form-control mayuscula" v-model="dato.ext" id="ciext" placeholder="1X" value='' maxlength="2">
                         </div>

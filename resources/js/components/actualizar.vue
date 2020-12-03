@@ -347,12 +347,7 @@
                                 NO
                             </label>
                         </div>
-                        <div class="form-check">
-                            <input required class="form-check-input" type="radio" name="estado" id="estado3" value="HABILITADO" v-model="dato.estado">
-                            <label class="form-check-label" for="estado2">
-                                HABILITADO
-                            </label>
-                        </div>
+
                         <div class="form-check">
                             <input required class="form-check-input" type="radio" name="estado" id="estado4" value="INHABILITADO" v-model="dato.estado">
                             <label class="form-check-label" for="estado2">
