@@ -82,34 +82,6 @@
                             </div>
 
                         </div>
-                        <!--                    <div class="col-md-3 mb-3">-->
-                        <!--                        <label for="Municipio de oruro">Provincia de oruro</label>-->
-                        <!--&lt;!&ndash;                        <input type="date" class="form-control" v-bind:class="dato.fechanac==null?'':dato.fechanac==''?'is-invalid':'is-valid'" v-model="dato.fechanac" id="Municipio de oruro" placeholder="Municipio de oruro" required>&ndash;&gt;-->
-                        <!--                        <select id="Municipio de oruro" class="form-control" v-bind:class="dato.provincia==null?'':dato.provincia!='Provincia de Cercado'?'is-invalid':'is-valid'" v-model="dato.provincia" required>-->
-                        <!--                            <option value="Provincia de Sabaya">Provincia de Sabaya</option>-->
-                        <!--                            <option value="Provincia de Carangas">Provincia de Carangas</option>-->
-                        <!--                            <option value="Provincia de Cercado">Provincia de Cercado</option>-->
-                        <!--                            <option value="Provincia de Eduardo Abaroa">Provincia de Eduardo Abaroa</option>-->
-                        <!--                            <option value="Provincia de Ladislao Cabrera">Provincia de Ladislao Cabrera</option>-->
-                        <!--                            <option value="Provincia de Litoral">Provincia de Litoral</option>-->
-                        <!--                            <option value="Provincia de Mejillones">Provincia de Mejillones</option>-->
-                        <!--                            <option value="Provincia de Nor Carangas">Provincia de Nor Carangas</option>-->
-                        <!--                            <option value="Provincia de Pantaleón Dalence">Provincia de Pantaleón Dalence</option>-->
-                        <!--                            <option value="Provincia de Poopó">Provincia de Poopó</option>-->
-                        <!--                            <option value="Provincia de Sajama">Provincia de Sajama</option>-->
-                        <!--                            <option value="Provincia de San Pedro de Totora">Provincia de San Pedro de Totora</option>-->
-                        <!--                            <option value="Provincia de Saucarí">Provincia de Saucarí</option>-->
-                        <!--                            <option value="Provincia de Sebastián Pagador">Provincia de Sebastián Pagador</option>-->
-                        <!--                            <option value="Provincia de Sud Carangas">Provincia de Sud Carangas</option>-->
-                        <!--                            <option value="Provincia de Tomás Barrón">Provincia de Tomás Barrón</option>-->
-                        <!--                        </select>-->
-                        <!--                        <div class="valid-feedback">-->
-                        <!--                            Bien!-->
-                        <!--                        </div>-->
-                        <!--                        <div class="invalid-feedback">-->
-                        <!--                            Bono solo para el Provincia cercado municipio de oruro!-->
-                        <!--                        </div>-->
-                        <!--                    </div>-->
                         <div class="col-md-6 mb-6">
                             <label for="Municipio">Municipio donde esta registrada para votar</label>
                             <select id="Municipio" class="form-control" v-bind:class="dato.municipio==null?'':dato.municipio!='Oruro'?'is-invalid':'is-valid'" v-model="dato.municipio" required>

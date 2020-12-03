@@ -255,6 +255,9 @@ class MadreController extends Controller
         $m->numerobanco=$request->numerobanco;
         $m->estado=$request->estado;
         $m->detalle=$request->detalle;
+        $m->voto=$request->voto;
+        $m->apfuturo=$request->apfuturo;
+        $m->aprevision=$request->aprevision;
         $m->user_id=Auth::user()->id;
         $m->save();
         $delhijo=Hijo::where('madre_id',$id)->delete();

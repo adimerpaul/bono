@@ -34,6 +34,9 @@ Route::get('/registrar', function () {
 Route::get('/reportes', function () {
     return view('home');
 })->middleware('auth');
+Route::get('/especial', function () {
+    return view('home');
+})->middleware('auth');
 
 Route::get('/verificar', function () {
     return view('verificar');

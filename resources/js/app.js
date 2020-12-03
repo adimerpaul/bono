@@ -29,6 +29,7 @@ import revisar from './components/revisar';
 import actualizar from './components/actualizar';
 import registrar from './components/registrar';
 import reportes from './components/reportes';
+import especial from './components/especial';
 const routes = [
     { path: '/usuarios', component: usuarios },
     { path: '/registrados', component: registrados },
@@ -36,6 +37,7 @@ const routes = [
     { path: '/revisar', component: revisar },
     { path: '/registrar', component: registrar },
     { path: '/reportes', component: reportes },
+    { path: '/especial', component: especial },
 ]
 const router = new VueRouter({
     mode: 'history',

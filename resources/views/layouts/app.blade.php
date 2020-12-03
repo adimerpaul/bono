@@ -85,6 +85,18 @@
                                 </a>
                             </li>
                         </router-link>
+                        @if(Auth::user()->id=='2')
+                        <router-link
+                            to="/especial"
+                            v-slot="{ href, route, navigate, isActive, isExactActive }"
+                        >
+                            <li class="nav-item">
+                                <a class="nav-link" :href="href" @click="navigate" :class="[isActive && 'active', isExactActive && '']">
+                                    <i class="fa fa-address-book"></i> Especial
+                                </a>
+                            </li>
+                        </router-link>
+                        @endif
                         <router-link
                             to="/registrar"
                             v-slot="{ href, route, navigate, isActive, isExactActive }"
