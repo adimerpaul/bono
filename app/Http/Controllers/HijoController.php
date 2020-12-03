@@ -15,7 +15,7 @@ class HijoController extends Controller
      */
     public function verificar($id,$fecha){
         return Madre::where('civalido',$id)
-//        ->whereDate('fechanac',$fecha)
+        ->whereDate('fechanac',$fecha)
         ->get();
     }
 
