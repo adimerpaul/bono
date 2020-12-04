@@ -51,7 +51,7 @@ class MadreController extends Controller
         return Jurado::select('recinto')->where('recinto','!=','')->groupBy('recinto')->orderBy('recinto')->get();
     }
     public function confirmar(Request $request,$id){
-        if(Auth::user()->id=='10' || Auth::user()->id=='9' || Auth::user()->id=='6' || Auth::user()->id=='15' ){
+        if(Auth::user()->id=='10' || Auth::user()->id=='9' || Auth::user()->id=='6' || Auth::user()->id=='15' || Auth::user()->id=='16' || Auth::user()->id=='2'){
             $m=Madre::find($id);
             $m->estado=$request->estado;
             $m->detalle=$request->detalle;
@@ -260,7 +260,7 @@ class MadreController extends Controller
         $m->voto=$request->voto;
         $m->apfuturo=$request->apfuturo;
         $m->aprevision=$request->aprevision;
-        $m->user_id=Auth::user()->id;
+        //$m->user_id=Auth::user()->id;
         $m->save();
         $delhijo=Hijo::where('madre_id',$id)->delete();
         foreach ($request->hijos as $hijo){
