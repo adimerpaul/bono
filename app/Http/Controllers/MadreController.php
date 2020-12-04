@@ -114,8 +114,9 @@ class MadreController extends Controller
             $cedula=$request->ci.'-'.$request->ext;
             $d1=Discapacitado::where('ci',$cedula);
             $d2=Job::where('ci',$cedula);
+            $d4=Mama::where('ci',$cedula);
 
-            if($d1->count()==0 && $d2->count()==0)
+            if($d1->count()==0 && $d2->count()==0 && $d4->count()>0)
             {$m=new Madre();
                 $d3=Inhabilitado::where('ci',$cedula);
                 if($d3->count()>=1)
@@ -177,7 +178,6 @@ class MadreController extends Controller
                 $madre->estado="INHABILITADO USTED TIENE TRABAJO ESTABLE";
                 exit;
             }
-            return "CORRECTO";
             }
             if ($d1->count()>=1){
                 return "INHABILITADO USTED YA COBRA EL BONO DISCAPACIDAD";
@@ -188,6 +188,12 @@ class MadreController extends Controller
                 return "INHABILITADO USTED TIENE TRABAJO ESTABLE";
                 exit;
             }
+
+            if ($d4->count()==0){
+                return "NO LA TENEMOS REGISTRADA EN NUESTROS DATOS COMO MADRE DE FAMILIA O MADRE MENOR A 60 AÑOS";
+                exit;
+            }
+            return "CORRECTO";
         }
 
 
