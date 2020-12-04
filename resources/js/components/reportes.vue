@@ -8,22 +8,39 @@
 
 <script>
 import VueCharts from 'vue-chartjs';
-import { Bar } from 'vue-chartjs';
+import {Pie } from 'vue-chartjs';
 import DoughnutChart from 'vue-doughnut-chart';
 export default {
-  //extends: VueChartJs.Pie,
+  extends: Pie,
+          data:function(){
+          return {
+            datos:[],
+            verif:0,
+            habi:0,
+            inhab:0,
+          }
+          },
   mounted () {
     // Overwriting base render method with actual data.
+    axios.get('/reporte').then(res=>{
+              console.log(res.data);
+              this.verif=res.data.no;
+              this.habi=res.data.hab;
+              this.inhab=res.data.inhab;
+
     this.renderChart({
       labels: ['Inhabilitados', 'Habilitados', 'En verificacion'],
       datasets: [
         {
           label: 'Total Registrados',
           backgroundColor: ['red','green','yellow'],
-          data: [40, 20, 12]
+          data: [parseInt( this.inhab), parseInt(this.habi), parseInt(this.verif)],
+          
         }
       ]
     })
+    })
   }
+  
 }
 </script>

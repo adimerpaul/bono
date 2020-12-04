@@ -12,6 +12,7 @@ use App\Models\Job;
 use App\Models\Jurado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class MadreController extends Controller
 {
@@ -285,11 +286,14 @@ class MadreController extends Controller
     }
 
     public function datosinfo(){
-        /*$results = DB::select('
-        SELECT (SELECT COUNT(*) from madres where estado="NO" and civalido!='') AS VERIF,
-        (SELECT COUNT(*) from madres where estado="HABILITADO") AS HAB,
-        (SELECT COUNT(*) from madres where estado="INHABILITADO") AS INHAB
-        ');*/
+      //$sql='SELECT (SELECT COUNT(*) from madres where estado="NO" and civalido!='') AS VERIF,
+       //(SELECT COUNT(*) from madres where estado="HABILITADO") AS HAB,
+       // (SELECT COUNT(*) from madres where estado="INHABILITADO") AS INHAB');
+        //$resultado=DB::select($sql);
+        $r1=DB::table('madres')->where('estado',"NO")->count();
+        $r2=DB::table('madres')->where('estado',"HABILITADO")->count();
+        $r3=DB::table('madres')->where('estado',"INHABILITADO")->count();
+        return  ['no'=>$r1,'habi'=>$r2,'inhab'=>$r3];
 
     }
 
