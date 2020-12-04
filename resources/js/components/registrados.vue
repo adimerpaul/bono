@@ -47,7 +47,7 @@
                                                     <input type="text" readonly class="form-control-plaintext form-control-sm" id="civ" v-bind:value="dato.civalido">
                                                 </div>
                                             </div>
-                                            
+
                                         </form>
                                     </div>
                                     <hr />
@@ -86,7 +86,7 @@
                                                         </label>
                                                     </div>
                                                 </div>
-                                            </div>  
+                                            </div>
                                             <div class="row col-md-12">
                                                 <div class="row col-12">
                                                     <label class="col-md-6" >Aportes AFP Futuro?</label>
@@ -103,7 +103,7 @@
                                                         </label>
                                                     </div>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <div class="row">
                                                 <div class="form-group col-md-12">
                                                     <label for="detalle"><b>DETALLE</b></label>
@@ -222,11 +222,11 @@
                     this.cadena+='REALIZA APORTES A LA AFP FUTURO ; ';
                 if(this.dato.aprevision=='SI')
                     this.cadena+='REALIZA APORTES A LA AFP PREVISION; ';
-                this.dato.detalle=this.cadena; 
+                this.dato.detalle=this.cadena;
                 if(this.dato.voto=='SI' && this.dato.apfuturo=='NO' && this.dato.aprevision=='NO')
                     {this.dato.estado='NO';
                     this.dato.detalle='PENDIENTE DE VERIFICACION';}
-                else               
+                else
                     this.dato.estado='INHABILITADO';
             },
 
@@ -242,6 +242,7 @@
                     confirmButtonText: 'SI'
                 }).then((result) => {
                     if (result.value) {
+                        this.datos={};
                         axios.put('/confirmar/'+this.dato.id,this.dato).then(res=>{
                             $('#exampleModal').modal('hide');
                             this.$fire({
