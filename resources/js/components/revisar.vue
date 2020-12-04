@@ -66,7 +66,7 @@
                     <div class="col-md-3 mb-3">
                         <label for="Celular">Celular</label>
                         <br><label><b>{{dato.celular}}</b></label>
-                        <a :href="'https://api.whatsapp.com/send?phone=591'+dato.celular+'&text=se%20verifico%20sus%20datos%20para%20el%20bono%20de%20madres%20y%20usted%20esta%20'+dato.estado"><i class="fab fa-whatsapp"></i></a>
+                        <a target="_blank" :href="'https://api.whatsapp.com/send?phone=591'+dato.celular+'&text=se%20verifico%20sus%20datos%20para%20el%20bono%20de%20madres%20y%20usted%20esta%20'+dato.estado"><i class="fab fa-whatsapp"></i></a>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="Dirección">Dirección Actual</label>
