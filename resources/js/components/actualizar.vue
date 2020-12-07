@@ -360,13 +360,13 @@
                                 <tr><th>Voto municipio Oruro?</th>
                                 <td>   
                                     <div class="form-check col-md-3">
-                                        <input type="radio" id="voto2" name="voto" value="NO" class="form-check-input" v-model="dato.voto" required >
+                                        <input type="radio" id="voto2" name="voto" value="NO" class="form-check-input" v-model="dato.voto" required @change="detallecontrol">
                                         <label class="form-control-label" for="voto2">NO</label>
                                     </div>
                                 </td>
                                 <td>
                                 <div class="form-check col-md-3">
-                                    <input required class="form-check-input" type="radio" name="voto" id="voto3" value="SI" v-model="dato.voto"  >
+                                    <input required class="form-check-input" type="radio" name="voto" id="voto3" value="SI" v-model="dato.voto"  @change="detallecontrol">
                                     <label class="form-check-label" for="voto3">
                                         SI
                                     </label>
@@ -377,13 +377,13 @@
                                     <th>Aportes AFP Prevision?</th>
                                     <td>
                                        <div class="form-check col-md-3">
-                                            <input type="radio" id="afprevision2" name="afprevision" value="NO" class="form-check-input" v-model="dato.aprevision" required  >
+                                            <input type="radio" id="afprevision2" name="afprevision" value="NO" class="form-check-input" v-model="dato.aprevision" required  @change="detallecontrol">
                                             <label class="form-control-label" for="afprevision2">NO</label>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-check col-md-3">
-                                            <input required class="form-check-input" type="radio" name="afprevision" id="afprevision3" value="SI" v-model="dato.aprevision"  >
+                                            <input required class="form-check-input" type="radio" name="afprevision" id="afprevision3" value="SI" v-model="dato.aprevision" @change="detallecontrol" >
                                             <label class="form-check-label" for="afprevision3">
                                                  SI
                                             </label>
@@ -394,13 +394,13 @@
                                     <th>Aportes AFP Futuro?</th>
                                     <td>
                                         <div class="form-check col-md-3">
-                                            <input type="radio" id="afpfuturo2" name="afpfuturo" value="NO" class="form-check-input" v-model="dato.apfuturo" required >
+                                            <input type="radio" id="afpfuturo2" name="afpfuturo" value="NO" class="form-check-input" v-model="dato.apfuturo" required @change="detallecontrol" >
                                             <label class="form-control-label" for="afpfuturo2">NO</label>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-check col-md-3">
-                                            <input required class="form-check-input" type="radio" name="afpfuturo" id="afpfuturo3" value="SI" v-model="dato.apfuturo"  >
+                                            <input required class="form-check-input" type="radio" name="afpfuturo" id="afpfuturo3" value="SI" v-model="dato.apfuturo" @change="detallecontrol" >
                                             <label class="form-check-label" for="afpfuturo3">
                                                 SI
                                             </label>
@@ -582,6 +582,21 @@ Vue.use(Datetime)
                         return true;
                     else
                         return false;
+            },
+            detallecontrol(){
+                this.cadena='';
+                if(this.dato.voto=='NO')
+                    this.cadena+='NO ESTA REGISTRADA EN EL MUNICIPIO DE ORURO; ';
+                if(this.dato.apfuturo=='SI')
+                    this.cadena+='REALIZA APORTES A LA AFP FUTURO ; ';
+                if(this.dato.aprevision=='SI')
+                    this.cadena+='REALIZA APORTES A LA AFP PREVISION; ';
+                this.dato.detalle=this.cadena;
+                if(this.dato.voto=='SI' && this.dato.apfuturo=='NO' && this.dato.aprevision=='NO')
+                    {this.dato.estado='NO';
+                    this.dato.detalle='PENDIENTE DE VERIFICACION';}
+                else
+                    this.dato.estado='INHABILITADO';
             },
         limpiabanco(){
             this.dato.banco=null;
