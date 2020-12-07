@@ -75,7 +75,7 @@
                                 </a>
                             </li>
                         </router-link>
-                        @if(Auth::user()->id=='6' )
+                        @if(Auth::user()->id=='1' )
 
                         <router-link
                             to="/actualizar"
