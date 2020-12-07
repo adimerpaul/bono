@@ -75,6 +75,8 @@
                                 </a>
                             </li>
                         </router-link>
+                        @if(Auth::user()->id=='6' )
+
                         <router-link
                             to="/actualizar"
                             v-slot="{ href, route, navigate, isActive, isExactActive }"
@@ -85,6 +87,7 @@
                                 </a>
                             </li>
                         </router-link>
+                        @endif
                         @if(Auth::user()->id=='2')
                         <router-link
                             to="/especial"
