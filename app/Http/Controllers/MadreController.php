@@ -310,6 +310,14 @@ class MadreController extends Controller
         return $res;
     }
 
+    public function totalrevisado(){
+        $res=DB::table('madres')
+            ->join('users','madres.user_id','=','users.id')
+            ->select(DB::raw('madres.user_id AS iduser,COUNT(*) AS total, users.name AS nombre'))
+            ->groupBy('iduser')->groupBy('nombre')->orderBy('total')->get();
+            return $res;
+    }
+
     public function info(){
         return Auth::user()->name;
     }

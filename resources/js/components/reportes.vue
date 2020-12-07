@@ -9,6 +9,10 @@
         <canvas id='imagen2'  ref="imagen2" :width="width" :height="height" ></canvas>
         
       </div>
+      <div class="col-md-6" style="width:500px; height:500px;">
+        <canvas id='imagen3'  ref="imagen3" :width="width" :height="height" ></canvas>
+        
+      </div>
     </div>
 </div>
 </template>
@@ -23,7 +27,9 @@ export default {
           return {
             datos:[],
             labels2:[],
+            labels3:[],
             dinfo:[],
+            dinfo3:[],
             verif:0,
             habi:0,
             inhab:0,
@@ -35,6 +41,7 @@ export default {
     this.imagen1();
 
     this.imagen2();
+    this.imagen3();
   },
 
   methods:{
@@ -74,6 +81,27 @@ export default {
               data: {
               labels: this.labels2,
               datasets: [{label:'Registros por DIA',data: this.dinfo}]
+                }
+            });
+
+
+        })
+  },
+  imagen3(){
+        axios.get('/reporte3').then(res=>{
+          console.log(res.data);
+          this.labels3=[];
+          this.dinfo3=[];
+          res.data.forEach(dd => {
+            this.labels3.push(dd.nombre);
+            this.dinfo3.push(dd.total);
+          });
+            console.log(this.dinfo);
+            new Chart(this.$refs.imagen3, {
+              type: 'bar',
+              data: {
+              labels: this.labels3,
+              datasets: [{label:'Total Revisados',data: this.dinfo3}]
                 }
             });
 
