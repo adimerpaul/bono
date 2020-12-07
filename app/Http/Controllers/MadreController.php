@@ -305,7 +305,8 @@ class MadreController extends Controller
 
     }
     public function numregistro(){
-        $res=DB::select('select COUNT(*) as numero,DATE(created_at) as fecha FROM madres group by date(created_at)')->get();
+        $res=DB::table('madres')->select(DB::raw('COUNT(*) AS numero,DATE(created_at) AS fecha'))
+        ->groupBy('fecha')->get();
         return $res;
     }
 
