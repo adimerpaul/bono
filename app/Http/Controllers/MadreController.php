@@ -266,7 +266,9 @@ class MadreController extends Controller
         $m->voto=$request->voto;
         $m->apfuturo=$request->apfuturo;
         $m->aprevision=$request->aprevision;
-        //$m->user_id=Auth::user()->id;
+        $m->verificar=$request->verificar;
+            if($request->verificar=='SI')
+            $m->user_id=Auth::user()->id;
         $m->save();
         $delhijo=Hijo::where('madre_id',$id)->delete();
         foreach ($request->hijos as $hijo){
@@ -302,8 +304,14 @@ class MadreController extends Controller
         return  ['no'=>$r1,'habi'=>$r2,'inhab'=>$r3];
 
     }
+    public function numregistro(){
+        $res=DB::select('select COUNT(*) as numero,DATE(created_at) as fecha FROM madres group by date(created_at)')->get();
+        return $res;
+    }
 
     public function info(){
         return Auth::user()->name;
     }
+
+
 }

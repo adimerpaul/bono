@@ -51,6 +51,7 @@ Route::get('/madre/info', [App\Http\Controllers\MadreController::class, 'info'])
 Route::get('/madre/{ci}', [App\Http\Controllers\MadreController::class, 'show'])->name('home');
 Route::put('/madre/{id}', [App\Http\Controllers\MadreController::class, 'update'])->name('home');
 Route::get('/reporte', [App\Http\Controllers\MadreController::class, 'datosinfo'])->name('home');
+Route::get('/reporte2', [App\Http\Controllers\MadreController::class, 'numregistro'])->name('home');
 Route::get('/madreregister/{f1}/{f2}', [App\Http\Controllers\MadreController::class, 'madreregister'])->name('home');
 Route::get('/verificacion', [App\Http\Controllers\MadreController::class, 'verificacion'])->name('home');
 //Route::get('/madre', [App\Http\Controllers\MadreController::class, 'index'])->name('home');

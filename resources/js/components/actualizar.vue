@@ -149,7 +149,7 @@
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
-                        <label for="Celular">Celular</label>
+                        <label for="Celular">Celular<a target="_blank" :href="'https://api.whatsapp.com/send?phone=591'+dato.celular+'&text=se%20verifico%20sus%20datos%20para%20el%20bono%20de%20madres%20y%20usted%20esta%20'+dato.estado"><i class="fab fa-whatsapp"></i></a></label>
                         <input type="text" class="form-control" v-bind:class="dato.celular==null?'':dato.celular==''?'is-invalid':'is-valid'" v-model="dato.celular" id="Celular" placeholder="Celular" >
                         <div class="valid-feedback">
                             Bien!
@@ -344,7 +344,7 @@
                         <div class="form-check">
                             <input required class="form-check-input" type="radio" name="estado" id="estado2" value="NO" v-model="dato.estado">
                             <label class="form-check-label" for="estado2">
-                                NO
+                                EN PROCESO
                             </label>
                         </div>
 
@@ -355,10 +355,77 @@
                             </label>
                         </div>
                     </div>
+                                            <div class="row col-12">
+                            <table class="table table-bordered">
+                                <tr><th>Voto municipio Oruro?</th>
+                                <td>   
+                                    <div class="form-check col-md-3">
+                                        <input type="radio" id="voto2" name="voto" value="NO" class="form-check-input" v-model="dato.voto" required >
+                                        <label class="form-control-label" for="voto2">NO</label>
+                                    </div>
+                                </td>
+                                <td>
+                                <div class="form-check col-md-3">
+                                    <input required class="form-check-input" type="radio" name="voto" id="voto3" value="SI" v-model="dato.voto"  >
+                                    <label class="form-check-label" for="voto3">
+                                        SI
+                                    </label>
+                                </div>
+                                </td>
+                                </tr>
+                                <tr>
+                                    <th>Aportes AFP Prevision?</th>
+                                    <td>
+                                       <div class="form-check col-md-3">
+                                            <input type="radio" id="afprevision2" name="afprevision" value="NO" class="form-check-input" v-model="dato.aprevision" required  >
+                                            <label class="form-control-label" for="afprevision2">NO</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check col-md-3">
+                                            <input required class="form-check-input" type="radio" name="afprevision" id="afprevision3" value="SI" v-model="dato.aprevision"  >
+                                            <label class="form-check-label" for="afprevision3">
+                                                 SI
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Aportes AFP Futuro?</th>
+                                    <td>
+                                        <div class="form-check col-md-3">
+                                            <input type="radio" id="afpfuturo2" name="afpfuturo" value="NO" class="form-check-input" v-model="dato.apfuturo" required >
+                                            <label class="form-control-label" for="afpfuturo2">NO</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check col-md-3">
+                                            <input required class="form-check-input" type="radio" name="afpfuturo" id="afpfuturo3" value="SI" v-model="dato.apfuturo"  >
+                                            <label class="form-check-label" for="afpfuturo3">
+                                                SI
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
                     <div class="col-md-6 mb-6">
                         <label for="ci1" class="col-sm-9 col-form-label">Datos Verificados</label>
                         <div class="col-sm-3">
                         <input type="text" readonly class="form-control-plaintext" id="ci1" v-model="dato.verificar">
+                        <div class="form-check">
+                            <input required class="form-check-input" type="radio" name="verificar" id="verificar1" value="SI" v-model="dato.verificar" checked>
+                            <label class="form-check-label" for="verificar1">
+                                SI
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input required class="form-check-input" type="radio" name="verificar" id="verificar2" value="NO" v-model="dato.verificar">
+                            <label class="form-check-label" for="verificar2">
+                                NO
+                            </label>
+                        </div>
                         </div>
                     </div>
                     <br>
