@@ -53,7 +53,7 @@
                         </router-link>
                         @endif
 {{--                        @endif--}}
-                        @if(Auth::user()->id=='10' || Auth::user()->id=='9' || Auth::user()->id=='6' || Auth::user()->id=='15' || Auth::user()->id=='16' || Auth::user()->id=='2')
+                        @if(Auth::user()->id=='10' || Auth::user()->id=='9' || Auth::user()->id=='6' || Auth::user()->id=='15' || Auth::user()->id=='16' || Auth::user()->id=='2' || Auth::user()->id=='1')
                         <router-link
                             to="/registrados"
                             v-slot="{ href, route, navigate, isActive, isExactActive }"
