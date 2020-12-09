@@ -103,6 +103,7 @@
                             </li>
                         </router-link>
                         @endif
+                        @if(Auth::user()->id=='1')
                         <router-link
                             to="/registrar"
                             v-slot="{ href, route, navigate, isActive, isExactActive }"
@@ -113,6 +114,7 @@
                                 </a>
                             </li>
                         </router-link>
+                        @endif
                         <router-link
                             to="/reportes"
                             v-slot="{ href, route, navigate, isActive, isExactActive }"
