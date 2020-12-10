@@ -125,11 +125,11 @@ export default {
                         axios.get('/verifma/'+this.param).then(res=>{
                             console.log(res.data);
                             if(res.data==''){
-                                this.dato.detalle='NO ESTA REGISTRADA COMO EN LA CORTE';
+                                this.dato.detalle='NO ESTA REGISTRADA COMO MAMÀ EN LA CORTE';
                             }
                             else
                             this.dato.detalle='NO SE ENCUENTRA REGISTRADO POR FAVOR, REGISTRESE PARA PODER VERFICAR SUS DATOS';
-                            
+
                         })
 
                   }else{
