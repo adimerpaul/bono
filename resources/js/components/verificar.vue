@@ -121,7 +121,17 @@ export default {
                         if (this.dato.nombres==undefined||this.dato.nombres==null){
                             this.dato.nombres='';
                         }
-                        this.dato.detalle='NO SE ENCUENTRA REGISTRADO POR FAVOR, REGISTRESE PARA PODER VERFICAR SUS DATOS';
+                        
+                        axios.get('/verifma/'+this.param).then(res=>{
+                            console.log(res.data);
+                            if(res.data==''){
+                                this.dato.detalle='NO ESTA REGISTRADA COMO EN LA CORTE';
+                            }
+                            else
+                            this.dato.detalle='NO SE ENCUENTRA REGISTRADO POR FAVOR, REGISTRESE PARA PODER VERFICAR SUS DATOS';
+                            
+                        })
+
                   }else{
                    this.dato=res.data[0];
                         if (this.dato.paterno==undefined||this.dato.paterno==null){
