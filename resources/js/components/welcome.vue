@@ -128,7 +128,7 @@
                     <div class="col-md-6 mb-6 form-row" >
                         <label for="Carnet Identidad">CI o Pasaporte Expedido (- Complemento)</label>
                         <div class="col-5">
-                            <input type="number" class="form-control" v-bind:class="dato.ci==null?'':dato.ci==''?'is-invalid':'is-valid'" v-model="dato.ci" id="Carnet Identidad" placeholder="Carnet Identidad" required>
+                            <input type="number" class="form-control" v-bind:class="dato.ci==null?'':dato.ci==''?'is-invalid':'is-valid'" v-model="dato.ci" id="Carnet Identidad" placeholder="Carnet Identidad" required @change="verifica">
                         </div>
 
                         <div class="col-3">
@@ -147,13 +147,13 @@
                         <b>-</b>
                         
                         <div class="col-3">
-                            <input type="text" class="form-control mayuscula" v-model="dato.ext" id="ciext" placeholder="1X" value='' maxlength="2">
+                            <input type="text" class="form-control mayuscula" v-model="dato.ext" id="ciext" placeholder="1X" value='' maxlength="2" @change="verifica">{{this.men}}
                         </div>
                         <div class="valid-feedback">
                             Bien!
                         </div>
                         <div class="invalid-feedback">
-                            Dato necesario!
+                            Dato necesario! 
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
@@ -395,6 +395,8 @@
             return {
                 selec:true,
                 d:false,
+                men:'',
+                cedula:'',
                 dato:{hijos:[{nombres:'',apellidos:''}]},
                 recintos:[],
                 bancos:[
@@ -509,6 +511,21 @@
                         return true;
                     else
                         return false;
+            },
+            verifica(){
+                this.men='';
+                if (this.dato.ext=='')
+                    this.cedula=this.dato.ci;
+                else
+                    this.cedula=this.dato.ci+'-'+this.dato.ext;
+                axios.get('/verifma/'+this.cedula).then(res=>{
+                    console.log(res.data);
+                    if(res.data==''){
+                        this.men='no esta registrada como mama';
+                        return false;
+                    }
+                    else return true;
+                });
             }
 
         },

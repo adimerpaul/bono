@@ -274,8 +274,9 @@ class MadreController extends Controller
         $m->apfuturo=$request->apfuturo;
         $m->aprevision=$request->aprevision;
         $m->verificar=$request->verificar;
+            //if($request->verificar=='SI' && $m->user_id!=$m->user_id=Auth::user()->id)
             if($request->verificar=='SI')
-            $m->user_id=Auth::user()->id;
+                $m->user_id_especial=Auth::user()->id;
         $m->save();
         $delhijo=Hijo::where('madre_id',$id)->delete();
         foreach ($request->hijos as $hijo){
@@ -328,6 +329,11 @@ class MadreController extends Controller
 
     public function info(){
         return Auth::user()->name;
+    }
+
+    public function verma($ci){
+        $res=DB::table('mamas')->where('ci',$ci)->get();
+        return $res;
     }
 
 
