@@ -246,7 +246,7 @@ class MadreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(Auth::user()->id=='99999999999999999999999' ){
+        if(Auth::user()->id=='2' ){
         
         $m=Madre::find($id);
         $m->paterno=$request->paterno;

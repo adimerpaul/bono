@@ -519,7 +519,7 @@ Vue.use(Datetime)
                   else{
                    console.log(res.data[0]);
                    this.dato=res.data[0];
-                   if(this.dato.estado!='NO' && this.dato.verificar=='SI')
+                   //if(this.dato.estado!='NO' && this.dato.verificar=='SI')
                         this.dato={hijos:[{nombres:'',apellidos:''}]};
                    if(this.dato.banco!=null)
                         this.tienebanco='SI';
