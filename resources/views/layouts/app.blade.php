@@ -56,7 +56,10 @@
                         @if(Auth::user()->id=='10' || Auth::user()->id=='9' || Auth::user()->id=='6' || Auth::user()->id=='15' 
                         || Auth::user()->id=='16' || Auth::user()->id=='2' || Auth::user()->id=='1'
                         || Auth::user()->id=='17' || Auth::user()->id=='18' || Auth::user()->id=='19'
-                        || Auth::user()->id=='20' || Auth::user()->id=='21' || Auth::user()->id=='22' || Auth::user()->id=='23')
+                        || Auth::user()->id=='20' || Auth::user()->id=='21' || Auth::user()->id=='22' 
+                        || Auth::user()->id=='23' || Auth::user()->id=='24' || Auth::user()->id=='25'
+                        || Auth::user()->id=='26' || Auth::user()->id=='27'
+                        )
                         <router-link
                             to="/registrados"
                             v-slot="{ href, route, navigate, isActive, isExactActive }"
