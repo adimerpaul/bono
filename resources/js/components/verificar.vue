@@ -15,7 +15,7 @@
                                 <label for="fecha">Fecha de Nacimiento</label>
                                 <input type="date" class="form-control" id="fecha" required v-model="fecha">
                             </div>
-                                <button type="submit" class="btn btn-dark btn-block">
+                                <button type="submit" class="btn btn-dark btn-block" >
                                     <i class="fa fa-cog"></i> Verificar
                                 </button>
                             </form>
@@ -32,7 +32,7 @@
                                  <div class="form-group row">
                                     <label for="nombre" class="col-sm-3 col-form-label">NOMBRE COMPLETO</label>
                                     <div class="col-sm-9">
-                                    <input type="text" readonly class="form-control-plaintext" id="nombre" v-bind:value="dato.paterno +' '+dato.materno+' '+dato.nombres">
+                                    <input type="text" readonly class="form-control-plaintext" id="nombre" v-bind:value="dato.nombres+' '+dato.paterno +' '+dato.materno">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -100,18 +100,36 @@ export default {
           return {
               dato:{paterno:'',materno:'',nombres:''},
               param:"",
-              fecha:""
+              fecha:"",
+              men:'',
           }
         },
         mounted() {
             console.log('Component mounted.');
         },
         methods:{
+            
+            verifmama(){
+                axios.get('/verifma/'+this.param).then(res2=>{
+                           console.log(res2.data);
+                            if(res2.data=='')
+                               this.men= 'NO ESTA REGISTRADA COMO MAMÀ EN LA CORTE';
+                            else
+                                this.men= 'NO SE ENCUENTRA REGISTRADO POR FAVOR, REGISTRESE PARA PODER VERFICAR SUS DATOS';
+                        console.log(this.dato.detalle);  
+                            //
+                        });
+
+            },
             verificar(){
+              this.verifmama();
               axios.get('/verificar/'+this.param+"/"+this.fecha).then(res=>{
                   console.log(res.data);
                   if(res.data==''){
                         this.dato={};
+                        this.dato.detalle=this.men;
+                        console.log(this.dato.detalle);  
+
                         if (this.dato.paterno==undefined||this.dato.paterno==null){
                             this.dato.paterno='';
                         }
@@ -121,16 +139,8 @@ export default {
                         if (this.dato.nombres==undefined||this.dato.nombres==null){
                             this.dato.nombres='';
                         }
-                        
-                        //axios.get('/verifma/'+this.param).then(res=>{
-                         //   console.log(res.data);
-                          //  if(res.data==''){
-                            //    this.dato.detalle='NO ESTA REGISTRADA COMO MAMÀ EN LA CORTE';
-                            //}
-                            //else
-                                this.dato.detalle='NO SE ENCUENTRA REGISTRADO POR FAVOR, REGISTRESE PARA PODER VERFICAR SUS DATOS';
+                          
 
-                       // });
 
                   }else{
                    this.dato=res.data[0];
