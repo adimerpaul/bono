@@ -113,7 +113,7 @@ export default {
                 axios.get('/verifma/'+this.param).then(res2=>{
                            console.log(res2.data);
                             if(res2.data=='')
-                               this.men= 'NO ESTA REGISTRADA COMO MAMÀ EN LA CORTE';
+                               this.men= 'NO ESTA REGISTRADA COMO MAMÀ EN SERECI';
                             else
                                 this.men= 'NO SE ENCUENTRA REGISTRADO POR FAVOR, REGISTRESE PARA PODER VERFICAR SUS DATOS';
                         console.log(this.dato.detalle);  
