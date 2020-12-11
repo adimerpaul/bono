@@ -58,7 +58,7 @@
                         || Auth::user()->id=='17' || Auth::user()->id=='18' || Auth::user()->id=='19'
                         || Auth::user()->id=='20' || Auth::user()->id=='21' || Auth::user()->id=='22' 
                         || Auth::user()->id=='23' || Auth::user()->id=='24' || Auth::user()->id=='25'
-                        || Auth::user()->id=='26' || Auth::user()->id=='27'
+                        || Auth::user()->id=='26' || Auth::user()->id=='27' || Auth::user()->id=='28' 
                         )
                         <router-link
                             to="/registrados"
