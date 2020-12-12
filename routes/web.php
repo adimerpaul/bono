@@ -50,6 +50,7 @@ Route::post('/madre', [App\Http\Controllers\MadreController::class, 'store'])->n
 Route::get('/madre/info', [App\Http\Controllers\MadreController::class, 'info'])->name('home');
 Route::get('/madre/{ci}', [App\Http\Controllers\MadreController::class, 'show'])->name('home');
 Route::put('/madre/{id}', [App\Http\Controllers\MadreController::class, 'update'])->name('home');
+Route::put('/modifica/{id}', [App\Http\Controllers\MadreController::class, 'modificar'])->name('home');
 Route::get('/reporte', [App\Http\Controllers\MadreController::class, 'datosinfo'])->name('home');
 Route::get('/reporte2', [App\Http\Controllers\MadreController::class, 'numregistro'])->name('home');
 Route::get('/reporte3', [App\Http\Controllers\MadreController::class, 'totalrevisado'])->name('home');

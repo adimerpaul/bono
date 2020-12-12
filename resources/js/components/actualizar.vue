@@ -339,26 +339,14 @@
                     <br>
 
                     <div class="col-md-6 mb-6">
-                        <label for="Celular">Habilitado para cobro</label>
+                        <label for="estado">Habilitado para cobro</label>
+                        <input type="text" readonly class="form-control-plaintext" id="estado" v-model="dato.estado">
 
-                        <div class="form-check">
-                            <input required class="form-check-input" type="radio" name="estado" id="estado2" value="NO" v-model="dato.estado">
-                            <label class="form-check-label" for="estado2">
-                                EN PROCESO
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input required class="form-check-input" type="radio" name="estado" id="estado4" value="INHABILITADO" v-model="dato.estado">
-                            <label class="form-check-label" for="estado2">
-                                INHABILITADO
-                            </label>
-                        </div>
                     </div>
-                                            <div class="row col-12">
-                            <table class="table table-bordered">
+                     <div class="row col-12">
+                            <table v-if="val==null" class="table table-bordered">
                                 <tr><th>Voto municipio Oruro?</th>
-                                <td>   
+                                <td >   
                                     <div class="form-check col-md-3">
                                         <input type="radio" id="voto2" name="voto" value="NO" class="form-check-input" v-model="dato.voto" required @change="detallecontrol">
                                         <label class="form-control-label" for="voto2">NO</label>
@@ -408,24 +396,32 @@
                                     </td>
                                 </tr>
                             </table>
+                             <table v-else class="table table-bordered">
+                                <tr><th>Voto municipio Oruro?</th>
+                                <td >   
+                                    {{dato.voto}}
+                                </td>
+                                </tr>
+                                <tr>
+                                    <th>Aportes AFP Prevision?</th>
+                                    <td >   
+                                    {{dato.aprevision}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Aportes AFP Futuro?</th>
+                                     <td >   
+                                    {{dato.apfuturo}}
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
 
                     <div class="col-md-6 mb-6">
                         <label for="ci1" class="col-sm-9 col-form-label">Datos Verificados</label>
                         <div class="col-sm-3">
                         <input type="text" readonly class="form-control-plaintext" id="ci1" v-model="dato.verificar">
-                        <div class="form-check">
-                            <input required class="form-check-input" type="radio" name="verificar" id="verificar1" value="SI" v-model="dato.verificar" checked>
-                            <label class="form-check-label" for="verificar1">
-                                SI
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input required class="form-check-input" type="radio" name="verificar" id="verificar2" value="NO" v-model="dato.verificar">
-                            <label class="form-check-label" for="verificar2">
-                                NO
-                            </label>
-                        </div>
+                        
                         </div>
                     </div>
                     <br>
@@ -475,6 +471,7 @@ Vue.use(Datetime)
           return {
               dato:{hijos:[{nombres:'',apellidos:''}]},
               param:null,
+              val:'',
               recintos:[],
               tienebanco:'SI',
                 bancos:[
@@ -519,6 +516,7 @@ Vue.use(Datetime)
                   else{
                    console.log(res.data[0]);
                    this.dato=res.data[0];
+                   this.val=this.dato.voto;
                    //if(this.dato.estado!='NO' && this.dato.verificar=='SI')
                         //this.dato={hijos:[{nombres:'',apellidos:''}]};
                    if(this.dato.banco!=null)

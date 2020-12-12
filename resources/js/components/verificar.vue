@@ -123,6 +123,7 @@ export default {
             },
             verificar(){
               this.verifmama();
+              this.dato={paterno:'',materno:'',nombres:''};
               axios.get('/verificar/'+this.param+"/"+this.fecha).then(res=>{
                   console.log(res.data);
                   if(res.data==''){

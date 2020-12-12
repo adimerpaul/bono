@@ -311,78 +311,37 @@
                     <br>
 
                     <div class="col-md-6 mb-6">
-                        <label for="Celular">Habilitado para cobro</label>
+                        <label for="estado">Habilitado para cobro</label>
+                        <input type="text" readonly class="form-control-plaintext" id="estado1" v-model="dato.estado">
 
-                        <div class="form-check">
-                            <input required class="form-check-input" type="radio" name="estado" id="estado2" value="NO" v-model="dato.estado">
-                            <label class="form-check-label" for="estado2">
-                                NO
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input required class="form-check-input" type="radio" name="estado" id="estado3" value="HABILITADO" v-model="dato.estado">
-                            <label class="form-check-label" for="estado3">
-                                HABILITADO
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input required class="form-check-input" type="radio" name="estado" id="estado4" value="INHABILITADO" v-model="dato.estado">
-                            <label class="form-check-label" for="estado2">
-                                INHABILITADO
-                            </label>
-                        </div>
                     </div>
                         <div class="row col-12">
                             <table class="table table-bordered">
                                 <tr><th>Voto municipio Oruro?</th>
                                 <td>   
                                     <div class="form-check col-md-3">
-                                        <input type="radio" id="voto2" name="voto" value="NO" class="form-check-input" v-model="dato.voto" required @change="detallecontrol">
-                                        <label class="form-control-label" for="voto2">NO</label>
+                                        <label class="form-control-label" for="voto2">{{dato.voto}}</label>
                                     </div>
                                 </td>
-                                <td>
-                                <div class="form-check col-md-3">
-                                    <input required class="form-check-input" type="radio" name="voto" id="voto3" value="SI" v-model="dato.voto" @change="detallecontrol" >
-                                    <label class="form-check-label" for="voto3">
-                                        SI
-                                    </label>
-                                </div>
-                                </td>
+                       
                                 </tr>
                                 <tr>
                                     <th>Aportes AFP Prevision?</th>
                                     <td>
                                        <div class="form-check col-md-3">
-                                            <input type="radio" id="afprevision2" name="afprevision" value="NO" class="form-check-input" v-model="dato.aprevision" required @change="detallecontrol" >
-                                            <label class="form-control-label" for="afprevision2">NO</label>
+                                            <label class="form-control-label" for="afprevision2">{{dato.aprevision}}</label>
                                         </div>
                                     </td>
-                                    <td>
-                                        <div class="form-check col-md-3">
-                                            <input required class="form-check-input" type="radio" name="afprevision" id="afprevision3" value="SI" v-model="dato.aprevision" @change="detallecontrol" >
-                                            <label class="form-check-label" for="afprevision3">
-                                                 SI
-                                            </label>
-                                        </div>
-                                    </td>
+    
                                 </tr>
                                 <tr>
                                     <th>Aportes AFP Futuro?</th>
                                     <td>
                                         <div class="form-check col-md-3">
-                                            <input type="radio" id="afpfuturo2" name="afpfuturo" value="NO" class="form-check-input" v-model="dato.apfuturo" required @change="detallecontrol">
-                                            <label class="form-control-label" for="afpfuturo2">NO</label>
+                                            <label class="form-control-label" for="afpfuturo2">{{dato.apfuturo}}</label>
                                         </div>
                                     </td>
-                                    <td>
-                                        <div class="form-check col-md-3">
-                                            <input required class="form-check-input" type="radio" name="afpfuturo" id="afpfuturo3" value="SI" v-model="dato.apfuturo" @change="detallecontrol" >
-                                            <label class="form-check-label" for="afpfuturo3">
-                                                SI
-                                            </label>
-                                        </div>
-                                    </td>
+
                                 </tr>
                             </table>
                         </div>
@@ -400,6 +359,47 @@
                         <textarea class="form-control" name="detalle" id="detalle" cols="30" rows="10" v-model="dato.detalle"></textarea>
                     </div>
                 </div>
+                                    <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>
+                        <div class="form-check"><h3>
+                            <input class="form-check-input" type="checkbox"   true-value="SI"  false-value="NO" id="docnac"  v-model="dato.docnac">
+                            <label class="form-check-label" for="docnac">
+                                Certificado de Nacimiento / Cedula Hij@
+                            </label></h3>
+                        </div></th>
+                        </tr>
+                        <tr><th>
+                        <div class="form-check"><h3>
+                            <input class="form-check-input" type="checkbox"  id="docbiomet" true-value="SI"  false-value="NO"  v-model="dato.docbiomet">
+                            <label class="form-check-label" for="docbiomet">
+                                Registro Biometrico / carnet de sufragio
+                            </label></h3>
+                        </div></th>
+                        </tr>
+                        <tr><th>
+                        <div class="form-check"><h3>
+                            <input class="form-check-input" type="checkbox" id="docfuturo" true-value="SI"  false-value="NO"  v-model="dato.docfuturo">
+                            <label class="form-check-label" for="docfuturo">
+                                Extracto o resumen de Aportes AFP Futuro 
+                            </label></h3>
+                        </div></th>
+                        </tr>
+                        <tr><th>
+                        <div class="form-check"><h3>
+                            <input class="form-check-input" type="checkbox"  id="docprevision" true-value="SI"  false-value="NO" v-model="dato.docprevision">
+                            <label class="form-check-label" for="docprevision">
+                                Extracto o resumen de aportes a AFP Previsiones
+                            </label></h3>
+                        </div></th>
+                        </tr>
+                        </table>
+                    </div>
+                    
+                    </div>
+
                 <blockquote class="blockquote">
                     <p class="mb-0">DECLARACION JURADA</p>
                     <footer class="blockquote-footer">
@@ -519,7 +519,7 @@ Vue.use(Datetime)
                         // );
 
 
-                        axios.put('/madre/'+this.dato.id,this.dato).then(res=>{
+                        axios.put('/modifica/'+this.dato.id,this.dato).then(res=>{
                             console.log(res.data);
 
                         });
@@ -549,7 +549,7 @@ Vue.use(Datetime)
                     else
                         return false;
             },
-                        detallecontrol(){
+            detallecontrol(){
                 this.cadena='';
                 if(this.dato.voto=='NO')
                     this.cadena+='NO ESTA REGISTRADA EN EL MUNICIPIO DE ORURO; ';

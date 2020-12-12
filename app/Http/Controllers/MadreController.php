@@ -10,6 +10,7 @@ use App\Models\Mama;
 use App\Models\Rent;
 use App\Models\Job;
 use App\Models\Jurado;
+use App\Models\Special;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -58,14 +59,31 @@ class MadreController extends Controller
         || Auth::user()->id=='23' || Auth::user()->id=='24' || Auth::user()->id=='25'
         || Auth::user()->id=='26' || Auth::user()->id=='27' || Auth::user()->id=='28' 
         ){
+
             $m=Madre::find($id);
-            $m->estado=$request->estado;
-            $m->detalle=$request->detalle;
+            $ma=Mama::where('ci',$m->civalido)->count();
             $m->voto=$request->voto;
             $m->apfuturo=$request->apfuturo;
             $m->aprevision=$request->aprevision;
             $m->verificar='SI';
             $m->user_id=Auth::user()->id;
+
+            if($ma>0 ){
+                $m->mama='SI';
+                if($request->estado=='NO'){
+                $m->estado='HABILITADO';
+                $m->detalle='USTED ESTA ESTA HABILITADO PARA REALIZAR EL COBRO';}
+                else{
+                $m->estado=$request->estado;
+                $m->detalle=$request->detalle;
+                }
+                
+            }
+            else {
+                $m->mama='NO';
+                $m->estado='INHABILITADO';
+                $m->detalle=$request->detalle.' NO ESTA REGISTRADA COMO MAMÀ EN EL SERECI';
+            }
             $m->save();
         }
     }
@@ -247,8 +265,14 @@ class MadreController extends Controller
     public function update(Request $request, $id)
     {
         if(Auth::user()->id=='2' ){
-        
         $m=Madre::find($id);
+        if($m->voto== null){
+         $m->user_id=Auth::user()->id;   
+         $m->voto=$request->voto;
+        $m->apfuturo=$request->apfuturo;
+        $m->aprevision=$request->aprevision;
+        $m->verificar='SI';
+        }
         $m->paterno=$request->paterno;
         $m->materno=$request->materno;
         $m->conyugue=$request->conyugue;
@@ -270,13 +294,12 @@ class MadreController extends Controller
         $m->numerobanco=$request->numerobanco;
         $m->estado=$request->estado;
         $m->detalle=$request->detalle;
-        $m->voto=$request->voto;
-        $m->apfuturo=$request->apfuturo;
-        $m->aprevision=$request->aprevision;
-        $m->verificar=$request->verificar;
+        
+        //$m->verificar=$request->verificar;
             //if($request->verificar=='SI' && $m->user_id!=$m->user_id=Auth::user()->id)
-            if($request->verificar=='SI')
-                $m->user_id_especial=Auth::user()->id;
+            //if($request->verificar=='SI')
+              //  $m->user_id_especial=Auth::user()->id;
+              
         $m->save();
         $delhijo=Hijo::where('madre_id',$id)->delete();
         foreach ($request->hijos as $hijo){
@@ -288,6 +311,57 @@ class MadreController extends Controller
         }
     }
     }
+    public function modificar(Request $request, $id)
+    {
+        if(Auth::user()->id=='2' ){
+        
+        $m=Madre::find($id);
+        $m->paterno=$request->paterno;
+        $m->materno=$request->materno;
+        $m->conyugue=$request->conyugue;
+        $m->nombres=$request->nombres;
+        $m->fechanac=$request->fechanac;
+        $m->ci=$request->ci;
+        $m->fijo=$request->fijo;
+        $m->celular=$request->celular;
+        $m->salario=$request->salario;
+        $m->afp=$request->afp;
+        $m->rentista=$request->rentista;
+        $m->juana=$request->juana;
+        $m->discapacidad=$request->discapacidad;
+        $m->municipio=$request->municipio;
+        $m->sexo=$request->sexo;
+        $m->direccion=$request->direccion;
+        $m->recinto=$request->recinto;
+        $m->banco=$request->banco;
+        $m->numerobanco=$request->numerobanco;
+
+
+
+            //if($request->verificar=='SI' && $m->user_id!=$m->user_id=Auth::user()->id)
+            $m->estado='HABILITADO';
+            $m->detalle='USTED ESTA HABILITADO PARA COBRAR EL BONO';
+        $m->user_id_especial=Auth::user()->id;
+        $m->save();
+        $delhijo=Hijo::where('madre_id',$id)->delete();
+        foreach ($request->hijos as $hijo){
+            $h=new Hijo();
+            $h->nombres=$hijo['nombres'];
+            $h->apellidos=$hijo['apellidos'];
+            $h->madre_id=$m->id;
+            $h->save();
+        }
+        $s=new Special();
+        $s->docnac=$request->docnac;
+        $s->docbiomet=$request->docbiomet;
+        $s->docfuturo=$request->docfuturo;
+        $s->docprevision=$request->docprevision;
+        $s->user_id=Auth::user()->id;
+        $s->madre_id=$m->id;
+        $s->save();
+    }
+    }
+
 
     /**
      * Remove the specified resource from storage.
