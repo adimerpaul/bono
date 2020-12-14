@@ -14,14 +14,67 @@
         
       </div>
     </div>
+
+    <button class="btn btn-success" @click="imprimir"> Generar Habilitados</button>
+
+
+
+<template>
+   <div >
+     <vue-html2pdf
+        :show-layout="false"
+        :float-layout="true"
+        :enable-download="false"
+        :preview-modal="true"
+        :paginate-elements-by-height="2500"
+        filename="habilitados"
+        :pdf-quality="2"
+        :manual-pagination="false"
+        pdf-format="letter"
+        pdf-orientation="portrait"
+        pdf-content-width="100%"
+ 
+        
+        @hasStartedGeneration="hasStartedGeneration()"
+        @hasGenerated="hasGenerated($event)"
+        ref="html2Pdf"
+    >
+        <section slot="pdf-content">
+            <!-- PDF Content Here -->
+            <div style="margin: 50px 50px 50px; 50px;">
+              <h3>LISTADO DE HABILITADOS</h3>
+              <table >
+                <thead>
+                  <tr>
+                    <th>Cedula de Identidad</th>
+                    <th>Nombre Completo</th>
+                  
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(i,index) in datos2 " :key="index">
+                    <td>{{i.civalido}}</td>
+                    <td>{{i.nombres}} {{i.paterno}} {{i.materno}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </section>
+    </vue-html2pdf>
+   </div>
+</template>
 </div>
 </template>
-
 <script>
 import VueCharts from 'vue-chartjs';
 import {Pie } from 'vue-chartjs';
 import Chart from 'chart.js';
+import VueHtml2pdf from 'vue-html2pdf';
+    import axios from 'axios';
 export default {
+          components: {
+            VueHtml2pdf
+        },
   extends: Pie,
           data:function(){
           return {
@@ -33,6 +86,7 @@ export default {
             verif:0,
             habi:0,
             inhab:0,
+            datos2:[],
           }
           },
 
@@ -42,6 +96,9 @@ export default {
 
     this.imagen2();
     this.imagen3();
+     axios.get('/reporte4/').then(res=>{
+                   this.datos2=res.data;
+                });
   },
 
   methods:{
@@ -107,7 +164,11 @@ export default {
 
 
         })
-  }
+  },
+              imprimir(){
+               
+                this.$refs.html2Pdf.generatePdf()
+            },
   }
   
 }

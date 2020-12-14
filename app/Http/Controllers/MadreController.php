@@ -394,7 +394,7 @@ class MadreController extends Controller
     }
 
     public function informe(){
-        $r2=DB::table('madres')->where('estado',"HABILITADO")->groupBy('civalido')->get();
+        $r2=DB::table('madres')->where('estado',"HABILITADO")->orderBy('civalido')->get();
         return $r2;
     } 
 
