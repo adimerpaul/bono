@@ -72,7 +72,7 @@ class MadreController extends Controller
                 $m->mama='SI';
                 if($request->estado=='NO'){
                 $m->estado='HABILITADO';
-                $m->detalle='USTED ESTA ESTA HABILITADO PARA REALIZAR EL COBRO';}
+                $m->detalle='USTED ESTA HABILITADO PARA REALIZAR EL COBRO';}
                 else{
                 $m->estado=$request->estado;
                 $m->detalle=$request->detalle;
