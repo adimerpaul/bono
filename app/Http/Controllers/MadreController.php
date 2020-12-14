@@ -64,6 +64,9 @@ class MadreController extends Controller
 
             $m=Madre::find($id);
             $ma=Mama::where('ci',$m->civalido)->count();
+            $m->nombres=$request->nombres;
+            $m->paterno=$request->paterno;
+            $m->materno=$request->materno;
             $m->voto=$request->voto;
             $m->apfuturo=$request->apfuturo;
             $m->aprevision=$request->aprevision;

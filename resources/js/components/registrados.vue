@@ -24,9 +24,11 @@
                                                 </div>
                                             </div>
                                             <div class=" row">
-                                                    <label for="nombre" class=" col-sm-6 col-form-label-sm"><b>NOMBRE COMPLETO</b> </label>
+                                                    <label for="nombre" class=" col-sm-6 col-form-label-sm"><b>NOMBRES PATERNO MATERNO</b> </label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="nombre" v-bind:value="dato.paterno +' '+dato.materno+' '+dato.nombres">
+                                                    <input type="text"  class="form-control form-control-sm" id="nombre" v-model="dato.nombres">
+                                                    <input type="text"  class="form-control form-control-sm" id="paterno" v-model="dato.paterno">
+                                                    <input type="text"  class="form-control form-control-sm" id="materno" v-model="dato.materno">
                                                 </div>
                                             </div>
                                             <div class=" row">
