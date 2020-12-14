@@ -26,7 +26,7 @@
         :float-layout="true"
         :enable-download="false"
         :preview-modal="true"
-        :paginate-elements-by-height="2500"
+        :paginate-elements-by-height="1400"
         filename="habilitados"
         :pdf-quality="2"
         :manual-pagination="false"
