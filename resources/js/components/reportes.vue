@@ -49,7 +49,7 @@ export default {
         axios.get('/reporte').then(res=>{
               console.log(res.data);
               this.verif=res.data.no;
-              this.habi=res.data.hab;
+              this.habi=res.data.habi;
               this.inhab=res.data.inhab;
 
     this.renderChart({

@@ -231,13 +231,6 @@
             <td></td>
         </tr>
         <tr>
-            <td>Percibe el Bono Juana Azurduy?</td>
-            <td></td>
-            <td></td>
-            <td>{{dato.juana}}</td>
-            <td></td>
-        </tr>
-        <tr>
             <td>Percibe Bono discapacidad?</td>
             <td></td>
             <td></td>
