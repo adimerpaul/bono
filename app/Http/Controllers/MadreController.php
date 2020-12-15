@@ -305,7 +305,24 @@ class MadreController extends Controller
             //if($request->verificar=='SI' && $m->user_id!=$m->user_id=Auth::user()->id)
             //if($request->verificar=='SI')
               //  $m->user_id_especial=Auth::user()->id;
-              
+            $ma=Mama::where('ci',$m->civalido)->count();
+
+              if($ma>0 ){
+                $m->mama='SI';
+                if($request->estado=='NO'){
+                $m->estado='HABILITADO';
+                $m->detalle='USTED ESTA HABILITADO PARA REALIZAR EL COBRO';}
+                else{
+                $m->estado=$request->estado;
+                $m->detalle=$request->detalle;
+                }
+                
+            }
+            else {
+                $m->mama='NO';
+                $m->estado='INHABILITADO';
+                $m->detalle=$request->detalle.' NO ESTA REGISTRADA COMO MAMÀ EN EL SERECI';
+            }
         $m->save();
         $delhijo=Hijo::where('madre_id',$id)->delete();
         foreach ($request->hijos as $hijo){
