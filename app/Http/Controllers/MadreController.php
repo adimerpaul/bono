@@ -60,6 +60,7 @@ class MadreController extends Controller
         || Auth::user()->id=='26' || Auth::user()->id=='27' || Auth::user()->id=='28'
         || Auth::user()->id=='29'  || Auth::user()->id=='30'   || Auth::user()->id=='31' 
         || Auth::user()->id=='32'  || Auth::user()->id=='33'    || Auth::user()->id=='34'     
+        || Auth::user()->id=='35'     
         ){
 
             $m=Madre::find($id);

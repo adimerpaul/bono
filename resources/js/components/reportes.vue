@@ -15,54 +15,9 @@
       </div>
     </div>
 
-    <button class="btn btn-success" @click="imprimir"> Generar Habilitados</button>
 
 
 
-<template>
-   <div >
-     <vue-html2pdf
-        :show-layout="false"
-        :float-layout="true"
-        :enable-download="false"
-        :preview-modal="true"
-        :paginate-elements-by-height="1400"
-        filename="habilitados"
-        :pdf-quality="2"
-        :manual-pagination="false"
-        pdf-format="letter"
-        pdf-orientation="portrait"
-        pdf-content-width="100%"
- 
-        
-        @hasStartedGeneration="hasStartedGeneration()"
-        @hasGenerated="hasGenerated($event)"
-        ref="html2Pdf"
-    >
-        <section slot="pdf-content">
-            <!-- PDF Content Here -->
-            <div style="margin: 50px 50px 50px; 50px;">
-              <h3>LISTADO DE HABILITADOS</h3>
-              <table >
-                <thead>
-                  <tr>
-                    <th>Cedula de Identidad</th>
-                    <th>Nombre Completo</th>
-                  
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="(i,index) in datos2 " :key="index">
-                    <td>{{i.civalido}}</td>
-                    <td>{{i.nombres}} {{i.paterno}} {{i.materno}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-        </section>
-    </vue-html2pdf>
-   </div>
-</template>
 </div>
 </template>
 <script>
