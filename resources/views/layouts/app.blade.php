@@ -84,7 +84,7 @@
                                 </a>
                             </li>
                         </router-link>
-                        @if(Auth::user()->id=='2'  || Auth::user()->id=='27' || Auth::user()->id=='15')
+                        @if(Auth::user()->id=='2'  || Auth::user()->id=='27' || Auth::user()->id=='6' || Auth::user()->id=='16' || Auth::user()->id=='15')
 
                         <router-link
                             to="/actualizar"
