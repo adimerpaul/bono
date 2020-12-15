@@ -52,15 +52,15 @@ class MadreController extends Controller
         return Jurado::select('recinto')->where('recinto','!=','')->groupBy('recinto')->orderBy('recinto')->get();
     }
     public function confirmar(Request $request,$id){
-        if(Auth::user()->id=='10' || Auth::user()->id=='9' || Auth::user()->id=='6' 
-        || Auth::user()->id=='15' || Auth::user()->id=='16' || Auth::user()->id=='2' 
+        if(Auth::user()->id=='10' || Auth::user()->id=='9' || Auth::user()->id=='6'
+        || Auth::user()->id=='15' || Auth::user()->id=='16' || Auth::user()->id=='2'
         || Auth::user()->id=='17' || Auth::user()->id=='18' || Auth::user()->id=='19'
-        || Auth::user()->id=='20' || Auth::user()->id=='21' || Auth::user()->id=='22' 
+        || Auth::user()->id=='20' || Auth::user()->id=='21' || Auth::user()->id=='22'
         || Auth::user()->id=='23' || Auth::user()->id=='24' || Auth::user()->id=='25'
         || Auth::user()->id=='26' || Auth::user()->id=='27' || Auth::user()->id=='28'
-        || Auth::user()->id=='29'  || Auth::user()->id=='30'   || Auth::user()->id=='31' 
-        || Auth::user()->id=='32'  || Auth::user()->id=='33'    || Auth::user()->id=='34'     
-        || Auth::user()->id=='35' || Auth::user()->id=='36'     
+        || Auth::user()->id=='29'  || Auth::user()->id=='30'   || Auth::user()->id=='31'
+        || Auth::user()->id=='32'  || Auth::user()->id=='33'    || Auth::user()->id=='34'
+        || Auth::user()->id=='35' || Auth::user()->id=='36'
         ){
 
             $m=Madre::find($id);
@@ -83,7 +83,7 @@ class MadreController extends Controller
                 $m->estado=$request->estado;
                 $m->detalle=$request->detalle;
                 }
-                
+
             }
             else {
                 $m->mama='NO';
@@ -270,10 +270,19 @@ class MadreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(Auth::user()->id=='2' || Auth::user()->id=='27' || Auth::user()->id=='15' || Auth::user()->id=='16' || Auth::user()->id=='6'){
+        if(Auth::user()->id=='2' ||
+            Auth::user()->id=='27' ||
+            Auth::user()->id=='15' ||
+            Auth::user()->id=='16' ||
+            Auth::user()->id=='23' ||
+            Auth::user()->id=='21' ||
+            Auth::user()->id=='22' ||
+            Auth::user()->id=='10' ||
+            Auth::user()->id=='9' ||
+            Auth::user()->id=='6'){
         $m=Madre::find($id);
         if($m->voto== null){
-         $m->user_id=Auth::user()->id;   
+         $m->user_id=Auth::user()->id;
          $m->voto=$request->voto;
         $m->apfuturo=$request->apfuturo;
         $m->aprevision=$request->aprevision;
@@ -300,7 +309,7 @@ class MadreController extends Controller
         $m->numerobanco=$request->numerobanco;
         $m->estado=$request->estado;
         $m->detalle=$request->detalle;
-        
+
         //$m->verificar=$request->verificar;
             //if($request->verificar=='SI' && $m->user_id!=$m->user_id=Auth::user()->id)
             //if($request->verificar=='SI')
@@ -316,7 +325,7 @@ class MadreController extends Controller
                 $m->estado=$request->estado;
                 $m->detalle=$request->detalle;
                 }
-                
+
             }
             else {
                 $m->mama='NO';
@@ -336,8 +345,17 @@ class MadreController extends Controller
     }
     public function modificar(Request $request, $id)
     {
-        if(Auth::user()->id=='2' || Auth::user()->id=='16' || Auth::user()->id=='6' || Auth::user()->id=='15' || Auth::user()->id=='27'){
-        
+        if(Auth::user()->id=='2' ||
+            Auth::user()->id=='16' ||
+            Auth::user()->id=='6' ||
+            Auth::user()->id=='15' ||
+            Auth::user()->id=='23' ||
+            Auth::user()->id=='21' ||
+            Auth::user()->id=='22' ||
+            Auth::user()->id=='10' ||
+            Auth::user()->id=='9' ||
+            Auth::user()->id=='27'){
+
         $m=Madre::find($id);
         $m->paterno=$request->paterno;
         $m->materno=$request->materno;
@@ -414,7 +432,7 @@ class MadreController extends Controller
     public function informe(){
         $r2=DB::table('madres')->where('estado',"HABILITADO")->orderBy('civalido')->get();
         return $r2;
-    } 
+    }
 
     public function numregistro(){
         $res=DB::table('madres')->select(DB::raw('COUNT(*) AS numero,DATE(created_at) AS fecha'))
