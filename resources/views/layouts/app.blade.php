@@ -97,7 +97,7 @@
                             </li>
                         </router-link>
                         @endif
-                        @if(Auth::user()->id=='2')
+                        @if(Auth::user()->id=='2' || Auth::user()->id=='16')
                         <router-link
                             to="/especial"
                             v-slot="{ href, route, navigate, isActive, isExactActive }"
