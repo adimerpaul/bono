@@ -319,7 +319,7 @@ class MadreController extends Controller
     }
     public function modificar(Request $request, $id)
     {
-        if(Auth::user()->id=='2' || Auth::user()->id=='16'){
+        if(Auth::user()->id=='2' || Auth::user()->id=='16' || Auth::user()->id=='6' || Auth::user()->id=='15' || Auth::user()->id=='27'){
         
         $m=Madre::find($id);
         $m->paterno=$request->paterno;
