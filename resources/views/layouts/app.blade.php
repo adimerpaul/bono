@@ -61,7 +61,7 @@
                         || Auth::user()->id=='26' || Auth::user()->id=='27' || Auth::user()->id=='28'  
                         || Auth::user()->id=='29' || Auth::user()->id=='30' || Auth::user()->id=='31' 
                         || Auth::user()->id=='32' || Auth::user()->id=='33'  || Auth::user()->id=='34'
-                        || Auth::user()->id=='35'    
+                        || Auth::user()->id=='35'    || Auth::user()->id=='36'     
                         )
                         <router-link
                             to="/registrados"
@@ -84,7 +84,7 @@
                                 </a>
                             </li>
                         </router-link>
-                        @if(Auth::user()->id=='2' )
+                        @if(Auth::user()->id=='2'  || Auth::user()->id=='27' || Auth::user()->id=='15')
 
                         <router-link
                             to="/actualizar"
@@ -109,7 +109,6 @@
                             </li>
                         </router-link>
                         @endif
-                        @if(Auth::user()->id=='1')
                         <router-link
                             to="/registrar"
                             v-slot="{ href, route, navigate, isActive, isExactActive }"
@@ -120,7 +119,7 @@
                                 </a>
                             </li>
                         </router-link>
-                        @endif
+                        
                         <router-link
                             to="/reportes"
                             v-slot="{ href, route, navigate, isActive, isExactActive }"

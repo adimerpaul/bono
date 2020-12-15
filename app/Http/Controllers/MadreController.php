@@ -60,7 +60,7 @@ class MadreController extends Controller
         || Auth::user()->id=='26' || Auth::user()->id=='27' || Auth::user()->id=='28'
         || Auth::user()->id=='29'  || Auth::user()->id=='30'   || Auth::user()->id=='31' 
         || Auth::user()->id=='32'  || Auth::user()->id=='33'    || Auth::user()->id=='34'     
-        || Auth::user()->id=='35'     
+        || Auth::user()->id=='35' || Auth::user()->id=='36'     
         ){
 
             $m=Madre::find($id);
@@ -270,7 +270,7 @@ class MadreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(Auth::user()->id=='2' ){
+        if(Auth::user()->id=='2' || Auth::user()->id=='27' || Auth::user()->id=='15'){
         $m=Madre::find($id);
         if($m->voto== null){
          $m->user_id=Auth::user()->id;   
