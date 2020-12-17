@@ -62,6 +62,9 @@
                         || Auth::user()->id=='29' || Auth::user()->id=='30' || Auth::user()->id=='31'
                         || Auth::user()->id=='32' || Auth::user()->id=='33'  || Auth::user()->id=='34'
                         || Auth::user()->id=='35'    || Auth::user()->id=='36' || Auth::user()->id=='37'
+                        || Auth::user()->id=='5'
+                        || Auth::user()->id=='3'
+                        || Auth::user()->id=='4'
                         )
                         <router-link
                             to="/registrados"
@@ -93,6 +96,9 @@
                             Auth::user()->id=='22' ||
                             Auth::user()->id=='10' ||
                             Auth::user()->id=='9' ||
+                            Auth::user()->id=='3' ||
+                            Auth::user()->id=='4' ||
+                            Auth::user()->id=='5' ||
                                 Auth::user()->id=='15')
 
                         <router-link
@@ -116,6 +122,9 @@
                             Auth::user()->id=='22' ||
                             Auth::user()->id=='10' ||
                             Auth::user()->id=='9' ||
+                            Auth::user()->id=='3' ||
+                            Auth::user()->id=='4' ||
+                            Auth::user()->id=='5' ||
                             Auth::user()->id=='6')
                         <router-link
                             to="/especial"

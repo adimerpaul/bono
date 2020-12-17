@@ -54,6 +54,7 @@ class MadreController extends Controller
     public function confirmar(Request $request,$id){
         if(Auth::user()->id=='10' || Auth::user()->id=='9' || Auth::user()->id=='6'
         || Auth::user()->id=='15' || Auth::user()->id=='16' || Auth::user()->id=='2'
+            || Auth::user()->id=='3' || Auth::user()->id=='4' || Auth::user()->id=='5'
         || Auth::user()->id=='17' || Auth::user()->id=='18' || Auth::user()->id=='19'
         || Auth::user()->id=='20' || Auth::user()->id=='21' || Auth::user()->id=='22'
         || Auth::user()->id=='23' || Auth::user()->id=='24' || Auth::user()->id=='25'
@@ -73,7 +74,6 @@ class MadreController extends Controller
             $m->aprevision=$request->aprevision;
             $m->verificar='SI';
             $m->user_id=Auth::user()->id;
-
             if($ma>0 ){
                 $m->mama='SI';
                 if($request->estado=='NO'){
@@ -279,7 +279,12 @@ class MadreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(Auth::user()->id=='2' ||
+        if( Auth::user()->id=='2' ||
+
+            Auth::user()->id=='5' ||
+            Auth::user()->id=='4' ||
+            Auth::user()->id=='3' ||
+
             Auth::user()->id=='27' ||
             Auth::user()->id=='15' ||
             Auth::user()->id=='16' ||
@@ -355,6 +360,9 @@ class MadreController extends Controller
     public function modificar(Request $request, $id)
     {
         if(Auth::user()->id=='2' ||
+            Auth::user()->id=='5' ||
+            Auth::user()->id=='4' ||
+            Auth::user()->id=='3' ||
             Auth::user()->id=='16' ||
             Auth::user()->id=='6' ||
             Auth::user()->id=='15' ||
@@ -364,7 +372,6 @@ class MadreController extends Controller
             Auth::user()->id=='10' ||
             Auth::user()->id=='9' ||
             Auth::user()->id=='27'){
-
         $m=Madre::find($id);
         $m->paterno=$request->paterno;
         $m->materno=$request->materno;
