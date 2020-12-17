@@ -32,7 +32,7 @@
                                  <div class="form-group row">
                                     <label for="nombre" class="col-sm-3 col-form-label">NOMBRE COMPLETO</label>
                                     <div class="col-sm-9">
-                                    <input type="text" readonly class="form-control-plaintext" id="nombre" v-bind:value="dato.nombres+' '+dato.paterno +' '+dato.materno">
+                                    <input type="text" readonly class="form-control-plaintext" id="nombre" v-bind:value="dato.nombres+' '+dato.paterno +' '+dato.materno+' '+dato.conyugue">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -108,7 +108,7 @@ export default {
             console.log('Component mounted.');
         },
         methods:{
-            
+
             verifmama(){
                 axios.get('/verifma/'+this.param).then(res2=>{
                            console.log(res2.data);
@@ -116,7 +116,7 @@ export default {
                                this.men= 'NO ESTA REGISTRADA COMO MAMÀ EN SERECI';
                             else
                                 this.men= 'NO SE ENCUENTRA REGISTRADO POR FAVOR, REGISTRESE PARA PODER VERFICAR SUS DATOS';
-                        console.log(this.dato.detalle);  
+                        console.log(this.dato.detalle);
                             //
                         });
 
@@ -129,7 +129,7 @@ export default {
                   if(res.data==''){
                         this.dato={};
                         this.dato.detalle=this.men;
-                        console.log(this.dato.detalle);  
+                        console.log(this.dato.detalle);
 
                         if (this.dato.paterno==undefined||this.dato.paterno==null){
                             this.dato.paterno='';
@@ -140,7 +140,7 @@ export default {
                         if (this.dato.nombres==undefined||this.dato.nombres==null){
                             this.dato.nombres='';
                         }
-                          
+
 
 
                   }else{
