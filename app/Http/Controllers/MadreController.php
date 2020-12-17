@@ -258,7 +258,15 @@ class MadreController extends Controller
     }
     public function storemama(Request $request)
     {
-        if(Auth::user()->id=='24' || Auth::user()->id=='25' || Auth::user()->id=='26' || Auth::user()->id=='2'){
+        if(Auth::user()->id=='24' ||
+            Auth::user()->id=='25' ||
+
+            Auth::user()->id=='3'||
+            Auth::user()->id=='4'||
+            Auth::user()->id=='5'||
+
+            Auth::user()->id=='26' ||
+            Auth::user()->id=='2'){
         $d= new Mama();
         $d->ci=$request->ci;
         $d->nombre=$request->nombre;
