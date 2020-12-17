@@ -98,7 +98,7 @@ export default {
            data:function(){
 
           return {
-              dato:{paterno:'',materno:'',nombres:''},
+              dato:{paterno:'',materno:'',nombres:'',conyugue:''},
               param:"",
               fecha:"",
               men:'',
