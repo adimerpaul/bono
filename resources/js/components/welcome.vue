@@ -145,7 +145,7 @@
                             </select>
                         </div>
                         <b>-</b>
-                        
+
                         <div class="col-3">
                             <input type="text" class="form-control mayuscula" v-model="dato.ext" id="ciext" placeholder="1X" value='' maxlength="2" @change="verifica">{{this.men}}
                         </div>
@@ -153,7 +153,7 @@
                             Bien!
                         </div>
                         <div class="invalid-feedback">
-                            Dato necesario! 
+                            Dato necesario!
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
@@ -466,7 +466,7 @@
                         axios.post('/madre',this.dato).then(res=>{
                             // console.log(res.data);
                             // return false;
-                            this.d=true;
+                            this.d=false;
                             if (res.data=='CORRECTO'){
                                 // this.$toast.open({
                                 //     message: "Guardado Correctamente",
@@ -484,6 +484,7 @@
                                 });
                                 this.dato={hijos:[{nombres:'',apellidos:''}]};
                             }else{
+                                this.d=false;
                                 this.$fire({
                                     title: res.data,
                                     text: res.data,
