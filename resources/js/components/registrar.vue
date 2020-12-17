@@ -17,7 +17,7 @@
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="Apellido Paterno">Apellido Paterno</label>
-                            <input type="text" class="form-control" v-bind:class="dato.paterno==null?'':dato.paterno==''?'is-invalid':'is-valid'" v-model="dato.paterno" id="Apellido Paterno" placeholder="Apellido Paterno" required>
+                            <input type="text" class="form-control" v-bind:class="dato.paterno==null?'':dato.paterno==''?'is-invalid':'is-valid'" v-model="dato.paterno" id="Apellido Paterno" placeholder="Apellido Paterno" >
                             <div class="valid-feedback">
                                 Bien!
                             </div>
