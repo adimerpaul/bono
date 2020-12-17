@@ -128,7 +128,7 @@
                             </li>
                         </router-link>
                         @endif
-                        @if(Auth::user()->id=='2')
+                        @if(Auth::user()->id=='2' || Auth::user()->id=='24'|| Auth::user()->id=='25' || Auth::user()->id=='26')
                                 <router-link
                                     to="/mamas"
                                     v-slot="{ href, route, navigate, isActive, isExactActive }"

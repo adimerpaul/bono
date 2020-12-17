@@ -258,11 +258,13 @@ class MadreController extends Controller
     }
     public function storemama(Request $request)
     {
+        if(Auth::user()->id=='24' || Auth::user()->id=='25' || Auth::user()->id=='26' || Auth::user()->id=='2'){
         $d= new Mama();
         $d->ci=$request->ci;
         $d->nombre=$request->nombre;
-        $d->save();
+        $d->save();}
     }
+
     public function verificacion()
     {
 
