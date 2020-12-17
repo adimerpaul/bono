@@ -252,9 +252,16 @@ class MadreController extends Controller
      * @param  \App\Models\Madre  $madre
      * @return \Illuminate\Http\Response
      */
-    public function edit(Madre $madre)
+    public function edit(adre $madre)
     {
-        //
+
+    }
+    public function storemama(Request $request)
+    {
+        $d= new Mama();
+        $d->ci=$request->ci;
+        $d->nombre=$request->nombre;
+        $d->save();
     }
     public function verificacion()
     {

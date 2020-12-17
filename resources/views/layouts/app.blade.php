@@ -128,16 +128,20 @@
                             </li>
                         </router-link>
                         @endif
-                        <router-link
-                            to="/registrar"
-                            v-slot="{ href, route, navigate, isActive, isExactActive }"
-                        >
-                            <li class="nav-item">
-                                <a class="nav-link" :href="href" @click="navigate" :class="[isActive && 'active', isExactActive && '']">
-                                    <i class="fa fa-add"></i> Registrar
-                                </a>
-                            </li>
-                        </router-link>
+                        @if(Auth::user()->id=='2')
+                                <router-link
+                                    to="/mamas"
+                                    v-slot="{ href, route, navigate, isActive, isExactActive }"
+                                >
+                                    <li class="nav-item">
+                                        <a class="nav-link" :href="href" @click="navigate" :class="[isActive && 'active', isExactActive && '']">
+                                            <i class="fa fa-user-alt"></i> Mamas sereci
+                                        </a>
+                                    </li>
+                                </router-link>
+                        @endif
+
+
 
                         <router-link
                             to="/reportes"

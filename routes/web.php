@@ -37,6 +37,9 @@ Route::get('/reportes', function () {
 Route::get('/especial', function () {
     return view('home');
 })->middleware('auth');
+Route::get('/mamas', function () {
+    return view('home');
+})->middleware('auth');
 
 Route::get('/verificar', function () {
     return view('verificar');
@@ -65,4 +68,4 @@ Route::post('/pass/{id}',[App\Http\Controllers\UserController::class,'pass'])->m
 Route::put('/confirmar/{id}',[App\Http\Controllers\MadreController::class,'confirmar'])->middleware('auth');
 Route::get('/recintos',[App\Http\Controllers\MadreController::class,'recintos']);
 Route::get('/verificar/{id}/{fecha}',[App\Http\Controllers\HijoController::class,'verificar']);
-
+Route::post('/storemama',[App\Http\Controllers\MadreController::class,'storemama']);
