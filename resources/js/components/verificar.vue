@@ -140,6 +140,9 @@ export default {
                         if (this.dato.nombres==undefined||this.dato.nombres==null){
                             this.dato.nombres='';
                         }
+                      if (this.dato.conyugue==undefined||this.dato.conyugue==null){
+                          this.dato.conyugue='';
+                      }
 
 
 
@@ -154,6 +157,9 @@ export default {
                         if (this.dato.nombres==undefined||this.dato.nombres==null){
                             this.dato.nombres='';
                         }
+                      if (this.dato.conyugue==undefined||this.dato.conyugue==null){
+                          this.dato.conyugue='';
+                      }
                         if(this.dato.estado=='NO')
                             this.dato.estado='En Proceso';
                    //this.dato.hijos=data[0].hijo;
