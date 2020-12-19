@@ -143,6 +143,9 @@
                             Auth::user()->id=='4'||
                             Auth::user()->id=='5'||
                             Auth::user()->id=='25' ||
+                            Auth::user()->id=='21' ||
+                            Auth::user()->id=='23' ||
+                            Auth::user()->id=='16' ||
                             Auth::user()->id=='26')
                                 <router-link
                                     to="/mamas"
