@@ -31,7 +31,8 @@ import registrar from './components/registrar';
 import reportes from './components/reportes';
 import especial from './components/especial';
 import mamas from './components/mama';
-import educations from './components/education';
+import educations from './components/education'; 
+import listado from './components/listado'; 
 import informe from './components/informe';
 const routes = [
     { path: '/usuarios', component: usuarios },
@@ -43,6 +44,7 @@ const routes = [
     { path: '/especial', component: especial },
     { path: '/mamas', component: mamas },
     { path: '/educations', component: educations },
+    { path: '/listado', component: listado },
     { path: '/informe', component: informe },
 ]
 const router = new VueRouter({

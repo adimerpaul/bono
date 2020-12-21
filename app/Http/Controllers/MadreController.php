@@ -486,7 +486,14 @@ class MadreController extends Controller
         return $res;
     }
 
-    
+    public function userverif(){
+        $id =Auth::user()->id;
+        return DB::table('madres')->where('user_id',$id)->orderBy('updated_at','desc')->get();
+    }
 
+    public function userhabilita(){
+        $id =Auth::user()->id;
+        return DB::table('madres')->where('user_id_especial',$id)->orderBy('updated_at','desc')->get();
+    }
 
 }

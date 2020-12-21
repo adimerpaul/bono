@@ -173,6 +173,16 @@
                                 </a>
                             </li>
                         </router-link>
+                        <router-link
+                            to="/listado"
+                            v-slot="{ href, route, navigate, isActive, isExactActive }"
+                        >
+                            <li class="nav-item">
+                                <a class="nav-link" :href="href" @click="navigate" :class="[isActive && 'active', isExactActive && '']">
+                                <i class="far fa-list-alt"></i> Listado
+                                </a>
+                            </li>
+                        </router-link>
                         @if( Auth::user()->id=='2' ||  Auth::user()->id=='3' || Auth::user()->id=='4'
                         ||  Auth::user()->id=='5' ||  Auth::user()->id=='8')
                         <router-link
