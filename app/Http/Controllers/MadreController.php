@@ -486,14 +486,18 @@ class MadreController extends Controller
         return $res;
     }
 
-    public function userverif(){
+    public function userverif($fecha){
         $id =Auth::user()->id;
-        return DB::table('madres')->where('user_id',$id)->orderBy('updated_at','desc')->get();
+        return DB::table('madres')->where('user_id',$id)
+        ->whereDate('updated_at',$fecha)
+        ->orderBy('updated_at','desc')->get();
     }
 
-    public function userhabilita(){
+    public function userhabilita($fecha){
         $id =Auth::user()->id;
-        return DB::table('madres')->where('user_id_especial',$id)->orderBy('updated_at','desc')->get();
+        return DB::table('madres')->where('user_id_especial',$id)
+        ->whereDate('updated_at',$fecha)
+        ->orderBy('updated_at','desc')->get();
     }
 
 }

@@ -12,7 +12,7 @@
                 </select>
 <br>
                 Fecha
-                <input type="date" name="fecha" id="fecha" >
+                <input type="date" name="fecha" id="fecha" v-model='fec' @change="listar">
 
                 <hr>
                 <table class="table">
@@ -26,6 +26,7 @@
                             <th>AFP Fut</th>
                             <th>AFP Prev</th>
                             <th>Sereci</th>
+                            <th>Estado</th>
                             <th>FECHA</th>
                         </tr>
                     </thead>
@@ -39,6 +40,7 @@
                             <td>{{i.apfuturo}}</td>
                             <td>{{i.aprevision}}</td>
                             <td>{{i.mama}}</td>
+                            <td>{{i.estado}}</td>
                             <td>{{i.updated_at}}</td>
                         </tr>
                     </tbody>
@@ -58,22 +60,22 @@ export default {
           return {
               datos:{},
               tipo:'verificado',
-              //fec:'',
+              fec:moment().format('YYYY-MM-DD'),
 
           }
         },
         mounted(){
-            this.fec=moment();
-            //this.cargarverif();
+            //this.fec=moment().format('YYYY-MM-DD');
+            this.cargarverif();
         },
         methods:{
             cargarverif(){
                 this.datos=[];
-                axios.get('/verificado').then(res=>{this.datos=res.data;});
+                axios.get('/verificado/'+this.fec).then(res=>{this.datos=res.data;});
             },
             cargarhabilitado(){
                 this.datos=[];
-                axios.get('/habilitado').then(res=>{this.datos=res.data;});
+                axios.get('/habilitado/'+this.fec).then(res=>{this.datos=res.data;});
             },
             listar(){
                 if(this.tipo=='verificado')

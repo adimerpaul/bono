@@ -71,8 +71,8 @@ Route::get('/reporte', [App\Http\Controllers\MadreController::class, 'datosinfo'
 Route::get('/reporte2', [App\Http\Controllers\MadreController::class, 'numregistro'])->name('home');
 Route::get('/reporte3', [App\Http\Controllers\MadreController::class, 'totalrevisado'])->name('home');
 Route::get('/reporte4', [App\Http\Controllers\MadreController::class, 'informe'])->name('home');
-Route::get('/verificado', [App\Http\Controllers\MadreController::class, 'userverif'])->name('home');
-Route::get('/habilitado', [App\Http\Controllers\MadreController::class, 'userhabilita'])->name('home');
+Route::get('/verificado/{f1}', [App\Http\Controllers\MadreController::class, 'userverif'])->name('home');
+Route::get('/habilitado/{f1}', [App\Http\Controllers\MadreController::class, 'userhabilita'])->name('home');
 Route::get('/verifma/{c1}', [App\Http\Controllers\MadreController::class, 'verma'])->name('home');
 Route::get('/madreregister/{f1}/{f2}', [App\Http\Controllers\MadreController::class, 'madreregister'])->name('home');
 Route::get('/verificacion', [App\Http\Controllers\MadreController::class, 'verificacion'])->name('home');
