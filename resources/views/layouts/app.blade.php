@@ -169,7 +169,7 @@
                         >
                             <li class="nav-item">
                                 <a class="nav-link" :href="href" @click="navigate" :class="[isActive && 'active', isExactActive && '']">
-                                    <i class="fa fa-chart"></i> Reportes
+                                <i class="fal fa-chart-pie"></i> Reportes
                                 </a>
                             </li>
                         </router-link>
@@ -181,7 +181,7 @@
                         >
                             <li class="nav-item">
                                 <a class="nav-link" :href="href" @click="navigate" :class="[isActive && 'active', isExactActive && '']">
-                                    <i class="fa fa-chart"></i> Menores y Viudos
+                                <i class="fas fa-pencil-alt"></i> Menores y Viudos
                                 </a>
                             </li>
                         </router-link>
@@ -191,7 +191,7 @@
                         >
                             <li class="nav-item">
                                 <a class="nav-link" :href="href" @click="navigate" :class="[isActive && 'active', isExactActive && '']">
-                                    <i class="fa fa-chart"></i> Informe Men y V
+                                <i class="far fa-list-alt"></i> Informe Men y V
                                 </a>
                             </li>
                         </router-link>
