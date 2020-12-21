@@ -62,19 +62,17 @@
                         <td style="border: 1px solid black; width:25%; " rowspan='2'>BENEFICIARIA</td>
                         <td style="border: 1px solid black;">{{dato.paterno}}</td>
                         <td style="border: 1px solid black;">{{dato.materno}}</td>
-                        <td style="border: 1px solid black;">{{dato.conyugue}}</td>
-                        <td style="border: 1px solid black;">{{dato.nombres}}</td>
+                        <td style="border: 1px solid black;" colspan="2">{{dato.nombres}}</td>
                 </tr>                        
                     <tr>
                         <td style="border: 1px solid black;"> <small>Apellido Paterno</small></td> 
                         <td style="border: 1px solid black;"><small>Apellido Materno</small></td>
-                        <td style="border: 1px solid black;"><small>Apellido de Casada</small></td>
-                        <td style="border: 1px solid black;"><small>Nombres</small></td>
+                        <td style="border: 1px solid black;" colspan="2"><small>Nombres</small></td>
                     </tr>
                     <tr>    
                         <th style="border: 1px solid black;">ESTADO CIVIL</th>
                         <td style="border: 1px solid black;" colspan="2"></td>
-                        <th style="border: 1px solid black;">EDAD</th>
+                        <th style="border: 1px solid black;">FECHA NAC</th>
                         <td style="border: 1px solid black;">{{dato.fechanac}}</td>
                     </tr>
                     <tr>
@@ -177,7 +175,7 @@
         </tr>
         <tr>
             <td style="border: 1px solid black;"><b>FECHA</b></td>
-            <td style="border: 1px solid black;" ></td>
+            <td style="border: 1px solid black;" >{{fec}}</td>
         </tr>
     </table>
             </section>
@@ -193,6 +191,8 @@
 <script>
     import VueHtml2pdf from 'vue-html2pdf';
     import axios from 'axios';
+    import moment from 'moment';
+
 export default {
             components: {
             VueHtml2pdf
@@ -204,6 +204,7 @@ export default {
               param:null,
               num:0,
               datos:[],
+             fec:moment().format('yyyy/MM/DD'),
 
           }
         },
