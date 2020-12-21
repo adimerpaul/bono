@@ -173,6 +173,29 @@
                                 </a>
                             </li>
                         </router-link>
+                        @if( Auth::user()->id=='2' ||  Auth::user()->id=='3' || Auth::user()->id=='4'
+                        ||  Auth::user()->id=='5' ||  Auth::user()->id=='8')
+                        <router-link
+                            to="/educations"
+                            v-slot="{ href, route, navigate, isActive, isExactActive }"
+                        >
+                            <li class="nav-item">
+                                <a class="nav-link" :href="href" @click="navigate" :class="[isActive && 'active', isExactActive && '']">
+                                    <i class="fa fa-chart"></i> Menores y Viudos
+                                </a>
+                            </li>
+                        </router-link>
+                        <router-link
+                            to="/informe"
+                            v-slot="{ href, route, navigate, isActive, isExactActive }"
+                        >
+                            <li class="nav-item">
+                                <a class="nav-link" :href="href" @click="navigate" :class="[isActive && 'active', isExactActive && '']">
+                                    <i class="fa fa-chart"></i> Informe Men y V
+                                </a>
+                            </li>
+                        </router-link>
+                        @endif
                         @endauth
                     </ul>
 

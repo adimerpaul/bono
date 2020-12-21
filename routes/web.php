@@ -41,6 +41,13 @@ Route::get('/mamas', function () {
     return view('home');
 })->middleware('auth');
 
+Route::get('/educations', function () {
+    return view('home');
+})->middleware('auth');
+Route::get('/informe', function () {
+    return view('home');
+})->middleware('auth');
+
 Route::get('/verificar', function () {
     return view('verificar');
 });
@@ -50,6 +57,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/madre', [App\Http\Controllers\MadreController::class, 'store'])->name('home');
+Route::post('/education', [App\Http\Controllers\EducationController::class, 'store'])->name('home');
+Route::get('/education', [App\Http\Controllers\EducationController::class, 'index'])->name('home');
 Route::get('/madre/info', [App\Http\Controllers\MadreController::class, 'info'])->name('home');
 Route::get('/madre/{ci}', [App\Http\Controllers\MadreController::class, 'show'])->name('home');
 Route::put('/madre/{id}', [App\Http\Controllers\MadreController::class, 'update'])->name('home');
