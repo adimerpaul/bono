@@ -271,6 +271,7 @@ class MadreController extends Controller
             Auth::user()->id=='16' ||
             Auth::user()->id=='9' ||
             Auth::user()->id=='10' ||
+            Auth::user()->id=='27' ||
             Auth::user()->id=='2'){
         $d= new Mama();
         $d->ci=$request->ci;
