@@ -502,7 +502,7 @@
 
             },
             calcularedad(variable){
-                	var a = moment();
+                	var a = moment('2020-11-30');
 	                var b = moment(variable);
 
 	                var years = a.diff(b, 'year');
