@@ -544,7 +544,7 @@ Vue.use(Datetime)
 	                var years = a.diff(b, 'year');
                                 b.add(years, 'years');
                                 console.log(moment(variable).format('YYYY-MM-DD'));
-                    if(years>=17 && years<60)
+                    if(years>17 && years<60)
                         return true;
                     else
                         return false;
