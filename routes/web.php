@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('mtto');
+    return view('welcome');
 });
 Route::get('/usuarios', function () {
     return view('home');

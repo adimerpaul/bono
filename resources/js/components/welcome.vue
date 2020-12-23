@@ -455,6 +455,12 @@
                 }).then((result) => {
                     if (result.value) {
                         this.d=true;
+                        this.dato={hijos:[{nombres:'',apellidos:''}]};
+                        this.$fire({
+                                    title: 'PROBLEMAS TECNICOS ',
+                                    text: 'Momentaneamente no es posible realizar registros',
+                                    type: 'info'
+                                }).then(r => { this.dato={hijos:[{nombres:'',apellidos:''}]};});
                         // console.log('si');
                         // return false;
                         // Swal.fire(
@@ -463,7 +469,7 @@
                         //     'success'
                         // );
                         // this.dato.recinto=this.dato.recintos2;
-                        axios.post('/madre',this.dato).then(res=>{
+                        /*axios.post('/madre',this.dato).then(res=>{
                             // console.log(res.data);
                             // return false;
                             this.d=false;
@@ -494,7 +500,7 @@
                                     //location.href="https://www.google.com.bo";
                                 });
                             }
-                        });
+                        });*/
                         // this.$toastr.s("Enviado correctamente");
                     }
                 })
