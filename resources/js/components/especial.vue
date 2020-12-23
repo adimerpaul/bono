@@ -538,7 +538,7 @@ Vue.use(Datetime)
             },
             calcularedad(variable){
                     this.dato.fechanac=moment(variable).format('YYYY-MM-DD');
-                	var a = moment('2020-11-30');
+                	var a = moment('2020-12-31');
 	                var b = moment(variable);
 
 	                var years = a.diff(b, 'year');
