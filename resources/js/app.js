@@ -22,6 +22,7 @@ Vue.use(VueToast);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('welcome-component', require('./components/welcome.vue').default);
+Vue.component('mtto-component', require('./components/mantenimiento.vue').default);
 Vue.component('verificar', require('./components/verificar.vue').default);
 import usuarios from './components/usuarios';
 import registrados from './components/registrados';
