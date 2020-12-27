@@ -307,6 +307,13 @@ class MadreController extends Controller
             Auth::user()->id=='22' ||
             Auth::user()->id=='10' ||
             Auth::user()->id=='9' ||
+
+            Auth::user()->id=='24' ||
+            Auth::user()->id=='25' ||
+            Auth::user()->id=='26' ||
+            Auth::user()->id=='31' ||
+            Auth::user()->id=='30' ||
+
             Auth::user()->id=='6'){
         $m=Madre::find($id);
         if($m->voto== null){
@@ -385,6 +392,11 @@ class MadreController extends Controller
             Auth::user()->id=='22' ||
             Auth::user()->id=='10' ||
             Auth::user()->id=='9' ||
+            Auth::user()->id=='24' ||
+            Auth::user()->id=='25' ||
+            Auth::user()->id=='26' ||
+            Auth::user()->id=='31' ||
+            Auth::user()->id=='30' ||
             Auth::user()->id=='27'){
         $m=Madre::find($id);
         $m->paterno=$request->paterno;
