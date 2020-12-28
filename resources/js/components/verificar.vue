@@ -56,6 +56,9 @@
                                         <div class="alert alert-primary" role="alert">
                                             <textarea type="text" readonly class="form-control-plaintext" id="detalle" v-model="dato.detalle"></textarea>
                                         </div>
+                                        <div class="" >
+                                            <b class="text-danger">{{men2}}</b>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -94,6 +97,7 @@
 </template>
 <script>
     import axios from 'axios';
+    import moment from 'moment';
 export default {
            data:function(){
 
@@ -102,6 +106,8 @@ export default {
               param:"",
               fecha:"",
               men:'',
+              fechacobro:'',
+              men2:'',
           }
         },
         mounted() {
@@ -121,9 +127,13 @@ export default {
                         });
 
             },
+            calculodias(){
+
+            },
             verificar(){
               this.verifmama();
               this.dato={paterno:'',materno:'',nombres:''};
+                   this.men2='';
               axios.get('/verificar/'+this.param+"/"+this.fecha).then(res=>{
                   console.log(res.data);
                   if(res.data==''){
@@ -148,6 +158,10 @@ export default {
 
                   }else{
                    this.dato=res.data[0];
+                   if (this.dato.estado=='HABILITADO'){
+                   this.fechacobro=moment(this.dato.updated_at).add(14,'d');
+                   this.men2='USTED PUEDE COBRAR A PARTIR DE LA FECHA: '+moment(this.fechacobro).format('DD/MM/yyyy');
+                   }
                         if (this.dato.paterno==undefined||this.dato.paterno==null){
                             this.dato.paterno='';
                         }
