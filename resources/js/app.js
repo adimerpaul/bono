@@ -22,6 +22,7 @@ Vue.use(VueToast);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('welcome-component', require('./components/welcome.vue').default);
+Vue.component('veri-component', require('./components/veri.vue').default);
 Vue.component('mtto-component', require('./components/mantenimiento.vue').default);
 Vue.component('verificar', require('./components/verificar.vue').default);
 import usuarios from './components/usuarios';
@@ -32,8 +33,8 @@ import registrar from './components/registrar';
 import reportes from './components/reportes';
 import especial from './components/especial';
 import mamas from './components/mama';
-import educations from './components/education'; 
-import listado from './components/listado'; 
+import educations from './components/education';
+import listado from './components/listado';
 import informe from './components/informe';
 const routes = [
     { path: '/usuarios', component: usuarios },

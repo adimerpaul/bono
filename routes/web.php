@@ -84,3 +84,7 @@ Route::put('/confirmar/{id}',[App\Http\Controllers\MadreController::class,'confi
 Route::get('/recintos',[App\Http\Controllers\MadreController::class,'recintos']);
 Route::get('/verificar/{id}/{fecha}',[App\Http\Controllers\HijoController::class,'verificar']);
 Route::post('/storemama',[App\Http\Controllers\MadreController::class,'storemama']);
+Route::get('/veri',[App\Http\Controllers\HomeController::class,'veri']);
+Route::get('/madres',[App\Http\Controllers\HomeController::class,'madres']);
+Route::put('/madresupdate/{id}',[App\Http\Controllers\HomeController::class,'madresupdate']);
+Route::get('/corte/{ci}/{born}',[App\Http\Controllers\HomeController::class,'corte']);
