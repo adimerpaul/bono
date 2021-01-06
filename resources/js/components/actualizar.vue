@@ -345,24 +345,39 @@
                     </div>
                      <div class="row col-12">
                             <table v-if="val==null" class="table table-bordered">
-                                <tr><th>Voto municipio Oruro?</th>
-                                <td >   
+                                <tr>
+                                    <th>
+                                        Voto municipio Oruro?
+                                        <button @click="verificar" type="button" class="btn btn-success btn-sm">
+                                            <template v-if="spiner">Verificar</template>
+                                            <template v-else>
+                                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Loading...</span>
+                                            </template>
+                                        </button>
+                                        <span class="badge bg-success">NOMBRE: {{yo.paterno}} {{yo.materno}} {{yo.nombres}} LOCALIDAD: {{yo.localidad}}</span>
+                                    </th>
+
+                                    <td >
+                                        <div class="form-check col-md-3">
+                                            <input type="radio" id="voto2" name="voto" value="NO" class="form-check-input" v-model="dato.voto" required @change="detallecontrol">
+                                            <label class="form-control-label" for="voto2">NO</label>
+                                        </div>
+                                    </td>
+                                    <td>
                                     <div class="form-check col-md-3">
-                                        <input type="radio" id="voto2" name="voto" value="NO" class="form-check-input" v-model="dato.voto" required @change="detallecontrol">
-                                        <label class="form-control-label" for="voto2">NO</label>
+                                        <input required class="form-check-input" type="radio" name="voto" id="voto3" value="SI" v-model="dato.voto"  @change="detallecontrol">
+                                        <label class="form-check-label" for="voto3">
+                                            SI
+                                        </label>
                                     </div>
-                                </td>
-                                <td>
-                                <div class="form-check col-md-3">
-                                    <input required class="form-check-input" type="radio" name="voto" id="voto3" value="SI" v-model="dato.voto"  @change="detallecontrol">
-                                    <label class="form-check-label" for="voto3">
-                                        SI
-                                    </label>
-                                </div>
-                                </td>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <th>Aportes AFP Prevision?</th>
+                                    <th>
+                                        Aportes AFP Prevision?
+                                        <button @click="pre" type="button" class="btn btn-success btn-sm">Verificar</button>
+                                    </th>
                                     <td>
                                        <div class="form-check col-md-3">
                                             <input type="radio" id="afprevision2" name="afprevision" value="NO" class="form-check-input" v-model="dato.aprevision" required  @change="detallecontrol">
@@ -379,7 +394,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Aportes AFP Futuro?</th>
+                                    <th>
+                                        Aportes AFP Futuro?
+                                        <button @click="futuro" type="button" class="btn btn-success btn-sm">Abrir</button>
+                                    </th>
                                     <td>
                                         <div class="form-check col-md-3">
                                             <input type="radio" id="afpfuturo2" name="afpfuturo" value="NO" class="form-check-input" v-model="dato.apfuturo" required @change="detallecontrol" >
@@ -398,19 +416,19 @@
                             </table>
                              <table v-else class="table table-bordered">
                                 <tr><th>Voto municipio Oruro?</th>
-                                <td >   
+                                <td >
                                     {{dato.voto}}
                                 </td>
                                 </tr>
                                 <tr>
                                     <th>Aportes AFP Prevision?</th>
-                                    <td >   
+                                    <td >
                                     {{dato.aprevision}}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Aportes AFP Futuro?</th>
-                                     <td >   
+                                     <td >
                                     {{dato.apfuturo}}
                                     </td>
                                 </tr>
@@ -421,7 +439,7 @@
                         <label for="ci1" class="col-sm-9 col-form-label">Datos Verificados</label>
                         <div class="col-sm-3">
                         <input type="text" readonly class="form-control-plaintext" id="ci1" v-model="dato.verificar">
-                        
+
                         </div>
                     </div>
                     <br>
@@ -487,18 +505,75 @@ Vue.use(Datetime)
                     'LOS ANDES BANCA PYMES',
                     'BANCO FIE',
                     'BANCO PRODEM',
-                ]
+                ],
+              spiner:true,
+              yo:{}
 
           }
         },
         mounted() {
-            console.log('Component mounted.');
-                axios.get('/recintos').then(res=>{
+            // console.log('Component mounted.');
+            axios.get('/recintos').then(res=>{
+                // console.log(res.data);
                 this.recintos=res.data;
-            }),
-            this.dato;
+            })
+            // this.dato;
         },
         methods:{
+            pre(){
+                // console.log(this.dato.ci);
+                let ci=this.dato.ci;
+                var mywindow=window.open("pre" , "ventana1" , "width=800,height=500,scrollbars=NO");
+                mywindow.onload = function() {
+                    mywindow.document.getElementById("idNumDoc").value=ci;
+
+                }
+
+            },
+            futuro(){
+                // console.log(this.dato.ci);
+                let ci=this.dato.ci;
+                var mywindow=window.open("https://www.afp-futuro.com/siswww/es/adt/asegurado/cerneg/bienvenida" , "ventana2" , "width=800,height=500,scrollbars=NO");
+                mywindow.onload = function() {
+                    // mywindow.document.getElementById("NBRCOMPLETO").value='aa';
+                    $('NBRCOMPLETO').value='aaa';
+                }
+
+            },
+            verificar(e) {
+                // console.log(e);
+                this.yo={};
+                this.spiner=false;
+                 axios.get('/corte/'+this.dato.civalido+'/'+this.dato.fechanac+'').then(async res=>{
+                    // this.recintos=res.data;
+                    let token=res.data;
+                    // console.log(res.data);
+                    let datos={
+                        signature:token,
+                        client_id:'53iEkRduUGrSBCrNSScJizIyyADgdz3',
+                        client_secret:'hEUgAAABgAAAAYCAYAAADgdz3CrNSSc'
+                    };
+                    axios.post('https://servicios.oep.org.bo:443/api/referendum/people/perform/',datos).then( async re=>{
+                        // console.log(re.data);
+                        this.spiner=true;
+                        this.yo=re.data;
+                        // axios.put('/madresupdate/'+r.id,{voto:'SI'})
+                        // if(re.data.localidad=="Cercado, Oruro"){
+                        //     await axios.put('/madresupdate/'+r.id,{voto:'SI'})
+                        //     // await setTimeout(() => { console.log("World!"); },100);
+                        //
+                        // }else{
+                        //     await axios.put('/madresupdate/'+r.id,{voto:'NO'})
+                        // }
+                    }).catch(async error=>{
+                        // console.log('No encontrado');
+                        this.yo={};
+                        this.spiner=true;
+                        // await axios.put('/madresupdate/'+r.id,{voto:'NO'})
+                        // await setTimeout(() => { console.log("World!"); },100);
+                    });
+                })
+            },
             generateReport () {
                 this.$refs.html2Pdf.generatePdf()
             },
@@ -509,12 +584,12 @@ Vue.use(Datetime)
                 this.dato.hijos.splice(index, 1);
             },
             actualizar(){
-
+                this.yo={};
               axios.get('/madre/'+this.param).then(res=>{
                   if(res.data=='')
                         this.dato={hijos:[{nombres:'',apellidos:''}]};
                   else{
-                   console.log(res.data[0]);
+                   // console.log(res.data[0]);
                    this.dato=res.data[0];
                    this.val=this.dato.voto;
                    //if(this.dato.estado!='NO' && this.dato.verificar=='SI')
@@ -525,9 +600,9 @@ Vue.use(Datetime)
                         this.tienebanco='NO';
                     if(this.dato.hijos.length==0)
                         this.dato.hijos=[{nombres:'',apellidos:''}];
-                    
+
                    //this.dato.hijos=data[0].hijo;
-                   console.log(this.dato);
+                   // console.log(this.dato);
                   }
               });
             },
@@ -575,7 +650,7 @@ Vue.use(Datetime)
 
 	                var years = a.diff(b, 'year');
                                 b.add(years, 'years');
-                                console.log(moment(variable).format('YYYY-MM-DD'));
+                                // console.log(moment(variable).format('YYYY-MM-DD'));
                     if(years>17 && years<60)
                         return true;
                     else
@@ -611,6 +686,11 @@ Vue.use(Datetime)
                 }
             }
         }
+
     }
+
+
+
+
+
 </script>
-    

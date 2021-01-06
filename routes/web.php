@@ -55,6 +55,9 @@ Route::get('/listado', function () {
 Route::get('/verificar', function () {
     return view('verificar');
 });
+Route::get('/pre', function () {
+    return view('pre');
+});
 
 
 Auth::routes();
