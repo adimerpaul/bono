@@ -313,6 +313,7 @@ class MadreController extends Controller
             Auth::user()->id=='26' ||
             Auth::user()->id=='31' ||
             Auth::user()->id=='30' ||
+            Auth::user()->id=='28' ||
 
             Auth::user()->id=='6'){
         $m=Madre::find($id);
@@ -397,6 +398,7 @@ class MadreController extends Controller
             Auth::user()->id=='26' ||
             Auth::user()->id=='31' ||
             Auth::user()->id=='30' ||
+            Auth::user()->id=='28' ||
             Auth::user()->id=='27'){
         $m=Madre::find($id);
         $m->paterno=$request->paterno;
