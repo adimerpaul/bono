@@ -108,6 +108,7 @@
                             Auth::user()->id=='17' ||
                             Auth::user()->id=='18' ||
                             Auth::user()->id=='36' ||
+                            Auth::user()->id=='38' ||
                                 Auth::user()->id=='15')
 
                         <router-link
@@ -143,6 +144,7 @@
                             Auth::user()->id=='17' ||
                             Auth::user()->id=='18' ||
                             Auth::user()->id=='36' ||
+                            Auth::user()->id=='38' ||
                             Auth::user()->id=='6')
                         <router-link
                             to="/especial"
@@ -170,6 +172,7 @@
                             Auth::user()->id=='17' ||
                             Auth::user()->id=='36' ||
                             Auth::user()->id=='18' ||
+                            Auth::user()->id=='38' ||
                             Auth::user()->id=='26')
                                 <router-link
                                     to="/mamas"
