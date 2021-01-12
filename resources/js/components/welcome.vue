@@ -469,7 +469,7 @@
                         //     'success'
                         // ); 
                         // this.dato.recinto=this.dato.recintos2;
-                        axios.post('/madre',this.dato).then(res=>{
+                        /*axios.post('/madre',this.dato).then(res=>{
                             // console.log(res.data);
                             // return false;
                             this.d=false;
@@ -501,7 +501,7 @@
                                 });
                             }
                         });
-                        // this.$toastr.s("Enviado correctamente");
+                        // this.$toastr.s("Enviado correctamente");*/
                     }
                 })
 
