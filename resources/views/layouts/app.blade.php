@@ -66,6 +66,7 @@
                         || Auth::user()->id=='3'
                         || Auth::user()->id=='4'
                         || Auth::user()->id=='39'   
+                        || Auth::user()->id=='40'   
                         )
                         <router-link
                             to="/registrados"
