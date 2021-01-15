@@ -112,6 +112,7 @@
                             Auth::user()->id=='36' ||
                             Auth::user()->id=='38' ||
                             Auth::user()->id=='41' ||
+                            Auth::user()->id=='35' ||
                                 Auth::user()->id=='15')
 
                         <router-link
@@ -149,6 +150,7 @@
                             Auth::user()->id=='36' ||
                             Auth::user()->id=='38' ||
                             Auth::user()->id=='41' ||
+                            Auth::user()->id=='35' ||
                             Auth::user()->id=='6')
                         <router-link
                             to="/especial"
