@@ -63,7 +63,7 @@ class MadreController extends Controller
         || Auth::user()->id=='32'  || Auth::user()->id=='33'    || Auth::user()->id=='34'
         || Auth::user()->id=='35' || Auth::user()->id=='36' || Auth::user()->id=='37'
         || Auth::user()->id=='39'
-        || Auth::user()->id=='40'
+        || Auth::user()->id=='41'
         ){
 
             $m=Madre::find($id);
@@ -280,6 +280,7 @@ class MadreController extends Controller
             Auth::user()->id=='38' ||
             Auth::user()->id=='30' ||
             Auth::user()->id=='39' ||
+            Auth::user()->id=='41' ||
             Auth::user()->id=='2'){
         $d= new Mama();
         $d->ci=$request->ci;
@@ -326,6 +327,7 @@ class MadreController extends Controller
             Auth::user()->id=='18' ||
             Auth::user()->id=='36' ||
             Auth::user()->id=='38' ||
+            Auth::user()->id=='41' ||
 
             Auth::user()->id=='6'){
         $m=Madre::find($id);
@@ -415,6 +417,7 @@ class MadreController extends Controller
             Auth::user()->id=='18' ||
             Auth::user()->id=='36' ||
             Auth::user()->id=='38' ||
+            Auth::user()->id=='41' ||
             Auth::user()->id=='27'){
         $m=Madre::find($id);
         $m->paterno=$request->paterno;

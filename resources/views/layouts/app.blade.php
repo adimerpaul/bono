@@ -66,7 +66,7 @@
                         || Auth::user()->id=='3'
                         || Auth::user()->id=='4'
                         || Auth::user()->id=='39'   
-                        || Auth::user()->id=='40'   
+                        || Auth::user()->id=='41'   
                         )
                         <router-link
                             to="/registrados"
@@ -111,6 +111,7 @@
                             Auth::user()->id=='18' ||
                             Auth::user()->id=='36' ||
                             Auth::user()->id=='38' ||
+                            Auth::user()->id=='41' ||
                                 Auth::user()->id=='15')
 
                         <router-link
@@ -147,6 +148,7 @@
                             Auth::user()->id=='18' ||
                             Auth::user()->id=='36' ||
                             Auth::user()->id=='38' ||
+                            Auth::user()->id=='41' ||
                             Auth::user()->id=='6')
                         <router-link
                             to="/especial"
@@ -177,6 +179,7 @@
                             Auth::user()->id=='38' ||
                             Auth::user()->id=='39' ||
                             Auth::user()->id=='30' ||
+                            Auth::user()->id=='41' ||
                             Auth::user()->id=='26')
                                 <router-link
                                     to="/mamas"
