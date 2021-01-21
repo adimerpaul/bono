@@ -183,6 +183,7 @@ class MadreController extends Controller
             $m->banco=$request->banco;
             $m->mama='SI';
             $m->numerobanco=$request->numerobanco;
+            $m->reg_id=Auth::user()->id;
 
 
             $m->save();
