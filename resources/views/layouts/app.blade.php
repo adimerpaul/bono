@@ -56,6 +56,7 @@
                             Auth::user()->id=='2' ||
                             Auth::user()->id=='16' ||
                             Auth::user()->id=='8' ||
+                            Auth::user()->id=='6' ||
                             Auth::user()->id=='41' 
                         )
                         <router-link
@@ -133,6 +134,7 @@
                             Auth::user()->id=='41' ||
                             Auth::user()->id=='35' ||
                             Auth::user()->id=='8' ||
+                            Auth::user()->id=='6' ||
                                 Auth::user()->id=='15')
 
                         <router-link
@@ -221,7 +223,10 @@
                                 </a>
                             </li>
                         </router-link>
-                        @if( Auth::user()->id=='2' ||  Auth::user()->id=='41' ||  Auth::user()->id=='8' )
+                        @if( Auth::user()->id=='2' 
+                        ||  Auth::user()->id=='41' 
+                        ||  Auth::user()->id=='6' 
+                        ||  Auth::user()->id=='8' )
                         <router-link
                             to="/educations"
                             v-slot="{ href, route, navigate, isActive, isExactActive }"

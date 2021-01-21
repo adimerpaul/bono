@@ -109,6 +109,7 @@ class MadreController extends Controller
         if(
             Auth::user()->id=='2' ||
             Auth::user()->id=='8' ||
+            Auth::user()->id=='6' ||
             Auth::user()->id=='16' ||
             Auth::user()->id=='41' 
         ){
