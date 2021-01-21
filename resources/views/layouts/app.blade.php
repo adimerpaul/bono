@@ -218,8 +218,7 @@
                                 </a>
                             </li>
                         </router-link>
-                        @if( Auth::user()->id=='2' ||  Auth::user()->id=='3' || Auth::user()->id=='4'
-                        ||  Auth::user()->id=='5' ||  Auth::user()->id=='8')
+                        @if( Auth::user()->id=='2' ||  Auth::user()->id=='41' )
                         <router-link
                             to="/educations"
                             v-slot="{ href, route, navigate, isActive, isExactActive }"

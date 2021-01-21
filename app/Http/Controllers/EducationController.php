@@ -29,6 +29,10 @@ class EducationController extends Controller
      */
     public function store(Request $request)
     {
+        if(
+            Auth::user()->id=='2' ||
+            Auth::user()->id=='41' 
+        ){
         if($request->ext=='')
         $cedula=$request->ci;
         else
@@ -126,6 +130,9 @@ class EducationController extends Controller
    
             return "CORRECTO";
         }
+    }
+    else
+        return "NO AUTORIZADO";
 
 
 
