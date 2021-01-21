@@ -1,8 +1,8 @@
 
 <template>
 <div class="conteiner">
-    <div class="">
-        <div class="">
+    <div class="row ">
+        <div class="col-12">
             <blockquote class="blockquote text-center">
                 <p class="mb-0">
                     REGISTRO UNICO <br>
