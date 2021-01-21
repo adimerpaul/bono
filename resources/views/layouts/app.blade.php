@@ -186,7 +186,6 @@
                         @endif
                         @if(Auth::user()->id=='2' ||
                             Auth::user()->id=='41' ||
-                            Auth::user()->id=='8' ||
                             Auth::user()->id=='16')
                                 <router-link
                                     to="/mamas"
