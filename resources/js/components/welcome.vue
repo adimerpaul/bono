@@ -1,7 +1,8 @@
 
 <template>
-    <div class="row ">
-        <div class="col-12">
+<div class="conteiner">
+    <div class="">
+        <div class="">
             <blockquote class="blockquote text-center">
                 <p class="mb-0">
                     REGISTRO UNICO <br>
@@ -381,6 +382,7 @@
 
 
     </div>
+    </div>
 </template>
 
 <script>
@@ -469,7 +471,7 @@
                         //     'success'
                         // ); 
                         // this.dato.recinto=this.dato.recintos2;
-                        /*axios.post('/madre',this.dato).then(res=>{
+                        axios.post('/madre',this.dato).then(res=>{
                             // console.log(res.data);
                             // return false;
                             this.d=false;
@@ -501,7 +503,7 @@
                                 });
                             }
                         });
-                        // this.$toastr.s("Enviado correctamente");*/
+                        // this.$toastr.s("Enviado correctamente");
                     }
                 })
 

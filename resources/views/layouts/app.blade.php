@@ -52,6 +52,24 @@
                             </li>
                         </router-link>
                         @endif
+                        @if(
+                            Auth::user()->id=='2' ||
+                            Auth::user()->id=='16' ||
+                            Auth::user()->id=='41' 
+                        )
+                        <router-link
+                            to="/welcome"
+                            v-slot="{ href, route, navigate, isActive, isExactActive }"
+                        >
+                            <li class="nav-item">
+                                <a class="nav-link" :href="href" @click="navigate" :class="[isActive && 'active', isExactActive && '']">
+                                    <i class="fa fa-user"></i> Reg Bono
+
+                                </a>
+                            </li>
+                        </router-link>
+                        @endif
+
 {{--                        @endif--}}
                         @if(Auth::user()->id=='10' || Auth::user()->id=='9' || Auth::user()->id=='6' || Auth::user()->id=='15'
                         || Auth::user()->id=='16' || Auth::user()->id=='2' || Auth::user()->id=='1'

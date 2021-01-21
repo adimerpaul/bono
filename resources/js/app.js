@@ -25,6 +25,7 @@ Vue.component('welcome-component', require('./components/welcome.vue').default);
 Vue.component('veri-component', require('./components/veri.vue').default);
 Vue.component('mtto-component', require('./components/mantenimiento.vue').default);
 Vue.component('verificar', require('./components/verificar.vue').default);
+import welcome from './components/welcome';
 import usuarios from './components/usuarios';
 import registrados from './components/registrados';
 import revisar from './components/revisar';
@@ -37,6 +38,7 @@ import educations from './components/education';
 import listado from './components/listado';
 import informe from './components/informe';
 const routes = [
+    { path: '/welcome', component: welcome },
     { path: '/usuarios', component: usuarios },
     { path: '/registrados', component: registrados },
     { path: '/actualizar', component: actualizar },

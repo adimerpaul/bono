@@ -57,7 +57,7 @@
                             Bien!
                         </div>
                         <div class="invalid-feedback">
-                            La edad no corresponde para el bono
+                           Debe Registrar la fecha nac
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
