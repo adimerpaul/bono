@@ -25,7 +25,51 @@
 </head>
 <body>
 <div class="container" id="app">
-<mtto-component></mtto-component>
+
+{{--<mtto-component></mtto-component>--}}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-4">
+                <div class="card text-center">
+                    <div class="card-header">
+                        <figure class="text-end text-center">
+                            <blockquote class="blockquote">
+                                <p>REQUISITOS “BONO MADRE”</p>
+                            </blockquote>
+                            {{--                    <figcaption class="blockquote-footer">--}}
+                            {{--                        --}}{{--            Someone famous in <cite title="Source Title">Source Title</cite>--}}
+                            {{--                    </figcaption>--}}
+                        </figure>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled text-left">
+                            <li>1.- CEDULA DE IDENTIDAD </li>
+                            <li>2.- CERTIFICADO DE SUFRAGIO (EN CASO DE EXTRAVÍO MEDIANTE SOLICITUD ESCRITA ANTE EL T.E.D.O. PARA CERTIFICACIÓN DE EMISIÓN DE VOTO EN EL MUNICIPIO DE ORURO).</li>
+
+                            <li>3.- CERTIFICADO DE NACIMIENTO DEL HIJO/A, NACIDO HASTA OCTUBRE DE 2020.</li>
+
+                            <li>4.- EXTRACTO DE LA AFP SOBRE NO TENER APORTES HASTA MAYO DE 2020.</li>
+
+                            <li>5.- INSCRIPCIONES PARA EL BENEFICIO DEL “BONO MADRE” SERÁ HASTA EL DÍA  VIERNES 19 DE FEBRERO DE 2021.</li>
+
+                            <li> 6.- PAGO DEL BONO MADRE SE  REALIZARA, HASTA EL DIA LUNES 31 DE MAYO DE 2021, EN EL BANCO ECOFUTURO.</li>
+                            <li>Oruro, 29 de enero de 2021</li>
+                        </ul>
+{{--                        <h5 class="card-title">Special title treatment</h5>--}}
+{{--                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--}}
+                        <a href="https://bonogamo.tk/verificar" class="btn btn-primary"><i class="fa fa-list"></i> Verificar</a>
+                    </div>
+                    <div class="card-footer text-muted">
+{{--                        2 days ago--}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
 </div>
 
 <!-- Optional JavaScript; choose one of the two! -->
