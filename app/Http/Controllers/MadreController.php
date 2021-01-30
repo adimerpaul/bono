@@ -340,7 +340,7 @@ class MadreController extends Controller
         $m->conyugue=$request->conyugue;
         $m->nombres=$request->nombres;
         $m->fechanac=$request->fechanac;
-        $m->ci=$request->ci;
+        //$m->ci=$request->ci;
         $m->fijo=$request->fijo;
         $m->celular=$request->celular;
         $m->salario=$request->salario;
@@ -424,7 +424,7 @@ class MadreController extends Controller
         $m->conyugue=$request->conyugue;
         $m->nombres=$request->nombres;
         $m->fechanac=$request->fechanac;
-        $m->ci=$request->ci;
+        //$m->ci=$request->ci;
         $m->fijo=$request->fijo;
         $m->celular=$request->celular;
         $m->salario=$request->salario;
