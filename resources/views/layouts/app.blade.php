@@ -58,6 +58,7 @@
                             Auth::user()->id=='8' ||
                             Auth::user()->id=='6' ||
                             Auth::user()->id=='5' ||
+                            Auth::user()->id=='30' ||
                             Auth::user()->id=='41' 
                         )
                         <router-link
@@ -189,6 +190,7 @@
                         @endif
                         @if(Auth::user()->id=='2' ||
                             Auth::user()->id=='41' ||
+                            Auth::user()->id=='30' ||
                             Auth::user()->id=='16')
                                 <router-link
                                     to="/mamas"
