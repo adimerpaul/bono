@@ -159,7 +159,7 @@ export default {
                   }else{
                    this.dato=res.data[0];
                    if (this.dato.estado=='HABILITADO'){
-                   this.fechacobro=moment(this.dato.updated_at).add(14,'d');
+                   this.fechacobro=moment(this.dato.updated_at).add(21,'d');
                    this.men2='USTED PUEDE COBRAR A PARTIR DE LA FECHA: '+moment(this.fechacobro).format('DD/MM/yyyy');
                    }
                         if (this.dato.paterno==undefined||this.dato.paterno==null){
