@@ -98,7 +98,7 @@
                         </router-link>
                         @if(Auth::user()->id=='2'  ||
                             Auth::user()->id=='16' ||
-                            Auth::user()->id=='41' ||
+                            Auth::user()->id=='41' 
                             )
 
                         <router-link
@@ -114,7 +114,7 @@
                         @endif
                         @if(Auth::user()->id=='2' ||
                          Auth::user()->id=='16' ||
-                            Auth::user()->id=='41' ||
+                            Auth::user()->id=='41' 
                             )
                         <router-link
                             to="/especial"
