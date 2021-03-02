@@ -52,18 +52,8 @@ class MadreController extends Controller
         return Jurado::select('recinto')->where('recinto','!=','')->groupBy('recinto')->orderBy('recinto')->get();
     }
     public function confirmar(Request $request,$id){
-        if(Auth::user()->id=='10' || Auth::user()->id=='9' || Auth::user()->id=='6'
-        || Auth::user()->id=='15' || Auth::user()->id=='16' || Auth::user()->id=='2'
-            || Auth::user()->id=='3' || Auth::user()->id=='4' || Auth::user()->id=='5'
-        || Auth::user()->id=='17' || Auth::user()->id=='18' || Auth::user()->id=='19'
-        || Auth::user()->id=='20' || Auth::user()->id=='21' || Auth::user()->id=='22'
-        || Auth::user()->id=='23' || Auth::user()->id=='24' || Auth::user()->id=='25'
-        || Auth::user()->id=='26' || Auth::user()->id=='27' || Auth::user()->id=='28'
-        || Auth::user()->id=='29'  || Auth::user()->id=='30'   || Auth::user()->id=='31'
-        || Auth::user()->id=='32'  || Auth::user()->id=='33'    || Auth::user()->id=='34'
-        || Auth::user()->id=='35' || Auth::user()->id=='36' || Auth::user()->id=='37'
-        || Auth::user()->id=='39'
-        || Auth::user()->id=='8'
+        if(
+         Auth::user()->id=='16' || Auth::user()->id=='2'
         || Auth::user()->id=='41'
         ){
 
@@ -108,10 +98,6 @@ class MadreController extends Controller
 
         if(
             Auth::user()->id=='2' ||
-            Auth::user()->id=='8' ||
-            Auth::user()->id=='6' ||
-            Auth::user()->id=='5' ||
-            Auth::user()->id=='30' ||
             Auth::user()->id=='16' ||
             Auth::user()->id=='41' 
         ){
@@ -277,7 +263,6 @@ class MadreController extends Controller
         if(Auth::user()->id=='41' ||
 
             Auth::user()->id=='16' ||
-            Auth::user()->id=='30' ||
             Auth::user()->id=='2'){
         $d= new Mama();
         $d->ci=$request->ci;
@@ -301,34 +286,10 @@ class MadreController extends Controller
     {
         if( Auth::user()->id=='2' ||
 
-            Auth::user()->id=='5' ||
-            Auth::user()->id=='4' ||
-            Auth::user()->id=='3' ||
-
-            Auth::user()->id=='27' ||
-            Auth::user()->id=='15' ||
             Auth::user()->id=='16' ||
-            Auth::user()->id=='23' ||
-            Auth::user()->id=='21' ||
-            Auth::user()->id=='22' ||
-            Auth::user()->id=='10' ||
-            Auth::user()->id=='9' ||
+            Auth::user()->id=='41' 
 
-            Auth::user()->id=='24' ||
-            Auth::user()->id=='25' ||
-            Auth::user()->id=='26' ||
-            Auth::user()->id=='31' ||
-            Auth::user()->id=='30' ||
-            Auth::user()->id=='28' ||
-            Auth::user()->id=='17' ||
-            Auth::user()->id=='18' ||
-            Auth::user()->id=='36' ||
-            Auth::user()->id=='38' ||
-            Auth::user()->id=='41' ||
-            Auth::user()->id=='35' ||
-            Auth::user()->id=='8' ||
-
-            Auth::user()->id=='6'){
+            ){
         $m=Madre::find($id);
         if($m->voto== null){
          $m->user_id=Auth::user()->id;
@@ -395,31 +356,9 @@ class MadreController extends Controller
     public function modificar(Request $request, $id)
     {
         if(Auth::user()->id=='2' ||
-            Auth::user()->id=='5' ||
-            Auth::user()->id=='4' ||
-            Auth::user()->id=='3' ||
             Auth::user()->id=='16' ||
-            Auth::user()->id=='6' ||
-            Auth::user()->id=='15' ||
-            Auth::user()->id=='23' ||
-            Auth::user()->id=='21' ||
-            Auth::user()->id=='22' ||
-            Auth::user()->id=='10' ||
-            Auth::user()->id=='9' ||
-            Auth::user()->id=='24' ||
-            Auth::user()->id=='25' ||
-            Auth::user()->id=='26' ||
-            Auth::user()->id=='31' ||
-            Auth::user()->id=='30' ||
-            Auth::user()->id=='28' ||
-            Auth::user()->id=='17' ||
-            Auth::user()->id=='18' ||
-            Auth::user()->id=='36' ||
-            Auth::user()->id=='38' ||
-            Auth::user()->id=='41' ||
-            Auth::user()->id=='35' ||
-            Auth::user()->id=='8' ||
-            Auth::user()->id=='27'){
+            Auth::user()->id=='41' 
+            ){
         $m=Madre::find($id);
         $m->paterno=$request->paterno;
         $m->materno=$request->materno;

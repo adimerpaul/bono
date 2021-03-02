@@ -31,8 +31,6 @@ class EducationController extends Controller
     {
         if(
             Auth::user()->id=='2' ||
-            Auth::user()->id=='8' ||
-            Auth::user()->id=='6' ||
             Auth::user()->id=='41' 
         ){
         if($request->ext=='')
