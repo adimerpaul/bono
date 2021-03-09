@@ -286,7 +286,7 @@ class MadreController extends Controller
         if( Auth::user()->id=='2' ||
 
             Auth::user()->id=='16' ||
-            Auth::user()->id=='13' ||
+            Auth::user()->id=='21' ||
             Auth::user()->id=='22' 
             ){
         $m=Madre::find($id);
@@ -356,7 +356,7 @@ class MadreController extends Controller
     {
         if(Auth::user()->id=='2' ||
             Auth::user()->id=='16' ||
-            Auth::user()->id=='13' ||
+            Auth::user()->id=='21' ||
             Auth::user()->id=='22' 
             ){
         $m=Madre::find($id);
