@@ -54,8 +54,7 @@
                         @endif
                         @if(
                             Auth::user()->id=='2' ||
-                            Auth::user()->id=='16' ||
-                            Auth::user()->id=='41' 
+                            Auth::user()->id=='16' 
                         )
                         <router-link
                             to="/welcome"
@@ -73,7 +72,7 @@
 {{--                        @endif--}}
                         @if(
                          Auth::user()->id=='16' || Auth::user()->id=='2' 
-                        || Auth::user()->id=='41'   
+                        
                         )
                         <router-link
                             to="/registrados"
@@ -99,8 +98,7 @@
                         @if(Auth::user()->id=='2'  ||
                             Auth::user()->id=='16' ||
                             Auth::user()->id=='13' ||
-                            Auth::user()->id=='22' ||
-                            Auth::user()->id=='41' 
+                            Auth::user()->id=='22' 
                             )
 
                         <router-link
@@ -117,8 +115,7 @@
                         @if(Auth::user()->id=='2' ||
                          Auth::user()->id=='16' ||
                          Auth::user()->id=='13' ||
-                         Auth::user()->id=='22' ||
-                            Auth::user()->id=='41' 
+                         Auth::user()->id=='22'  
                             )
                         <router-link
                             to="/especial"
@@ -132,7 +129,7 @@
                         </router-link>
                         @endif
                         @if(Auth::user()->id=='2' ||
-                            Auth::user()->id=='41' ||
+                            
                             Auth::user()->id=='16')
                                 <router-link
                                     to="/mamas"
@@ -169,7 +166,7 @@
                             </li>
                         </router-link>
                         @if( Auth::user()->id=='2' 
-                        ||  Auth::user()->id=='41' 
+                        
                         )
                         <router-link
                             to="/educations"

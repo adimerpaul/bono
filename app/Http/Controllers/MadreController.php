@@ -54,7 +54,7 @@ class MadreController extends Controller
     public function confirmar(Request $request,$id){
         if(
          Auth::user()->id=='16' || Auth::user()->id=='2'
-        || Auth::user()->id=='41'
+        
         ){
 
             $m=Madre::find($id);
@@ -98,8 +98,7 @@ class MadreController extends Controller
 
         if(
             Auth::user()->id=='2' ||
-            Auth::user()->id=='16' ||
-            Auth::user()->id=='41' 
+            Auth::user()->id=='16' 
         ){
 
         if($request->ext=='')
@@ -260,7 +259,7 @@ class MadreController extends Controller
     }
     public function storemama(Request $request)
     {
-        if(Auth::user()->id=='41' ||
+        if(
 
             Auth::user()->id=='16' ||
             Auth::user()->id=='2'){
@@ -288,9 +287,7 @@ class MadreController extends Controller
 
             Auth::user()->id=='16' ||
             Auth::user()->id=='13' ||
-            Auth::user()->id=='22' ||
-            Auth::user()->id=='41' 
-
+            Auth::user()->id=='22' 
             ){
         $m=Madre::find($id);
         if($m->voto== null){
@@ -360,8 +357,7 @@ class MadreController extends Controller
         if(Auth::user()->id=='2' ||
             Auth::user()->id=='16' ||
             Auth::user()->id=='13' ||
-            Auth::user()->id=='22' ||
-            Auth::user()->id=='41' 
+            Auth::user()->id=='22' 
             ){
         $m=Madre::find($id);
         $m->paterno=$request->paterno;
