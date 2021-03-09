@@ -98,6 +98,8 @@
                         </router-link>
                         @if(Auth::user()->id=='2'  ||
                             Auth::user()->id=='16' ||
+                            Auth::user()->id=='13' ||
+                            Auth::user()->id=='22' ||
                             Auth::user()->id=='41' 
                             )
 
@@ -114,6 +116,8 @@
                         @endif
                         @if(Auth::user()->id=='2' ||
                          Auth::user()->id=='16' ||
+                         Auth::user()->id=='13' ||
+                         Auth::user()->id=='22' ||
                             Auth::user()->id=='41' 
                             )
                         <router-link
